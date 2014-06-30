@@ -1,0 +1,59 @@
+@mixin line
+	display: inline-block
+	width: $size
+	height: $size/10
+	background: $green
+	border-radius: 0.1em
+	transition: $transition
+
+#hamburger
+	position: absolute
+	top: $size 
+	right: 0
+	line-height: 0
+	transform: translate3d(99%, 0, 0)
+
+	transition: $transition
+
+	padding: ($size - 1em) 1em
+	cursor: pointer
+	user-select: none
+	background-color: $grey
+	z-index: 900
+	> span
+
+		+line
+		position: relative
+		transition: background .1s $transition ease
+		.nav &
+			transition: background $transition 0s ease
+			background: transparent
+
+		&:before, &:after
+			+line
+			position: absolute
+			left: 0
+			content: ''
+			transition: top $transition $transition ease, transform $transition ease
+			z-index: 901
+			.nav &
+				top: 0
+				transition: top $transition ease, transform $transition $transition ease,
+				
+		&:before
+			top: $size/5 
+			.nav &
+				transform: rotate3d(0,0,1,45deg)
+		&:after
+			top: -$size/5
+			.nav &
+				transform: rotate3d(0,0,1,-45deg)
+	&:hover
+		> span
+			&:before, &:after
+				.nav &
+					top: 0
+			&:before
+				top: $size/4
+			&:after
+				top: -$size/4

@@ -1,0 +1,51 @@
+// http://breakpoint-sass.com/
+@mixin breakpoint($point)
+	@if $point == mouse
+		@media (min-width: 0)
+			@content
+
+	@else if $point == kitten
+		@media (min-width: 768px)
+			@content
+
+	@else if $point == horse
+		@media (min-width: 960px)
+			@content
+
+	@else if $point == elephant
+		@media (min-width: 1200px)
+			@content
+
+body
+	+breakpoint(mouse)
+		font-size: 0.6em
+
+	+breakpoint(kitten)
+		font-size: 0.75em
+
+	+breakpoint(horse)
+		font-size: 0.8em
+
+	+breakpoint(elephant)
+		font-size: 1em	
+
+// body:after
+// 	position: fixed
+// 	z-index: 10000
+// 	top: 0
+// 	left: 0
+// 	width: 200%
+// 	text-align: center
+// 	display: block
+// 	color: $yellow
+// 	background: $grey
+// 	opacity: 0.9
+
+// 	+breakpoint(mouse)
+// 		content: "mouse"
+// 	+breakpoint(kitten)
+// 		content: "kitten"
+// 	+breakpoint(horse)
+// 		content: "horse"
+// 	+breakpoint(elephant)
+// 		content: "elephant"

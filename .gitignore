@@ -1,1 +1,5 @@
 .sass-cache
+._*
+*.codekit
+
+.htaccess.renameme
