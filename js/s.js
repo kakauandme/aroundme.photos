@@ -105,7 +105,12 @@
 
 ////////Instagramm variables 
 
-	var APP_KEY = '4a37870c5f594c2c9c563a80fae04772';
+	//var APP_KEY = '4a37870c5f594c2c9c563a80fae04772'; // live
+
+
+	var APP_KEY = '51533e28dbb84aeca7222a73ac49b70c'; // dev
+
+
 
 	var instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processImages&client_id=' + APP_KEY;
 

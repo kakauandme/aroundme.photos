@@ -3,3 +3,9 @@
 *.codekit
 
 .htaccess.renameme
+
+css/header.css
+
+css/header.css.map
+
+js/s.min.js
