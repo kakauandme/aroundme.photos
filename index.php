@@ -215,11 +215,11 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 
 
 			// JS
-			var stylesheet = document.createElement('link');
-          	stylesheet.href = '/css/footer.css';
-          	stylesheet.rel = 'stylesheet';
-          	stylesheet.type = 'text/css';
-          	document.getElementsByTagName('head')[0].appendChild(stylesheet);
+			// var stylesheet = document.createElement('link');
+   //        	stylesheet.href = '/css/footer.css';
+   //        	stylesheet.rel = 'stylesheet';
+   //        	stylesheet.type = 'text/css';
+   //        	document.getElementsByTagName('head')[0].appendChild(stylesheet);
 
 
           	// CSS
