@@ -95,7 +95,7 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 	<meta name="msapplication-TileColor" content="#1a75cf">
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
-	
+
 	<!-- Twitter cards -->
 	<!-- https://dev.twitter.com/docs/cards/large-image-summary-card -->
 	<meta name="twitter:card" content="summary_large_image">
@@ -168,6 +168,29 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 				<div id="hamburger">
 				  <span></span>
 				</div>
+
+				<!-- Like
+					http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Faroundme.photos%2F&width&layout=button_count&action=like&show_faces=false&share=false&height=21&appId=587080064742659 
+				-->
+
+				<!-- Tweet
+
+					<a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button" target="_blank">Tweet</a>
+
+					 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://aroundme.photos/" data-text="Text goes here" data-count="none" data-hashtags="aroundmephotos">Tweet</a>
+				-->
+
+				<!-- Share on Google+ 
+
+					<a href="https://plus.google.com/share?url={URL}" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><imgsrc="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+"/></a>
+
+				-->
+
+				<!-- view on github 
+
+					https://github.com/kakauandme/aroundme.photos
+
+				-->
 			</div>
 
 			<div id="map"></div>
