@@ -96,6 +96,45 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
 	
+	<!-- Twitter cards -->
+	<!-- https://dev.twitter.com/docs/cards/large-image-summary-card -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:creator" content="@kakauandme">
+	<meta name="twitter:title" content="Title should be concise and will be truncated at 70 characters.">
+	<meta name="twitter:description" content="A description that concisely summarizes the content of the page, as appropriate for presentation within a Tweet. Do not re-use the title text as the description, or use this field to describe the general services provided by the website. Description text will be truncated at the word to 200 characters.">
+	<!-- URL to a unique image representing the content of the page. Do not use a generic image such as your website logo, author photo, or other image that spans multiple pages. Images for this Card should be at least 280px in width, and at least 150px in height. Image must be less than 1MB in size. -->
+	<meta name="twitter:image:src" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+
+	<!-- Facebook OG -->
+	<!-- https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content -->
+
+	<meta property="og:title" content="Workday Sets Price Range for I.P.O." />
+	<meta property="og:site_name" content="My Favorite News"/>
+	<meta property="og:url" content="http://www.myfavnews.com/2013/1/1/workday-price-range" />
+	<meta property="og:description" content="Workday, a provider of cloud-based" />
+	<meta property="fb:app_id" content="587080064742659" />
+	<meta property="og:type" content="website" />
+	<meta property="article:author" content="https://www.facebook.com/kirill.kliavin" />
+	<!-- The URL of an image which is used in stories published about this object. We suggest that you give us an image of at least 600x315 pixels. However, bigger is better, so if you have a 1200x630 or larger image that you can use, please give it to us. Also, we recommend that you keep images as close to a 1.91:1 aspect ratio as possible to avoid cropping. (Note: image sizes must be no more than 5MB in size.) For games, images should be square and at least 600x600 pixels. Note that you can include more than that one og:image in your object if you have more than one resolution available.-->
+	<meta property="og:image" content="https://fbcdn-dragon-a.akamaihd.net/hphotos-ak-prn1/851565_496755187057665_544240989_n.jpg" /> 
+
+
+	<!-- Google+ Schema.org microdata	 -->
+	<!--
+	<body itemscope itemtype="http://schema.org/Product">
+	<h1 itemprop="name">Shiny Trinket</h1>
+	<img itemprop="image" src="{image-url}" />
+	 <p itemprop="description">Shiny trinkets are shiny.</p>
+	</body>
+	-->
+	<!-- Update your html tag to include the itemscope and itemtype attributes. -->
+	<html itemscope itemtype="http://schema.org/Website">
+
+	<!-- Add the following three tags inside head. -->
+	<meta itemprop="name" content="Around me photos">
+	<meta itemprop="description" content="Description">
+	<meta itemprop="image" content="{image-url}">
+
 </head>
 <body id="body" class="dev">
 	<div id="container">
