@@ -164,33 +164,28 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 						</p>
 					</span>
 				</span>
+				<span>
+		    		<span id="social">
+						<p>
+							<a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
+								<img src="img/iconmonstr-facebook-4-icon.svg" alt="Facebook icon" />
+							</a>
+							<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos" target="_blank" title="Tweet">
+								<img src="img/iconmonstr-twitter-4-icon.svg" alt="Twitter icon" />
+							</a>
+							<a href="https://plus.google.com/share?url=http://aroundme.photos/" target="_blank"  title="Share on Google+">
+								<img src="img/iconmonstr-google-plus-4-icon.svg" alt="Google+ icon" />
+							</a>
+							<a href="https://github.com/kakauandme/aroundme.photos" target="_blank" title="View on Github">
+								<img src="img/iconmonstr-github-9-icon.svg" alt="Github icon" />
+							</a>
+						</p>
+					</span>
+				</span>
 				<div id="timer"><p>0.0</p></div>
 				<div id="hamburger">
 				  <span></span>
 				</div>
-
-				<!-- Like
-					http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Faroundme.photos%2F&width&layout=button_count&action=like&show_faces=false&share=false&height=21&appId=587080064742659 
-				-->
-
-				<!-- Tweet
-
-					<a href="https://twitter.com/share?url=https%3A%2F%2Fdev.twitter.com%2Fpages%2Ftweet-button" target="_blank">Tweet</a>
-
-					 <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://aroundme.photos/" data-text="Text goes here" data-count="none" data-hashtags="aroundmephotos">Tweet</a>
-				-->
-
-				<!-- Share on Google+ 
-
-					<a href="https://plus.google.com/share?url={URL}" onclick="javascript:window.open(this.href,  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><imgsrc="https://www.gstatic.com/images/icons/gplus-64.png" alt="Share on Google+"/></a>
-
-				-->
-
-				<!-- view on github 
-
-					https://github.com/kakauandme/aroundme.photos
-
-				-->
 			</div>
 
 			<div id="map"></div>
