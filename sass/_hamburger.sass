@@ -55,5 +55,9 @@
 					top: 0
 			&:before
 				top: $size/4
+				.nav &
+					transform: rotate3d(0,0,1,45deg) scale(0.8)
 			&:after
 				top: -$size/4
+				.nav &
+					transform: rotate3d(0,0,1,-45deg) scale(0.8)

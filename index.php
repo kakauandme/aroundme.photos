@@ -167,15 +167,15 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 				<span>
 		    		<span id="social">
 						<p>
-							<a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
-								<img src="img/iconmonstr-facebook-4-icon.svg" alt="Facebook icon" />
-							</a>
 							<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos" target="_blank" title="Tweet">
 								<img src="img/iconmonstr-twitter-4-icon.svg" alt="Twitter icon" />
 							</a>
 							<a href="https://plus.google.com/share?url=http://aroundme.photos/" target="_blank"  title="Share on Google+">
 								<img src="img/iconmonstr-google-plus-4-icon.svg" alt="Google+ icon" />
 							</a>
+							<a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
+								<img src="img/iconmonstr-facebook-4-icon.svg" alt="Facebook icon" />
+							</a>							
 							<a href="https://github.com/kakauandme/aroundme.photos" target="_blank" title="View on Github">
 								<img src="img/iconmonstr-github-9-icon.svg" alt="Github icon" />
 							</a>

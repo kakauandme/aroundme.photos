@@ -1,24 +1,26 @@
+var colors = {	
+	red :"#f74552", 
+	"dark-purple" : "#4f007d", 
+	blue: "#1a75cf", 
+	green: "#66d43d", 
+	yellow: "#fff5a1" , 
+	black: "#24292e", 
+	grey: "#414b56", 
+	"light-grey" : "#8c8f91" 
+};
+
+
+// @codekit-prepend "_geolocationmarker.js"
 // @codekit-prepend "_photooverlay.js"
+// @codekit-prepend "_markerclusterer.js"
+
 
 
 	var body = document.getElementById("body");
 
-	//var browserSupport = (typeof(Storage) !== "undefined") && navigator.geolocation;
 
+		//var browserSupport = (typeof(Storage) !== "undefined") && navigator.geolocation;
 
-
-
-	var colors = {
-		purple : "#7329b0", 
-		red :"#f74552", 
-		"dark-purple" : "#4f007d", 
-		blue: "#1a75cf", 
-		green: "#66d43d", 
-		yellow: "#fff5a1" , 
-		black: "#24292e", 
-		grey: "#414b56", 
-		"light-grey" : "#8c8f91" 
-	};
 
 	var mSeconds = 0;
 
@@ -35,6 +37,8 @@
 	var curentPosition = {lat: -37.803501, lng: 144.977001};  //Thick
 
 	var map;
+	//var GeoMarker;
+
 	var marker;
 
 	var bounds;
@@ -177,58 +181,56 @@
 		};
 
 
-		function getCurLocation(){
-			// Try W3C Geolocation (Preferred)
-			console.log("Finding location");
+		// function getCurLocation(){
+		// 	// Try W3C Geolocation (Preferred)
+		// 	console.log("Finding location");
 
-			if(navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition(
-					function(position) { //location found
+		// 	if(navigator.geolocation) {
+		// 		navigator.geolocation.getCurrentPosition(
+		// 			function(position) { //location found
 
 
-						console.log("Location found");
+		// 				console.log("Location found");
 
-						center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+		// 				center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-					  	marker.setPosition(center);
+		// 			  	marker.setPosition(center);
 
-					  	map.panTo(center);
+		// 			  	map.panTo(center);
 
-					  //	bounds = map.getBounds();
+		// 			  //	bounds = map.getBounds();
 
-					  	localStorage.lat = center.lat();
-		 				localStorage.lng = center.lng();
+		// 			  	localStorage.lat = center.lat();
+		//  				localStorage.lng = center.lng();
 
 					  	
-					},
-					function(error){ //location failed
-						console.log("Location failed");
-						marker.setTitle("Geolacation is unavailable");
-						switch(error.code) {
-					        case error.PERMISSION_DENIED:
-					           console.log("User denied the request for Geolocation.");
-					            break;
-					        case error.POSITION_UNAVAILABLE:
-					            console.log("Location information is unavailable.");
-					            break;
-					        case error.TIMEOUT:
-					            console.log("The request to get user location timed out.");
-					            break;
-					        case error.UNKNOWN_ERROR:
-					            console.log("An unknown error occurred.");
-					            break;
-					    }		
-					}
-				);
-			}else { // browser doesn't support
-				console.log("Location unsupported");
-				marker.setTitle("Geolacation is unavailable");
-			}
-		}
+		// 			},
+		// 			function(error){ //location failed
+		// 				console.log("Location failed");
+		// 				marker.setTitle("Geolacation is unavailable");
+		// 				switch(error.code) {
+		// 			        case error.PERMISSION_DENIED:
+		// 			           console.log("User denied the request for Geolocation.");
+		// 			            break;
+		// 			        case error.POSITION_UNAVAILABLE:
+		// 			            console.log("Location information is unavailable.");
+		// 			            break;
+		// 			        case error.TIMEOUT:
+		// 			            console.log("The request to get user location timed out.");
+		// 			            break;
+		// 			        case error.UNKNOWN_ERROR:
+		// 			            console.log("An unknown error occurred.");
+		// 			            break;
+		// 			    }		
+		// 			}
+		// 		);
+		// 	}else { // browser doesn't support
+		// 		console.log("Location unsupported");
+		// 		marker.setTitle("Geolacation is unavailable");
+		// 	}
+		// }
 
 		function calcMapRadius(){
-
-
 
 			var ne = bounds.getNorthEast();
 			var top =  new google.maps.LatLng(ne.lat(), center.lng());
@@ -242,6 +244,21 @@
 			radius = (toTop < toRight)?toTop:toRight;
 
 			console.log("Radius: " + radius);
+
+			var showAccuracy = marker.circle_.getRadius() > radius/5;
+			marker.circle_.setVisible(showAccuracy);
+			if(showAccuracy){
+				console.log("Accuracy shown");
+			}else
+				console.log("Accuracy hidden");
+
+			if(radius >= 5000){
+				map.setOptions({ minZoom: map.getZoom()});
+				console.log("Zoom loocked(" + map.getZoom() + ")");
+			}else{
+				map.setOptions({ minZoom: 12});
+			}
+
 			
 
 
@@ -353,18 +370,43 @@
 			map.mapTypes.set('Thick', thickMap);
 			map.setMapTypeId('Thick');
 
-			marker = new google.maps.Marker({
-				position: center,
-				icon: pin,
-				map: map,
-				title: "You are here!",
-				zIndex: 100
-			});
+			// marker = new google.maps.Marker({
+			// 	position: center,
+			// 	icon: pin,
+			// 	map: map,
+			// 	title: "You are here!",
+			// 	zIndex: 100
+			// });
 
-	
-			
-			//getImagesFromStorage();
-			getCurLocation();
+
+
+			marker = new GeolocationMarker();
+		    //marker.setCircleOptions({fillColor: '#808080'});
+
+	        google.maps.event.addListenerOnce(marker, 'position_changed', function() {
+
+	        	console.log("Location changed");
+
+				center = this.getPosition();
+
+			  	//marker.setPosition(center);
+
+			  	map.panTo(center);
+
+
+			  	localStorage.lat = center.lat();
+ 				localStorage.lng = center.lng();
+
+	          	//map.setCenter(this.getPosition());
+	          	//map.fitBounds(this.getBounds());
+	        });
+
+	        google.maps.event.addListener(marker, 'geolocation_error', function(e) {
+	          	alert('There was an error obtaining your position. Message: ' + e.message);
+	        });
+
+        	marker.setMap(map);
+
 
 
 			google.maps.event.addListener(map, 'tilesloaded', function(){
@@ -380,16 +422,8 @@
 				//calcMapRadius();
 
 				if(radius == 0){
-					calcMapRadius();
-
-					if(radius >= 5000){
-						map.setOptions({ minZoom: map.getZoom()});
-						console.log("Zoom loocked(" + map.getZoom() + ")");
-					}
-				}
-
-
-				
+					calcMapRadius();					
+				}				
 
 				getImagesFromInstagram();
 
@@ -409,16 +443,15 @@
 			google.maps.event.addListener(map, 'zoom_changed', function(){
 
 				console.log("Zoomed(" + map.getZoom()+")");
-				map.setOptions({ minZoom: 12});
-				radius=0;
+
+				radius = 0;	
 
 			});
 
 			window.onresize = function(event) {
-
 				console.log("Resized");
-				map.setOptions({ minZoom: 12});
-				radius=0;
+
+				radius = 0;	
 			};
 
 
@@ -430,7 +463,12 @@
 		// 	document.body.appendChild(script);
 		// }
 		//window.onload = loadMapScript;
-		google.maps.event.addDomListener(window, 'load', initialize);
+
+		if(!navigator.geolocation) { // add propper verification and better message
+	        alert('Your browser does not support geolocation ;/');
+	    }else
+	    	google.maps.event.addDomListener(window, 'load', initialize);
+
 
 
 		document.getElementById("hamburger").addEventListener("click", function(){

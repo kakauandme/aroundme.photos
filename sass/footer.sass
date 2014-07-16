@@ -40,9 +40,13 @@
 #social
 	a
 		display: inline-block
-		width: 4em
+		width: $size
+		transition: transform 0.5s ease
+		line-height: 0
 		img
 			width: 100%
+		&:hover
+			transform: scale(1.25,1.25)
 
 
 
