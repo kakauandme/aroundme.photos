@@ -433,6 +433,9 @@ var colors = {
 					clearInterval(timer);
 					timer = 0;
 					body.className += " ready";
+					setTimeout(function(){
+						body.className += " complete";
+					},600)
 
 				}
 

@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
-You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
-
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-<path id="navigation-7-icon" d="M192.218,173.558C113.673,173.558,50,237.231,50,315.776c0,78.546,63.673,142.22,142.218,142.22
-	c78.547,0,142.22-63.674,142.22-142.22C334.438,237.231,270.765,173.558,192.218,173.558z M203.577,417.953l-20.986-87.756
-	l-86.989-21.751l171.832-63.089L203.577,417.953z M289.296,54.004c44.198,0,88.397,16.86,122.12,50.583S462,182.509,462,226.707
-	h-37.858c0-34.51-13.165-69.02-39.495-95.351c-26.33-26.33-60.841-39.495-95.351-39.495V54.004z M289.299,163.633
-	c16.142,0,32.282,6.16,44.596,18.476c12.317,12.315,18.476,28.456,18.476,44.598h39.962c0.001-26.367-10.059-52.736-30.18-72.855
-	c-20.117-20.118-46.484-30.18-72.854-30.178V163.633z"/>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+<path id="navigation-7-icon" d="M44.3,38.1c-24.2,0-43.8,20-43.8,44.7s19.7,44.8,43.8,44.8s43.8-20.1,43.8-44.8S68.5,38.1,44.3,38.1z M47.9,114.9l-6.5-27.6l-26.8-6.9l53-19.9L47.9,114.9z M74.3,0.5c13.6,0,27.2,5.3,37.6,15.9s15.6,24.5,15.6,38.4h-11.7c0-10.9-4-21.7-12.2-29.9S84.9,12.5,74.2,12.5L74.3,0.5L74.3,0.5z M74.3,35c4.9,0,10,1.9,13.7,5.8c3.8,3.8,5.7,9,5.7,14H106c1.4-11.7-2.6-17.8-9.3-22.9c-6.2-6.3-14.3-9.5-22.5-9.5V35L74.3,35z"/>
 </svg>

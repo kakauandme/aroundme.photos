@@ -155,16 +155,6 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 		    		</span>
 		    	</span>
 		    	<span>
-		    		<span id="footer">
-						<p>
-							<a href="mailto:kirill@studiothick.com?subject=aroundme.photos">@kakauandme</a>
-							from
-							<a href="//www.studiothick.com.au/" title="Studio Thick">Thick</a>
-							Copyright &copy; <?php echo date("Y") ?>
-						</p>
-					</span>
-				</span>
-				<span>
 		    		<span id="social">
 						<p>
 							<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos" target="_blank" title="Tweet">
@@ -182,12 +172,22 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 						</p>
 					</span>
 				</span>
+		    	<span>
+		    		<span id="footer">
+						<p>
+							<a href="mailto:kirill@studiothick.com?subject=aroundme.photos">@kakauandme</a>
+							from
+							<a href="//www.studiothick.com.au/" title="Studio Thick">Thick</a>
+							Copyright &copy; <?php echo date("Y") ?>
+						</p>
+					</span>
+				</span>
+				
 				<div id="timer"><p>0.0</p></div>
 				<div id="hamburger">
 				  <span></span>
 				</div>
 			</div>
-
 			<div id="map"></div>
 		</div>
 	</div>

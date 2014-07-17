@@ -4,7 +4,6 @@
 	height: $size/10
 	background: $green
 	border-radius: 0.1em
-	transition: $transition
 
 #hamburger
 	position: absolute
@@ -12,8 +11,6 @@
 	right: 0
 	line-height: 0
 	transform: translate3d(99%, 0, 0)
-
-	transition: $transition
 
 	padding: ($size - 1em) 1em
 	cursor: pointer
@@ -24,9 +21,8 @@
 
 		+line
 		position: relative
-		transition: background .1s $transition ease
+		transition: background 0s $transition ease,  transform $transition ease
 		.nav &
-			transition: background $transition 0s ease
 			background: transparent
 
 		&:before, &:after
@@ -38,7 +34,7 @@
 			z-index: 901
 			.nav &
 				top: 0
-				transition: top $transition ease, transform $transition $transition ease,
+				transition: top $transition ease, transform $transition $transition ease
 				
 		&:before
 			top: $size/5 
@@ -50,14 +46,6 @@
 				transform: rotate3d(0,0,1,-45deg)
 	&:hover
 		> span
-			&:before, &:after
-				.nav &
-					top: 0
-			&:before
-				top: $size/4
-				.nav &
-					transform: rotate3d(0,0,1,45deg) scale(0.8)
-			&:after
-				top: -$size/4
-				.nav &
-					transform: rotate3d(0,0,1,-45deg) scale(0.8)
+			transform:  scale(1.1)
+			.nav &
+				transform:  scale(0.9)

@@ -16,6 +16,7 @@
 #pusher
 	-webkit-backface-visibility: hidden
 	-webkit-transform-style: preserve-3d
+	background-color: $black
 	transition:
 		timing-function: ease-in
 		duration: $transition*3
@@ -25,32 +26,43 @@
 	.ready &
 		transform: translate3d(-100%, 0, 0)
 		transition:
-			duration: $transition*2
+			duration: $transition*2				
 		#timer
 			color: $light-grey
+	.complete &
+		#c
+			float: right
+			+breakpoint(mouse)
+				width: 75.1%
+			+breakpoint(kitten)
+				width: 67.1%
+			+breakpoint(horse)
+				width: 50.1%
+			+breakpoint(elephant)
+				width: 45.1%%
 	.nav &
 		+breakpoint(mouse)
-			transform: translate3d(-25%, 0, 0)
+			transform: translate3d(-25%, 0, 0)	
 		+breakpoint(kitten)
 			transform: translate3d(-33%, 0, 0)
 		+breakpoint(horse)
 			transform: translate3d(-50%, 0, 0)
 		+breakpoint(elephant)
 			transform: translate3d(-55%, 0, 0)
+
+
 #social
 	a
-		display: inline-block
+		.complete &
+			display: inline-block
 		width: $size
-		transition: transform 0.5s ease
+		transition: transform $transition ease
 		line-height: 0
+		margin-left: 1em
 		img
 			width: 100%
 		&:hover
-			transform: scale(1.25,1.25)
-
-
-
-
+			transform: scale(1.1)
 #map
 	position: absolute
 	top: 0
@@ -61,22 +73,26 @@
 	.gmnoprint
 		div
 			line-height: normal
+	.gm-style
+		font-size: inherit
 
 .pin-container
 	position: absolute
-	width: 64px
-	height: 64px
-	border: #fff solid 3px
-	border-bottom-width: 15px
+	width: $size
+	height: $size
+	border: #fff solid 0.5em
+	border-bottom-width: 1em
 	/*border-radius: 50%*/
 	overflow: hidden
 	cursor: pointer
 	z-index: 10	
-	transition: transform 0.5s ease-in-out
-	transition-timing-function: cubic-bezier(0,1.51,.15,.89)
+	transition: 
+		property: transform
+		duration: $transition ease-in-out
+		timing-function: cubic-bezier(0,1.51,.15,.89)
 
 	&.zoomed		
-		transform: scale(5,5)	
+		transform: scale(5)	
 		z-index: 99
 		box-shadow: 0 0 10px rgba(0,0,0,0.9)
 

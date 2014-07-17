@@ -1,29 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
-You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
-
-
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-
-	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
-
-<path id="twitter-4-icon" fill="#55acee" d="M256,50C142.229,50,50,142.229,50,256s92.229,206,206,206s206-92.229,206-206S369.771,50,256,50z
-
-	 M359.599,220.506c3.021,67.199-47.096,142.124-135.802,142.124c-26.981,0-52.096-7.911-73.238-21.466
-
-	c25.347,2.987,50.646-4.044,70.734-19.786c-20.907-0.386-38.554-14.198-44.632-33.181c7.486,1.432,14.851,1.013,21.575-0.816
-
-	c-22.976-4.617-38.839-25.317-38.321-47.453c6.44,3.58,13.81,5.729,21.642,5.977c-21.278-14.221-27.303-42.318-14.785-63.789
-
-	c23.563,28.906,58.77,47.928,98.478,49.92c-6.969-29.886,15.702-58.667,46.542-58.667c13.742,0,26.16,5.802,34.874,15.088
-
-	c10.884-2.143,21.108-6.119,30.341-11.594c-3.567,11.157-11.144,20.521-21.008,26.433c9.665-1.153,18.874-3.722,27.441-7.523
-
-	C377.035,205.355,368.935,213.771,359.599,220.506z"/>
-
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve">
+<path id="twitter-4-icon" fill="#55ACEE" d="M64,0.5C28.9,0.5,0.5,28.9,0.5,64s28.4,63.5,63.5,63.5s63.5-28.4,63.5-63.5
+	S99.1,0.5,64,0.5z M96,53C96.9,73.8,81.4,96.9,54,96.9c-8.3,0-16.1-2.5-22.6-6.7c7.8,0.9,15.6-1.2,21.8-6.1
+	c-6.5-0.1-11.9-4.3-13.8-10.3c2.3,0.4,4.5,0.3,6.7-0.2c-7-1.3-11.8-7.8-11.7-14.6c2,1.1,4.2,1.8,6.7,1.9c-6.6-4.3-8.4-13.1-4.5-19.8
+	c7.3,9,18.1,14.8,30.4,15.3c-2.2-9.3,4.8-18,14.3-18c4.2,0,8.1,1.8,10.8,4.6c3.3-0.6,6.6-1.9,9.4-3.5c-1.1,3.4-3.4,6.3-6.5,8.2
+	c3-0.3,5.8-1.1,8.5-2.3C101.4,48.4,98.9,50.9,96,53z"/>
 </svg>
-
