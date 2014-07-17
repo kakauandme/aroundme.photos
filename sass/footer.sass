@@ -75,6 +75,13 @@
 			line-height: normal
 	.gm-style
 		font-size: inherit
+	.cur-position-control
+		cursor: pointer
+		width: 13px
+		line-height: 0
+		user-select: none
+		img
+			width: 13px
 
 .pin-container
 	position: absolute
@@ -88,8 +95,10 @@
 	z-index: 10	
 	transition: 
 		property: transform
-		duration: $transition ease-in-out
+		duration: $transition
 		timing-function: cubic-bezier(0,1.51,.15,.89)
+	&:hover
+		transform: scale(1.1)	
 
 	&.zoomed		
 		transform: scale(5)	

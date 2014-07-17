@@ -32,7 +32,7 @@
 function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
 
   var markerOpts = {
-    'clickable': false,
+    'clickable': true,
     'cursor': 'pointer',
     'draggable': false,
     'flat': true,
@@ -59,7 +59,7 @@ function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
     // This marker may move frequently - don't force canvas tile redraw
     'optimized': false, 
     'position': new google.maps.LatLng(0, 0),
-    'title': 'Current location',
+    'title': 'My location',
     'zIndex': 2
   };
 

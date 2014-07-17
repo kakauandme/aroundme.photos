@@ -375,14 +375,32 @@ var colors = {
 			map.mapTypes.set('Thick', thickMap);
 			map.setMapTypeId('Thick');
 
-			// marker = new google.maps.Marker({
-			// 	position: center,
-			// 	icon: pin,
-			// 	map: map,
-			// 	title: "You are here!",
-			// 	zIndex: 100
-			// });
+			// Add curent position control
+			var controlDiv = document.createElement('div');
 
+			controlDiv.index = 1;
+		
+			var controlUI = document.createElement('div');
+			controlUI.className = "cur-position-control";
+			
+			controlUI.title = 'Pan to my location';
+
+			controlDiv.appendChild(controlUI);
+
+
+			var img = new Image();
+			img.src = "/img/location.gif"
+			img.alt = "Pan to my location";
+			controlUI.appendChild(img);
+
+
+			map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
+
+		
+			google.maps.event.addDomListener(controlUI, 'click', function() {
+				map.panTo(marker.position);
+				console.log("Move to current location");
+			});
 
 
 			marker = new GeolocationMarker();
@@ -419,18 +437,18 @@ var colors = {
 
 				console.log("Bounds changed");
 
-				center = map.getCenter();
+				
+				if(radius == 0){ //run for a first time
 
-				bounds = map.getBounds();
-
-	
-
-
-				//calcMapRadius();
-
-				if(radius == 0){
 					calcMapRadius();					
-				}				
+
+				}else{
+
+					center = map.getCenter();
+
+					bounds = map.getBounds();
+				}
+
 
 				getImagesFromInstagram();
 
@@ -443,7 +461,6 @@ var colors = {
 					setTimeout(function(){
 						body.className += " complete";
 					},600)
-
 				}
 
 				
@@ -462,13 +479,12 @@ var colors = {
 
 				console.log("Resized");
 
-				calcMapRadius();	
+				radius = 0;
 
 			});
 
 			window.onresize = function(event) {
 				google.maps.event.trigger(map, 'resize') 
-				//radius = 0;	
 			};
 
 
