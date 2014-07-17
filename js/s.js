@@ -232,6 +232,12 @@ var colors = {
 
 		function calcMapRadius(){
 
+
+			center = map.getCenter();
+
+			bounds = map.getBounds();
+
+
 			var ne = bounds.getNorthEast();
 			var top =  new google.maps.LatLng(ne.lat(), center.lng());
 			var right =  new google.maps.LatLng(center.lat(), ne.lng());
@@ -256,7 +262,7 @@ var colors = {
 				map.setOptions({ minZoom: map.getZoom()});
 				console.log("Zoom loocked(" + map.getZoom() + ")");
 			}else{
-				map.setOptions({ minZoom: 12});
+				map.setOptions({ minZoom: null});
 			}
 
 			
@@ -356,7 +362,6 @@ var colors = {
 			var mapOptions = {
 			  center: center,
 			  zoom: 16,
-			  minZoom: 12,
 			  disableDefaultUI: true,
 			  overviewMapControl: true,
 				mapTypeControlOptions: {
@@ -418,6 +423,8 @@ var colors = {
 
 				bounds = map.getBounds();
 
+	
+
 
 				//calcMapRadius();
 
@@ -447,14 +454,21 @@ var colors = {
 
 				console.log("Zoomed(" + map.getZoom()+")");
 
-				radius = 0;	
+				calcMapRadius();	
+
+			});
+
+			google.maps.event.addListener(map, 'resize', function(){
+
+				console.log("Resized");
+
+				calcMapRadius();	
 
 			});
 
 			window.onresize = function(event) {
-				console.log("Resized");
-
-				radius = 0;	
+				google.maps.event.trigger(map, 'resize') 
+				//radius = 0;	
 			};
 
 
