@@ -182,7 +182,6 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 						</p>
 					</span>
 				</span>
-				
 				<div id="timer"><p>0.0</p></div>
 				<div id="hamburger" title="Navigation">
 				  <span></span>

@@ -181,54 +181,6 @@ var colors = {
 		};
 
 
-		// function getCurLocation(){
-		// 	// Try W3C Geolocation (Preferred)
-		// 	console.log("Finding location");
-
-		// 	if(navigator.geolocation) {
-		// 		navigator.geolocation.getCurrentPosition(
-		// 			function(position) { //location found
-
-
-		// 				console.log("Location found");
-
-		// 				center = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-		// 			  	marker.setPosition(center);
-
-		// 			  	map.panTo(center);
-
-		// 			  //	bounds = map.getBounds();
-
-		// 			  	localStorage.lat = center.lat();
-		//  				localStorage.lng = center.lng();
-
-					  	
-		// 			},
-		// 			function(error){ //location failed
-		// 				console.log("Location failed");
-		// 				marker.setTitle("Geolacation is unavailable");
-		// 				switch(error.code) {
-		// 			        case error.PERMISSION_DENIED:
-		// 			           console.log("User denied the request for Geolocation.");
-		// 			            break;
-		// 			        case error.POSITION_UNAVAILABLE:
-		// 			            console.log("Location information is unavailable.");
-		// 			            break;
-		// 			        case error.TIMEOUT:
-		// 			            console.log("The request to get user location timed out.");
-		// 			            break;
-		// 			        case error.UNKNOWN_ERROR:
-		// 			            console.log("An unknown error occurred.");
-		// 			            break;
-		// 			    }		
-		// 			}
-		// 		);
-		// 	}else { // browser doesn't support
-		// 		console.log("Location unsupported");
-		// 		marker.setTitle("Geolacation is unavailable");
-		// 	}
-		// }
 
 		function calcMapRadius(){
 
@@ -399,7 +351,7 @@ var colors = {
 		
 			google.maps.event.addDomListener(controlUI, 'click', function() {
 				map.panTo(marker.position);
-				console.log("Move to current location");
+				console.log("Move to my location");
 			});
 
 
