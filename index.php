@@ -146,15 +146,8 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 							<p>You are using an <strong>outdated</strong> browser.<br>Please <a href="http://browsehappy.com/">upgrade your browser</a> to use this website.</p>
 						</span>
 					</span>
-				<![endif]-->				
-		      	<span>
-		      		<span id="header">
-		    			<h1>Around me photos</h1>
-		    			<h2>Instagram pictures next to you.</h2>
-		    			<em class="devtext">Website is still in development.<br>Please come back later.</em>
-		    		</span>
-		    	</span>
-		    	<span>
+				<![endif]-->
+				<span>
 		    		<span id="social">
 						<p>
 							<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos" target="_blank" title="Tweet">
@@ -171,7 +164,14 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 							</a>
 						</p>
 					</span>
-				</span>
+				</span>				
+		      	<span>
+		      		<span id="header">
+		    			<h1>Around me photos</h1>
+		    			<h2>Instagram pictures next to you.</h2>
+		    			<em class="devtext">Website is still in development.<br>Please come back later.</em>
+		    		</span>
+		    	</span>		    	
 		    	<span>
 		    		<span id="footer">
 						<p>
