@@ -16,7 +16,7 @@
 	cursor: pointer
 	user-select: none
 	background-color: $grey
-	z-index: 900
+	z-index: $z-hamburger
 	> span
 
 		+line
@@ -31,7 +31,7 @@
 			left: 0
 			content: ''
 			transition: top $transition $transition ease, transform $transition ease
-			z-index: 901
+			z-index: $z-hamburger + 1
 			.nav &
 				top: 0
 				transition: top $transition ease, transform $transition $transition ease

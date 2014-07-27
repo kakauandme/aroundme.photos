@@ -1,0 +1,145 @@
+
+
+//@import _animation.sass
+
+
+.cluster
+
+	z-index: $z-cluster
+	img
+		width: 100%
+	p
+		font:
+			family: L,  sans-serif
+			size: 11px
+		color: $yellow
+		text-align: center
+
+
+.marker
+	position: absolute
+	width: $marker-size
+	height: $marker-size
+	background:
+		size: $marker-size $marker-size
+		position: center center
+	border:
+		color: rgba(255,255,255, 0.25)
+		style: solid
+		width: 1em
+	box-sizing: border-box
+	perspective: 1000
+	backface-visibility: hidden
+	cursor: pointer
+	
+	z-index: $z-marker
+
+	
+
+
+
+	.close
+		display: none
+
+	.wrap
+		width: 100%
+		height: 100%
+		overflow: hidden
+		div
+			position: absolute
+			width: 100%
+			height: 100%
+			&.cover
+				//transition: filter 250ms ease-in
+				//transition: -webkit-filter 500ms ease-in
+				background:
+					size: $marker-size $marker-size
+					position: center center
+			&.info
+				font:
+					family: L,  sans-serif
+				display: table
+				> span
+					display: table-row
+					padding: 0 1em
+					> span
+						display: table-cell
+						vertical-align: middle
+						&.likes
+							height: 50%
+							p
+								margin: 0
+								&:after
+									content: ""
+									width: 0.5em
+									height: 0.5em
+									background:
+										image: url(../img/iconmonstr-favorite-5-icon.svg)
+										position: center center
+										size: cover
+									line-height: 0
+									vertical-align: super
+									display: inline-block
+						&.line
+							height: 1%
+							hr
+								width: 75%
+								//height: 1px
+								border-width: 0px
+								border-color: rgba(255,255,255, 0.75)
+								border-bottom-width: 1px	
+						&.author
+							height: 49%	
+							a
+								display: none	
+				transition: opacity $transition ease
+				text-align: center
+				color: white
+				opacity: 0
+
+
+	transform: scale($scale)
+	// animation: 
+	// 	name: bounceInRight
+	// 	duration: $transition
+	// 	fill-mode: both
+	// &.visible
+	// 	animation: 
+	// 		name: still
+	// 		duration: 0.1s
+	// 		fill-mode: both
+		
+	&:hover
+		animation: 
+			name: pulse
+			duration: $transition*3
+			fill-mode: both
+		z-index: $z-marker + 1
+
+	// // &.zoom
+	// // 	//transform: scale3D(1,1,1) translate3D(0, -62.6%, 0)
+	// // 	animation: 
+	// // 		name: bounceIn
+	// // 		duration: $transition
+	// // 		fill-mode: forwards
+	&.zoomed
+		animation: 
+			name: bounceIn
+			duration: $transition*3
+			fill-mode: both
+		z-index: $z-marker + 2
+
+
+		&:hover			
+			.wrap
+				outline: 
+					color: rgba(255,255,255, 0.75)
+					style: solid
+					width: 1px
+				.cover
+					filter: blur(2px) brightness(0.75)
+				.info
+					opacity: 1
+		.author
+			a 
+				display: inline !important

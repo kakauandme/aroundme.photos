@@ -249,25 +249,25 @@ ClusterIcon.prototype.show = function () {
     var pos = this.getPosFromLatLng_(this.center_);
     this.div_.style.cssText = this.createCss(pos);
     img = "<img src='" + this.url_ + "' style='position: absolute; top: " + spriteV + "px; left: " + spriteH + "px; ";
-    if (!this.cluster_.getMarkerClusterer().enableRetinaIcons_) {
-      img += "clip: rect(" + (-1 * spriteV) + "px, " + ((-1 * spriteH) + this.width_) + "px, " +
-          ((-1 * spriteV) + this.height_) + "px, " + (-1 * spriteH) + "px);";
-    }
+    // if (!this.cluster_.getMarkerClusterer().enableRetinaIcons_) {
+    //   img += "clip: rect(" + (-1 * spriteV) + "px, " + ((-1 * spriteH) + this.width_) + "px, " +
+    //       ((-1 * spriteV) + this.height_) + "px, " + (-1 * spriteH) + "px);";
+    // }
     img += "'>";
-    this.div_.innerHTML = img + "<div style='" +
+    this.div_.innerHTML = img + "<p style='" +
         "position: absolute;" +
         "top: " + this.anchorText_[0] + "px;" +
         "left: " + this.anchorText_[1] + "px;" +
-        "color: " + this.textColor_ + ";" +
-        "font-size: " + this.textSize_ + "px;" +
-        "font-family: " + this.fontFamily_ + ";" +
-        "font-weight: " + this.fontWeight_ + ";" +
-        "font-style: " + this.fontStyle_ + ";" +
+        //"color: " + this.textColor_ + ";" +
+       // "font-size: " + this.textSize_ + "px;" +
+      //  "font-family: " + this.fontFamily_ + ";" +
+        //"font-weight: " + this.fontWeight_ + ";" +
+        //"font-style: " + this.fontStyle_ + ";" +
         "text-decoration: " + this.textDecoration_ + ";" +
-        "text-align: center;" +
+       // "text-align: center;" +
         "width: " + this.width_ + "px;" +
         "line-height:" + this.height_ + "px;" +
-        "'>" + this.sums_.text + "</div>";
+        "'>" + this.sums_.text + "</p>";
     if (typeof this.sums_.title === "undefined" || this.sums_.title === "") {
       this.div_.title = this.cluster_.getMarkerClusterer().getTitle();
     } else {
@@ -294,12 +294,12 @@ ClusterIcon.prototype.useStyle = function (sums) {
   this.width_ = style.width;
   this.anchorText_ = style.anchorText || [0, 0];
   this.anchorIcon_ = style.anchorIcon || [parseInt(this.height_ / 2, 10), parseInt(this.width_ / 2, 10)];
-  this.textColor_ = style.textColor || "black";
+  //this.textColor_ = style.textColor || "black";
   this.textSize_ = style.textSize || 11;
   this.textDecoration_ = style.textDecoration || "none";
-  this.fontWeight_ = style.fontWeight || "bold";
+  //this.fontWeight_ = style.fontWeight || "bold";
   this.fontStyle_ = style.fontStyle || "normal";
-  this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
+  //this.fontFamily_ = style.fontFamily || "Arial,sans-serif";
   this.backgroundPosition_ = style.backgroundPosition || "0 0";
 };
 
@@ -677,9 +677,9 @@ function MarkerClusterer(map, opt_markers, opt_options) {
   this.activeMap_ = null;
   this.ready_ = false;
 
-  this.gridSize_ = opt_options.gridSize || 60;
+  this.gridSize_ = opt_options.gridSize || 128;
   this.minClusterSize_ = opt_options.minimumClusterSize || 2;
-  this.maxZoom_ = opt_options.maxZoom || null;
+  this.maxZoom_ = opt_options.maxZoom || 19;
   this.styles_ = opt_options.styles || [];
   this.title_ = opt_options.title || "";
   this.zoomOnClick_ = true;
@@ -1207,15 +1207,15 @@ MarkerClusterer.prototype.addMarkers = function (markers, opt_nodraw) {
  */
 MarkerClusterer.prototype.pushMarkerTo_ = function (marker) {
   // If the marker is draggable add a listener so we can update the clusters on the dragend:
-  if (marker.getDraggable()) {
-    var cMarkerClusterer = this;
-    google.maps.event.addListener(marker, "dragend", function () {
-      if (cMarkerClusterer.ready_) {
-        this.isAdded = false;
-        cMarkerClusterer.repaint();
-      }
-    });
-  }
+  // if (marker.getDraggable()) {
+  //   var cMarkerClusterer = this;
+  //   google.maps.event.addListener(marker, "dragend", function () {
+  //     if (cMarkerClusterer.ready_) {
+  //       this.isAdded = false;
+  //       cMarkerClusterer.repaint();
+  //     }
+  //   });
+  // }
   marker.isAdded = false;
   this.markers_.push(marker);
 };
@@ -1401,27 +1401,6 @@ MarkerClusterer.prototype.resetViewport_ = function (opt_hide) {
 
 
 /**
- * Calculates the distance between two latlng locations in km.
- *
- * @param {google.maps.LatLng} p1 The first lat lng point.
- * @param {google.maps.LatLng} p2 The second lat lng point.
- * @return {number} The distance between the two points in km.
- * @see http://www.movable-type.co.uk/scripts/latlong.html
-*/
-MarkerClusterer.prototype.distanceBetweenPoints_ = function (p1, p2) {
-  var R = 6371; // Radius of the Earth in km
-  var dLat = (p2.lat() - p1.lat()) * Math.PI / 180;
-  var dLon = (p2.lng() - p1.lng()) * Math.PI / 180;
-  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(p1.lat() * Math.PI / 180) * Math.cos(p2.lat() * Math.PI / 180) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  return d;
-};
-
-
-/**
  * Determines if a marker is contained in a bounds.
  *
  * @param {google.maps.Marker} marker The marker to check.
@@ -1446,7 +1425,7 @@ MarkerClusterer.prototype.addToClosestCluster_ = function (marker) {
     cluster = this.clusters_[i];
     center = cluster.getCenter();
     if (center) {
-      d = this.distanceBetweenPoints_(center, marker.getPosition());
+      d = getDistance(center, marker.getPosition());
       if (d < distance) {
         distance = d;
         clusterToAddTo = cluster;
@@ -1611,7 +1590,7 @@ MarkerClusterer.BATCH_SIZE_IE = 500;
  * @type {string}
  * @constant
  */
-MarkerClusterer.IMAGE_PATH = "http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclustererplus/images/m";
+MarkerClusterer.IMAGE_PATH = "img/insta";
 
 
 /**
@@ -1620,7 +1599,7 @@ MarkerClusterer.IMAGE_PATH = "http://google-maps-utility-library-v3.googlecode.c
  * @type {string}
  * @constant
  */
-MarkerClusterer.IMAGE_EXTENSION = "png";
+MarkerClusterer.IMAGE_EXTENSION = "svg";
 
 
 /**
@@ -1629,4 +1608,4 @@ MarkerClusterer.IMAGE_EXTENSION = "png";
  * @type {Array.<number>}
  * @constant
  */
-MarkerClusterer.IMAGE_SIZES = [53, 56, 66, 78, 90];
+MarkerClusterer.IMAGE_SIZES = [64, 80, 96, 112, 128];
