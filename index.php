@@ -201,34 +201,25 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 	<script type="text/javascript" src="/js/s.min.js"></script>	
 	<!--<![endif]-->
 
-	<!--  -->
 	<script>
 
-		function loadResources() {
+		// function loadResources() {
 			
-			// 	var script = document.createElement('script');
-			// 	script.type = 'text/javascript';
-			// 	script.src = '//maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4';
-			// 	document.body.appendChild(script);
+		// 	// CSS
+		// 	 var stylesheet = document.createElement('link');
+  //         	stylesheet.href = '/css/footer.css';
+  //         	stylesheet.rel = 'stylesheet';
+  //         	stylesheet.type = 'text/css';
+  //         	document.getElementsByTagName('head')[0].appendChild(stylesheet);
 
 
-			// JS
-			// var stylesheet = document.createElement('link');
-   //        	stylesheet.href = '/css/footer.css';
-   //        	stylesheet.rel = 'stylesheet';
-   //        	stylesheet.type = 'text/css';
-   //        	document.getElementsByTagName('head')[0].appendChild(stylesheet);
+  //         	// JS
+  //     		var script = document.createElement('script');
+		// 	script.type = 'text/javascript';
+		// 	script.src = '/js/s.min.js';
+		// 	document.body.appendChild(script);
 
-
-          	// CSS
-      		var script = document.createElement('script');
-			script.type = 'text/javascript';
-			script.src = '/js/s.min.js';
-			document.body.appendChild(script);
-
-
-
-		}
+		// }
 		// window.onload = loadResources; 
 
 
