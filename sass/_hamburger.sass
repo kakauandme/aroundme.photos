@@ -46,6 +46,6 @@
 				transform: rotate3d(0,0,1,-45deg)
 	&:hover
 		> span
-			transform:  scale(1.1)
+			transform:  scale(1 + $scale/2)
 			.nav &
-				transform:  scale(0.9)
+				transform:  scale(1 - $scale/2)

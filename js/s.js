@@ -1,9 +1,9 @@
 ////////Instagramm variables 
 
-//var APP_KEY = '4a37870c5f594c2c9c563a80fae04772'; // live
+var APP_KEY = '4a37870c5f594c2c9c563a80fae04772'; // live
 
 
-var APP_KEY = '51533e28dbb84aeca7222a73ac49b70c'; // dev
+//var APP_KEY = '51533e28dbb84aeca7222a73ac49b70c'; // dev
 
 
 var instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processImages&client_id=' + APP_KEY;
@@ -84,65 +84,28 @@ var pin;
 
 
 var stylers = [
-{
-"stylers": [
-  { "visibility": "off" }
-]
-},{
-"featureType": "water",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "color": colors.blue }
-]
-},{
-"featureType": "landscape.natural",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "saturation": 100 },
-  { "lightness": -10 }
-]
-},{
-"featureType": "poi",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "saturation": 100 }
-]
-},{
-"featureType": "road",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "saturation": 100 }
-]
-},{
-"featureType": "transit",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "saturation": 100 }
-]
-},{
-"featureType": "landscape.man_made",
-"elementType": "geometry",
-"stylers": [
-  { "visibility": "simplified" },
-  { "saturation": 100 }
-]
-},{
-"featureType": "landscape.natural.terrain",
-"stylers": [
-  { "visibility": "off" }
-]
-}
+  {
+    "stylers": [
+      { "saturation": 100 },
+      { "visibility": "simplified" }
+    ]
+  },{
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape.natural.terrain",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": colors.blue }
+    ]
+  }
 ];
-
-
-
-
-
 
 
 
@@ -290,23 +253,22 @@ function initialize() {
 
 	center = new google.maps.LatLng(curentPosition.lat, curentPosition.lng);
 
-	var saturatedMap = new google.maps.StyledMapType(stylers, {name: "Saturated Map"});
 
 	var mapOptions = {
 	  center: center,
 	  zoom: 16,
 	  disableDefaultUI: true,
 	  overviewMapControl: true,
-		mapTypeControlOptions: {
-		  	mapTypeIds: ['Saturated']
-		}		
+	  disableDoubleClickZoom: true,
+	  styles: stylers,
+	  backgroundColor: "#FFEEC6"
+		
 	};
 
 
 	map = new google.maps.Map(document.getElementById("map"),mapOptions);
 
-	map.mapTypes.set('Saturated', saturatedMap);
-	map.setMapTypeId('Saturated');
+
 
 
 	markerCluster = new MarkerClusterer(map, []);
@@ -343,6 +305,12 @@ function initialize() {
 	marker = new GeolocationMarker();
 
 
+	google.maps.event.addListener(marker.getMarker(), 'click', function() {
+		map.panTo(marker.position);
+		console.log("Move to my location");
+
+	});
+
     google.maps.event.addListenerOnce(marker, 'position_changed', function() {
 
     	console.log("Location changed");
@@ -355,7 +323,7 @@ function initialize() {
 
 
 	  	localStorage.lat = center.lat();
-			localStorage.lng = center.lng();
+		localStorage.lng = center.lng();
 
       	//map.setCenter(this.getPosition());
       	//map.fitBounds(this.getBounds());
@@ -387,7 +355,7 @@ function initialize() {
 		}
 
 
-		getImagesFromInstagram();
+		//getImagesFromInstagram();
 
 
 		

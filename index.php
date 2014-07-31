@@ -181,7 +181,7 @@ html{height:100%;-webkit-text-size-adjust:100%}body{height:100%;margin:0}#c{widt
 						<p>
 							<a href="mailto:kirill@studiothick.com?subject=aroundme.photos">@kakauandme</a>
 							from
-							<a href="//www.studiothick.com.au/" title="Studio Thick">Thick</a>
+							<a href="//www.studiothick.com.au/" title="Studio Thick" target="_blank">Thick</a>
 							Copyright &copy; <?php echo date("Y") ?>
 						</p>
 					</span>

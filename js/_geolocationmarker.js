@@ -29,43 +29,31 @@
  * @param {(google.maps.MarkerOptions|Object.<string>)=} opt_markerOpts
  * @param {(google.maps.CircleOptions|Object.<string>)=} opt_circleOpts
  */
-function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
+function GeolocationMarker() {
 
   var markerOpts = {
     'clickable': true,
     'cursor': 'pointer',
-    'draggable': false,
-    'flat': true,
     'icon':
     {
           path: 'M44.3,38.1c-24.2,0-43.8,20-43.8,44.7s19.7,44.8,43.8,44.8s43.8-20.1,43.8-44.8S68.5,38.1,44.3,38.1z M47.9,114.9l-6.5-27.6l-26.8-6.9l53-19.9L47.9,114.9z M74.3,0.5c13.6,0,27.2,5.3,37.6,15.9s15.6,24.5,15.6,38.4h-11.7c0-10.9-4-21.7-12.2-29.9S84.9,12.5,74.2,12.5L74.3,0.5L74.3,0.5z M74.3,35c4.9,0,10,1.9,13.7,5.8c3.8,3.8,5.7,9,5.7,14H106c1.4-11.7-2.6-17.8-9.3-22.9c-6.2-6.3-14.3-9.5-22.5-9.5V35L74.3,35z',
           fillColor: colors.red,
           fillOpacity: 1,
-          scale: 1,
+          scale: 0.7,
           strokeWeight: 0,
           strokeColor:  colors.red,
           strokeOpacity: 0,
-          //scale: 0.5,
           anchor: new google.maps.Point(64, 64)
 
       },
-    //  {
-    //     'url': 'https://google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/images/gpsloc.png',
-    //     'size': new google.maps.Size(34, 34),
-    //     'scaledSize': new google.maps.Size(17, 17),
-    //     'origin': new google.maps.Point(0, 0),
-    //     'anchor': new google.maps.Point(8, 8)
-    // },
-    // This marker may move frequently - don't force canvas tile redraw
-    'optimized': false, 
+
+    'optimized': true, 
     'position': new google.maps.LatLng(0, 0),
     'title': 'My location',
     'zIndex': 2
   };
 
-  if(opt_markerOpts) {
-    markerOpts = this.copyOptions_(markerOpts, opt_markerOpts);
-  }
+  
 
   var circleOpts = {
     'clickable': false,
@@ -79,9 +67,6 @@ function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
     'zIndex': 1
   };
 
-  if(opt_circleOpts) {
-    circleOpts = this.copyOptions_(circleOpts, opt_circleOpts);
-  }
 
   this.marker_ = new google.maps.Marker(markerOpts);
   this.circle_ = new google.maps.Circle(circleOpts);
@@ -111,9 +96,7 @@ function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
 
   this.circle_.bindTo('map', this.marker_);
 
-  if(opt_map) {
-    this.setMap(opt_map);
-  }
+  
 }
 GeolocationMarker.prototype = new google.maps.MVCObject;
 
@@ -137,7 +120,9 @@ GeolocationMarker.prototype.set = function(key, value) {
  * @private
  * @type {google.maps.Marker}
  */
-GeolocationMarker.prototype.marker_ = null;
+GeolocationMarker.prototype.getMarker = function(){
+  return this.marker_;
+};
 
 /**
  * @private
