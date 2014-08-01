@@ -7,7 +7,6 @@ function PhotoOverlay(photo) {
 	this._photo = photo;
 	this._marker  = null;
 	this._img  = null;
-	this._overlay  = null;
 	this._zoomed = false;
 	this._isAdded = false;
 }
@@ -37,8 +36,6 @@ PhotoOverlay.prototype.onAdd = function() {
     img.src = photo.images.thumbnail.url;
 
 
-	var overlay = document.createElement('div');	
-	overlay.className = "overlay";
 
 
 	// var x = document.createElement('span');
@@ -56,14 +53,13 @@ PhotoOverlay.prototype.onAdd = function() {
 
 	marker.appendChild(img);	
 
-	marker.appendChild(overlay);
+	
 
 	// marker.appendChild(x);
 	// marker.appendChild(i);	
 
 	this._marker = marker;
 	this._img = img;
-	this._overlay = overlay;
 
 
 	var panes = this.getPanes();
@@ -138,6 +134,12 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 
+
+			var overlay = document.createElement('div');	
+			overlay.className = "overlay";
+
+
+
 			var likes = document.createElement('p');
 			likes.textContent = this._photo.likes.count; 
 			likes.className = "likes";
@@ -155,9 +157,10 @@ PhotoOverlay.prototype.zoom = function() {
 			user.target = "_blank";
 			user.textContent = (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
 
-			this._overlay.appendChild(likes);
-			this._overlay.appendChild(hr);
-			this._overlay.appendChild(author);
+			this._marker.appendChild(overlay);
+			overlay.appendChild(likes);
+			overlay.appendChild(hr);
+			overlay.appendChild(author);
 
 			author.appendChild(user);
 
