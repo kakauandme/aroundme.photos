@@ -2,7 +2,6 @@
 	position: absolute
 	width: $marker-size
 	height: $marker-size
-	overflow: hidden
 	cursor: pointer
 	perspective: 1000
 	backface-visibility: hidden
@@ -47,6 +46,7 @@
 		z-index: $z-marker + 1
 	&.zoomed
 		outline-width: 0
+		overflow: hidden
 		//box-shadow: 0 0 1em rgba(0,0,0,0.75)
 		animation: 
 			name: bounceIn

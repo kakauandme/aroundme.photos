@@ -2,7 +2,7 @@
 
 $title = 'Around me photos';
 $subtitle = 'Explore social activity next to you';
-$description = 'Checkout real-time updates from Instagram around your location on a map and discover what is happening in your area';
+$description = 'Checkout real-time updates in your area and discover what is happening.';
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ $description = 'Checkout real-time updates from Instagram around your location o
 	<!-- CSS -->
 	<style>
 		@font-face{font-family:L;src:url("/f/l.eot");src:url("/f/l.eot?#iefix") format("eot"),url("/f/l.woff") format("woff"),url("/f/l.ttf") format("truetype"),url("/f/l.svg") format("svg");font-weight:normal;font-style:normal}@media (min-width: 0){body{font-size:0.6em}}@media (min-width: 768px){body{font-size:0.75em}}@media (min-width: 960px){body{font-size:0.8em}}@media (min-width: 1200px){body{font-size:1em}}
-		html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-serif}h1,.likes{color:#f74552;font-size:3.4em;font-weight:normal;line-height:1.325em;margin:34px 0 34px}h2{color:#1a75cf;font-size:1.2em;font-weight:normal;line-height:1.41667em;margin:34px 0 34px}p,em,strong{font-size:1em;font-weight:normal;font-style:normal;line-height:1.7em;margin:0 0 34px}a{color:#fff5a1;text-decoration:none}a:hover{text-decoration:underline}.ie #browserhappy,.no-js #browserhappy{display:table-cell !important;padding:0 !important;vertical-align:top}.ie #browserhappy p,.no-js #browserhappy p{background-color:#4f007d;padding:1em}html{height:100%;-webkit-text-size-adjust:100%}body,#container,#pusher{height:100%;margin:0}#c{position:relative;width:100%;height:100%;display:table;background-color:#24292e}#c>span{display:table-row}#c>span>span{padding:1em;display:table-cell;text-align:right}#pusher{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}#header{vertical-align:middle;height:100%}#footer{vertical-align:bottom}#footer p{margin-bottom:0}#timer{bottom:0;position:absolute;padding:1em;color:#414b56}#timer p{margin-bottom:0}#description{color:#66d43d}#social a,#devtext,#c>span>span#browserhappy{display:none}
+		html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-serif}h1,.likes{color:#f74552;font-size:3.4em;font-weight:normal;line-height:1.325em;margin:34px 0 34px}h2{color:#1a75cf;font-size:1.2em;font-weight:normal;line-height:1.41667em;margin:34px 0 34px}p,em,strong{font-size:1em;font-weight:normal;font-style:normal;line-height:1.7em;margin:0 0 34px}a{color:#fff5a1;text-decoration:none}a:hover{text-decoration:underline}.ie #browserhappy,.no-js #browserhappy{display:table-cell !important;padding:0 !important;vertical-align:top}.ie #browserhappy p,.no-js #browserhappy p{background-color:#4f007d;padding:1em}html{height:100%;-webkit-text-size-adjust:100%}body,#container,#pusher{height:100%;margin:0}#c{position:relative;width:100%;height:100%;display:table;background-color:#24292e}#c>span{display:table-row}#c>span>span{padding:1em;display:table-cell;text-align:right}#pusher{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}#header{vertical-align:middle;height:100%}#footer{vertical-align:bottom}#footer p{margin-bottom:0}#timer{bottom:0;position:absolute;padding:1em;color:#414b56}#timer p{margin-bottom:0}#description{color:#66d43d}#social p,#devtext,#c>span>span#browserhappy{display:none}
 
 	</style>
 
@@ -55,7 +55,7 @@ $description = 'Checkout real-time updates from Instagram around your location o
 	<meta name="twitter:creator" content="@kakauandme">
 	<meta name="twitter:title" content="<?php echo $title . " - " . $subtitle; ?>">
 	<meta name="twitter:description" content="<?php echo $description; ?>">
-	<meta name="twitter:image:src" content="/img/screenshot_sml.png">
+	<meta name="twitter:image:src" content="http://aroundme.photos/img/screenshot_sml.png">
 
 	<!-- Facebook OG -->
 	<!-- https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content -->
@@ -65,8 +65,8 @@ $description = 'Checkout real-time updates from Instagram around your location o
 	<meta property="og:description" content="<?php echo $description; ?>" />
 	<meta property="fb:app_id" content="587080064742659" />
 	<meta property="og:type" content="website" />
-	<meta property="article:author" content="https://www.facebook.com/kirill.kliavin" />
-	<meta property="og:image" content="/img/screenshot_lrg.png" /> 
+	<meta property="og:image" content="http://aroundme.photos/img/screenshot_lrg.png" /> 
+	
 
 
 	<!-- Google+ Schema.org microdata	 -->
@@ -110,7 +110,6 @@ $description = 'Checkout real-time updates from Instagram around your location o
 						<h1 itemprop="name"><?php echo $title; ?></h1>
 						<h2><?php echo $subtitle; ?>.</h2>
 						<p id="description" itemprop="description">Checkout real-time updates around your location <br>and discover what is happening.</p>
-						<p id="devtext"><em>More features are coming soon ...</em></p>
 					</span>
 				</span>		    	
 				<span>

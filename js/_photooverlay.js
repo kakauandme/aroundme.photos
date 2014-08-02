@@ -129,7 +129,7 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 	var marker = this._marker;
-	console.log("Zoomed");
+	//console.log("Zoomed");
 
 
 	if(regzoomed.test(marker.className)){
@@ -144,7 +144,7 @@ PhotoOverlay.prototype.zoom = function() {
 
 		if(!this._zoomed){
 			this._zoomed = true;
-			console.log("Updated to hi-res");
+			//console.log("Updated to hi-res");
 		    this._img.src = this._photo.images.standard_resolution.url;
 
 

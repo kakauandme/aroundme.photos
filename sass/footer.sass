@@ -13,10 +13,6 @@
 	.complete &
 		display: none
 
-#devtext
-	.complete &
-		display: block
-
 #pusher
 	-webkit-backface-visibility: hidden
 	-webkit-transform-style: preserve-3d
@@ -56,10 +52,11 @@
 
 #social
 	vertical-align: top
-	a
+	p
 		.complete &
-			display: inline-block
-	
+			margin-bottom: 0
+			display: block
+	a
 		line-height: 0
 		margin-left: 0.5em
 		svg
@@ -79,7 +76,7 @@
 						fill: $light-grey
 				
 #map
-	position: absolute
+	position: absolute !important
 	top: 0
 	left: 0 
 	width: 100%

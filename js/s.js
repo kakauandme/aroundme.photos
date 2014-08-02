@@ -126,19 +126,19 @@ function calcMapRadius(){
 
 	radius = (toTop < toRight)?toTop:toRight;
 
-	console.log("Radius: " + radius);
+	//console.log("Radius: " + radius);
 
 	var showAccuracy = curPosMarker.circle_.getRadius() > radius/3;
 	curPosMarker.circle_.setVisible(showAccuracy);
 	if(showAccuracy){
-		console.log("Accuracy shown");
+		//console.log("Accuracy shown");
 	}else{
-		console.log("Accuracy hidden");
+		//console.log("Accuracy hidden");
 	}
 
 	if(radius >= 5000){
 		map.setOptions({ minZoom: map.getZoom()});
-		console.log("Zoom loocked(" + map.getZoom() + ")");
+		//console.log("Zoom loocked(" + map.getZoom() + ")");
 	}else{
 		map.setOptions({ minZoom: null});
 	}
@@ -150,7 +150,7 @@ function calcMapRadius(){
 
 function getImagesFromInstagram(){
 
-	console.log("Requesting images");
+	//console.log("Requesting images");
 	
 	
 
@@ -161,7 +161,7 @@ function getImagesFromInstagram(){
 	curUrl += "&distance=" + radius;
 
 
-	console.log(curUrl);
+	//console.log(curUrl);
   	var script = document.createElement('script');
   	script.type = 'text/javascript';
     script.src = curUrl;
@@ -171,12 +171,12 @@ function getImagesFromInstagram(){
 function processInstagramImages(respond){		
 
 	if(respond.meta.code === 200){
-		console.log("Processing images (" + respond.data.length + ")");
-		//console.log(respond.data);
+		//console.log("Processing images (" + respond.data.length + ")");
+		////console.log(respond.data);
 		for(var i = 0; i < respond.data.length; i++){
 
 			if(respond.data[i].type !== "image") {
-				//console.log("video");
+				////console.log("video");
 				continue;
 			}
 			if(typeof(localStorage[respond.data[i].id]) === "undefined"){
@@ -185,12 +185,12 @@ function processInstagramImages(respond){
 			try{
 				localStorage[respond.data[i].id] = JSON.stringify(respond.data[i]);
 			}catch(e){
-				console.log("Localstorage error: " + e);
+				//console.log("Localstorage error: " + e);
 			}
 		}
 
 	}else{
-		console.log("Images failed");
+		//console.log("Images failed");
 	}
 
 
@@ -198,7 +198,7 @@ function processInstagramImages(respond){
 
 
 function getImagesFromLocalStorage(){
-	console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
+	//console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
 	var now = new Date();
 	var photoTime;
 	//var diff = 0;
@@ -210,7 +210,7 @@ function getImagesFromLocalStorage(){
 		 	photoTime =  new Date(parseInt(photo.created_time) * 1000); 	
 
 		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 14){
-		 		console.log("Old photo deleted (" +photoTime.toDateString() +")");
+		 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
 		 		localStorage.removeItem(key);
 		 	}else{
 
@@ -244,7 +244,7 @@ function processLocalImages(){
 			}
 		}
 	}
-	console.log("Processing local images ("+inside+":"+outside+")");
+	//console.log("Processing local images ("+inside+":"+outside+")");
 }
 
 
@@ -255,7 +255,7 @@ function initialize() {
 	
 
 	//curLatLng = new google.maps.LatLng(curentPosition.lat, curentPosition.lng);
-	console.log("Map initialization");			
+	//console.log("Map initialization");			
 
 
 
@@ -283,13 +283,13 @@ function initialize() {
 
 	google.maps.event.addListener(curPosMarker.getPin(), 'click', function() {
 		map.panTo(curPosMarker.getPosition());
-		console.log("Move to my location");
+		//console.log("Move to my location");
 
 	});
 
     google.maps.event.addListenerOnce(curPosMarker, 'position_changed', function() {
 
-    	console.log("Location changed");
+    	//console.log("Location changed");
 
 		center = this.getPosition();
 
@@ -306,7 +306,7 @@ function initialize() {
     });
 
     google.maps.event.addListener(curPosMarker, 'geolocation_error', function(e) {
-    	console.log("Geolocation error: " + e);
+    	//console.log("Geolocation error: " + e);
       	alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
     });
 
@@ -336,7 +336,7 @@ function initialize() {
 
 	google.maps.event.addDomListener(controlUI, 'click', function() {
 		map.panTo(curPosMarker.getPosition());
-		console.log("Move to my location");
+		//console.log("Move to my location");
 	});
 
 	
@@ -353,7 +353,7 @@ function initialize() {
 	google.maps.event.addListener(map, 'tilesloaded', function(){
 
 
-		console.log("Bounds changed");
+		//console.log("Bounds changed");
 
 		
 		if(radius === 0){ //run for a first time
@@ -388,7 +388,7 @@ function initialize() {
 
 	google.maps.event.addListener(map, 'zoom_changed', function(){
 
-		console.log("Zoomed(" + map.getZoom()+")");
+		//console.log("Zoomed(" + map.getZoom()+")");
 
 		calcMapRadius();	
 
@@ -396,7 +396,7 @@ function initialize() {
 
 	google.maps.event.addListener(map, 'resize', function(){
 
-		console.log("Resized");
+		//console.log("Resized");
 
 		radius = 0;
 

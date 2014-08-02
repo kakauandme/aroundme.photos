@@ -29,7 +29,7 @@
  * @param {(google.maps.MarkerOptions|Object.<string>)=} opt_markerOpts
  * @param {(google.maps.CircleOptions|Object.<string>)=} opt_circleOpts
  */
-function GeolocationMarker(m) {
+function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
 
 
   var markerOpts = {
@@ -63,7 +63,7 @@ function GeolocationMarker(m) {
     'strokeOpacity': 1,
 
     'fillColor': colors.green,
-    'fillOpacity': 0.4,
+    'fillOpacity': .4,
     'strokeWeight': 1,
     'zIndex': 1
   };
@@ -88,7 +88,7 @@ function GeolocationMarker(m) {
    * @expose
    * @type {google.maps.Map?}
    */
-  this.map = m || null;
+  this.map = null;
   
   this.set('minimum_accuracy', null);
   
@@ -97,11 +97,11 @@ function GeolocationMarker(m) {
 
   this.circle_.bindTo('map', this.marker_);
 
-
-  this.setMap(this.map);
-  
+  if(opt_map) {
+    this.setMap(opt_map);
+  }
 }
-GeolocationMarker.prototype = new google.maps.MVCObject();
+GeolocationMarker.prototype = new google.maps.MVCObject;
 
 /**
  * @override
@@ -219,10 +219,10 @@ GeolocationMarker.prototype.setCircleOptions = function(circleOpts) {
  */
 GeolocationMarker.prototype.updatePosition_ = function(position) {
   var newPosition = new google.maps.LatLng(position.coords.latitude,
-      position.coords.longitude), mapNotSet = this.marker_.getMap() === null;
+      position.coords.longitude), mapNotSet = this.marker_.getMap() == null;
 
   if(mapNotSet) {
-    if (this.getMinimumAccuracy() !== null &&
+    if (this.getMinimumAccuracy() != null &&
         position.coords.accuracy > this.getMinimumAccuracy()) {
       return;
     }
@@ -232,13 +232,13 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
     this.circle_.bindTo('radius', this, 'accuracy');
   }
 
-  if (this.accuracy !== position.coords.accuracy) {
+  if (this.accuracy != position.coords.accuracy) {
     // The local set method does not allow accuracy to be updated
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
-    console.log("Accuracy: " + position.coords.accuracy );
+    //console.log("Accuracy: " + position.coords.accuracy );
   }
 
-  if (mapNotSet || this.position === null ||
+  if (mapNotSet || this.position == null ||
       !this.position.equals(newPosition)) {
   // The local set method does not allow position to be updated
     google.maps.MVCObject.prototype.set.call(this, 'position', newPosition);
