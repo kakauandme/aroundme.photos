@@ -344,7 +344,7 @@ function initialize() {
 		}
 
 
-		//getImagesFromInstagram();
+		getImagesFromInstagram();
 
 
 		

@@ -4,14 +4,6 @@
 @import _animation.sass
 @import _marker.sass
 
-
-.devtext
-	display: none
-	color: $green
-	.dev &
-		display: inline
-
-
 #container
 	overflow: hidden
 
@@ -20,6 +12,10 @@
 		color: $light-grey
 	.complete &
 		display: none
+
+#devtext
+	.complete &
+		display: block
 
 #pusher
 	-webkit-backface-visibility: hidden
@@ -34,18 +30,8 @@
 	.ready &
 		transform: translate3d(-100%, 0, 0)
 		transition:
-			duration: $transition*2				
-	.complete &
-		#c
-			float: right
-			+breakpoint(mouse)
-				width: 75.1%
-			+breakpoint(kitten)
-				width: 67.1%
-			+breakpoint(horse)
-				width: 50.1%
-			+breakpoint(elephant)
-				width: 45.1%%
+			duration: $transition*2	
+	
 	.nav &
 		+breakpoint(mouse)
 			transform: translate3d(-25%, 0, 0)	
@@ -55,10 +41,23 @@
 			transform: translate3d(-50%, 0, 0)
 		+breakpoint(elephant)
 			transform: translate3d(-55%, 0, 0)
+#c
+	.complete &		
+		float: right
+		+breakpoint(mouse)
+			width: 75.1%
+		+breakpoint(kitten)
+			width: 67.1%
+		+breakpoint(horse)
+			width: 50.1%
+		+breakpoint(elephant)
+			width: 45.1%%
 
 
 #social
 	vertical-align: top
+	p
+		margin-bottom: 0
 	a
 		.complete &
 			display: inline-block
@@ -99,27 +98,3 @@
 		user-select: none
 		img
 			width: 13px
-
-.pin-container
-	position: absolute
-	width: $size
-	height: $size
-	border: #fff solid 0.5em
-	border-bottom-width: 1em
-	/*border-radius: 50%*/
-	overflow: hidden
-	cursor: pointer
-	z-index: 10	
-	transition: 
-		property: transform
-		duration: $transition
-		timing-function: cubic-bezier(0,1.51,.15,.89)
-
-	&.zoomed		
-		transform: scale(5)	
-		z-index: 99
-		box-shadow: 0 0 10px rgba(0,0,0,0.9)
-
-	img
-		width: 100%
-		display: block
