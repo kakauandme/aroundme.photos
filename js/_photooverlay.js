@@ -1,14 +1,18 @@
+
 PhotoOverlay.prototype = new google.maps.OverlayView();
+var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
+var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
 
-
-function PhotoOverlay(photo) {
-	//this.map_      = map;
+function PhotoOverlay(photo, m ) {
+	this._map      = m || null;
 	this._position = new google.maps.LatLng(photo.location.latitude, photo.location.longitude);
 	this._photo = photo;
-	this._marker  = null;
+	this._marker  = null; //div
 	this._img  = null;
 	this._zoomed = false;
-	this._isAdded = false;
+	if(m){
+		this.setMap(m);
+	}
 }
 
 PhotoOverlay.prototype.onAdd = function() {
@@ -25,12 +29,21 @@ PhotoOverlay.prototype.onAdd = function() {
 
 	var img = new Image();
 
-    img.onload = function(){    	
+    img.onload = function(){  
+
+		if(!curItem._zoomed){
+			marker.className+= " loaded flyin";
+			setTimeout(function(){
+				marker.className = marker.className.replace(regflyin,'');
+			},800);
+
+		}
     };
     img.onerror = function(){ 
     	localStorage.removeItem(photo.id);
-    	if(curItem._zoomed) // if hires failes fallback to thumbnail
+    	if(curItem._zoomed){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
+    	}
     };
 
     img.src = photo.images.thumbnail.url;
@@ -70,11 +83,11 @@ PhotoOverlay.prototype.onAdd = function() {
 	google.maps.event.addDomListener(marker, 'click', function(e) {
 		return function(){
 			e.zoom();
-	    }		
+	    };		
 	}(this));
 
 	
-}
+};
 PhotoOverlay.prototype.getPosition = function() {
 	return this._position;
 };
@@ -83,11 +96,13 @@ PhotoOverlay.prototype.getLikes = function() {
 	return parseInt(this._photo.likes.count);
 };
 
-PhotoOverlay.prototype.getisAdded = function() {
-	return _isAdded;
+PhotoOverlay.prototype.getMap = function () {
+  return this._map;
 };
-PhotoOverlay.prototype.setisAdded = function(isAdded) {
-	return this._isAdded = isAdded;
+
+PhotoOverlay.prototype.updateMap = function (m) {
+  this._map = m;
+  this.setMap(m);
 };
 
 PhotoOverlay.prototype.onRemove = function() {
@@ -106,7 +121,7 @@ PhotoOverlay.prototype.draw = function() {
 
 	container.style.left = (point.x + (-container.offsetWidth/2)) + 'px';
 	container.style.top  = (point.y + (-container.offsetHeight/2)) + 'px';
-}
+};
 
 PhotoOverlay.prototype.zoom = function() {
 
@@ -116,10 +131,9 @@ PhotoOverlay.prototype.zoom = function() {
 	console.log("Zoomed");
 
 
-	var reg = new RegExp('(\\s|^)zoomed(\\s|$)');
-	if(reg.test(marker.className)){
+	if(regzoomed.test(marker.className)){
 		
-		marker.className = marker.className.replace(reg,'');
+		marker.className = marker.className.replace(regzoomed,'');
 		//container.className += " unzoomed";
 
 	}else{

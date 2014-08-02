@@ -29,7 +29,8 @@
  * @param {(google.maps.MarkerOptions|Object.<string>)=} opt_markerOpts
  * @param {(google.maps.CircleOptions|Object.<string>)=} opt_circleOpts
  */
-function GeolocationMarker() {
+function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
+
 
   var markerOpts = {
     'clickable': true,
@@ -96,7 +97,9 @@ function GeolocationMarker() {
 
   this.circle_.bindTo('map', this.marker_);
 
-  
+  if(opt_map) {
+    this.setMap(opt_map);
+  }
 }
 GeolocationMarker.prototype = new google.maps.MVCObject;
 
@@ -120,7 +123,9 @@ GeolocationMarker.prototype.set = function(key, value) {
  * @private
  * @type {google.maps.Marker}
  */
-GeolocationMarker.prototype.getMarker = function(){
+GeolocationMarker.prototype.marker_ = null;
+
+GeolocationMarker.prototype.getPin = function(){
   return this.marker_;
 };
 
@@ -215,7 +220,7 @@ GeolocationMarker.prototype.setCircleOptions = function(circleOpts) {
 GeolocationMarker.prototype.updatePosition_ = function(position) {
   var newPosition = new google.maps.LatLng(position.coords.latitude,
       position.coords.longitude), mapNotSet = this.marker_.getMap() == null;
-  console.log("Accuracy: " + position.coords.accuracy);
+
   if(mapNotSet) {
     if (this.getMinimumAccuracy() != null &&
         position.coords.accuracy > this.getMinimumAccuracy()) {
@@ -230,11 +235,12 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
   if (this.accuracy != position.coords.accuracy) {
     // The local set method does not allow accuracy to be updated
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
+    console.log("Accuracy: " + position.coords.accuracy );
   }
 
   if (mapNotSet || this.position == null ||
       !this.position.equals(newPosition)) {
-	// The local set method does not allow position to be updated
+  // The local set method does not allow position to be updated
     google.maps.MVCObject.prototype.set.call(this, 'position', newPosition);
   }
 };

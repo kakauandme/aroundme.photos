@@ -10,6 +10,31 @@
 	transform: scale(0.2)
 	outline: 1em solid rgba(255,255,255, 0.75)
 	z-index: $z-marker
+	visibility: hidden
+	&.loaded
+		visibility: visible
+	&.flyin
+
+		&:nth-child(4n+1)
+			animation: 
+				name: bounceInDown
+				duration: $transition*3
+				fill-mode: both
+		&:nth-child(4n+2)
+			animation: 
+				name: bounceInUp
+				duration: $transition*3
+				fill-mode: both
+		&:nth-child(4n+3)
+			animation: 
+				name: bounceInLeft
+				duration: $transition*3
+				fill-mode: both
+		&:nth-child(4n+4)
+			animation: 
+				name: bounceInRight
+				duration: $transition*3
+				fill-mode: both
 	img
 		width: 100%
 	.overlay, .likes, hr, .author	
@@ -49,7 +74,6 @@
 			opacity: 0
 			transition: opacity $transition ease
 		.likes
-			@extend h1
 			&:after
 				content: ""
 				width: 0.5em
@@ -73,6 +97,8 @@
 				word-break: break-word
 		&:hover
 			img
+				filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
 				filter: blur(2px) brightness(0.75)
+				
 			.likes, hr, .author
 				opacity: 1

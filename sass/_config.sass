@@ -25,3 +25,21 @@ $z-marker: 100
 
 $z-cluster: 10
 
+
+@mixin breakpoint($point)
+	@if $point == mouse
+		@media (min-width: 0)
+			@content
+
+	@else if $point == kitten
+		@media (min-width: 768px)
+			@content
+
+	@else if $point == horse
+		@media (min-width: 960px)
+			@content
+
+	@else if $point == elephant
+		@media (min-width: 1200px)
+			@content
+

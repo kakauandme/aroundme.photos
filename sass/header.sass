@@ -11,8 +11,9 @@
 @import _fonts.sass
 @import _responsive.sass
 @import _typography.sass
+@import _ie.sass
 
-@import footer.sass
+//@import footer.sass
 
 
 html
@@ -35,6 +36,9 @@ body, #container, #pusher
 			padding: 1em			
 			display: table-cell
 			text-align: right
+#pusher
+	transform: translate3d(0, 0, 0)
+
 #header				
 	vertical-align: middle
 	height: 100%
@@ -51,6 +55,5 @@ body, #container, #pusher
 		margin-bottom: 0
 #description
 	color: $green
-
-#social	a, #devtext
+#social	a, #devtext, #c > span > span#browserhappy
 	display: none

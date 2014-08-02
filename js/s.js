@@ -6,7 +6,7 @@ var APP_KEY = '4a37870c5f594c2c9c563a80fae04772'; // live
 //var APP_KEY = '51533e28dbb84aeca7222a73ac49b70c'; // dev
 
 
-var instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processImages&client_id=' + APP_KEY;
+var instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processInstagramImages&client_id=' + APP_KEY;
 
 
 
@@ -42,14 +42,11 @@ var getDistance = function(p1, p2) {
 
 // @codekit-prepend "_geolocationmarker.js"
 // @codekit-prepend "_photooverlay.js"
-// @codekit-prepend "_markerclustererplus.js"
+
 
 
 
 var body = document.getElementById("body");
-
-
-	//var browserSupport = (typeof(Storage) !== "undefined") && navigator.geolocation;
 
 
 var mSeconds = 0;
@@ -59,20 +56,24 @@ var timerHolder = document.getElementById("timer").firstChild;
 var timer = setInterval(function(){
 		mSeconds+=100;
 		var s = mSeconds/1000;
-		timerHolder.innerText = s.toFixed(1) +" sec";
+		timerHolder.textContent = s.toFixed(1) +" sec";
 
 },100);
 
 //////////Map Variables
 var curentPosition = {lat: -37.803501, lng: 144.977001};  //Thick
 
+curentPosition.lat = parseFloat(localStorage.lat) || curentPosition.lat;
+curentPosition.lng = parseFloat(localStorage.lng) || curentPosition.lng;
+
 var map;
 
 
 //var GeoMarker;
-var marker;
+var curPosMarker;
 
-var markerCluster;
+//Overlays
+var markers = [];
 
 var bounds;
 var center;
@@ -107,26 +108,12 @@ var stylers = [
 ];
 
 
-
-
-var curTimestamp = 0;
-
-//////////////Storage
-
-if(typeof(Storage)!== "undefined"){
-	curTimestamp = parseInt(localStorage.timestamp) || curTimestamp;
-	curentPosition.lat = parseFloat(localStorage.lat) || curentPosition.lat;
-	curentPosition.lng = parseFloat(localStorage.lng) || curentPosition.lng;
-}
-
-
 function calcMapRadius(){
 
 
 	center = map.getCenter();
 
 	bounds = map.getBounds();
-
 
 	var ne = bounds.getNorthEast();
 	var top =  new google.maps.LatLng(ne.lat(), center.lng());
@@ -141,12 +128,13 @@ function calcMapRadius(){
 
 	console.log("Radius: " + radius);
 
-	var showAccuracy = marker.circle_.getRadius() > radius/3;
-	marker.circle_.setVisible(showAccuracy);
+	var showAccuracy = curPosMarker.circle_.getRadius() > radius/3;
+	curPosMarker.circle_.setVisible(showAccuracy);
 	if(showAccuracy){
 		console.log("Accuracy shown");
-	}else
+	}else{
 		console.log("Accuracy hidden");
+	}
 
 	if(radius >= 5000){
 		map.setOptions({ minZoom: map.getZoom()});
@@ -171,8 +159,6 @@ function getImagesFromInstagram(){
 	curUrl += "&lat=" + center.lat();
 	curUrl += "&lng=" + center.lng();
 	curUrl += "&distance=" + radius;
-	// if(curTimestamp != 0) // check for location
-	// 	curUrl += "&min_timestamp="+curTimestamp;
 
 
 	console.log(curUrl);
@@ -182,29 +168,26 @@ function getImagesFromInstagram(){
     document.body.appendChild(script);
 }
 
-function processImages(respond){		
+function processInstagramImages(respond){		
 
-	if(respond.meta.code == 200){
+	if(respond.meta.code === 200){
 		console.log("Processing images (" + respond.data.length + ")");
 		//console.log(respond.data);
-		var markers = [];
 		for(var i = 0; i < respond.data.length; i++){
 
-			if(respond.data[i].type != "image") {
+			if(respond.data[i].type !== "image") {
 				//console.log("video");
 				continue;
 			}
-
-
 			if(typeof(localStorage[respond.data[i].id]) === "undefined"){
-				var overlay =  new PhotoOverlay(respond.data[i]);
-		    	markers.push(overlay);
-			}	
-			localStorage[respond.data[i].id] = JSON.stringify(respond.data[i]);
+		    	markers.push(new PhotoOverlay(respond.data[i], map));
+			}
+			try{
+				localStorage[respond.data[i].id] = JSON.stringify(respond.data[i]);
+			}catch(e){
+				console.log("Localstorage error: " + e);
+			}
 		}
-		markerCluster.addMarkers(markers);
-
-
 
 	}else{
 		console.log("Images failed");
@@ -215,25 +198,61 @@ function processImages(respond){
 
 
 function getImagesFromLocalStorage(){
-	console.log("Adding images from LocalStorage");
-
-	var markers = [];
+	console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
+	var now = new Date();
+	var photoTime;
+	//var diff = 0;
+	var photo;
 	var cnt = 0;
 	for(var key in localStorage) {
-		 if(key != "lat" && key != "lng" && key != "timestamp"){
-		 	var photo = JSON.parse(localStorage[key]);
-			var overlay =  new PhotoOverlay(photo);
-		    markers.push(overlay);				 	
-		    if(++cnt > 999)
-		    	break;
+		 if(key !== "lat" && key !== "lng" && key !== "length"){
+		 	photo = JSON.parse(localStorage[key]);
+		 	photoTime =  new Date(parseInt(photo.created_time) * 1000);		 	
+
+		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 14){
+		 		console.log("Old photo deleted (" +photoTime.toDateString() +")");
+		 		localStorage.removeItem(key);
+		 	}else{
+
+			    markers.push(new PhotoOverlay(photo));				 	
+			    if(++cnt > 999){
+			    	break;
+			    }
+			}
 		}
 	}
-	markerCluster.addMarkers(markers);
+}
 
+function processLocalImages(){		
+	var inbounds = false;
+	var inside = 0;
+	var outside = 0;
+	for (var i = 0; i < markers.length; i++) {
+		inbounds = bounds.contains(markers[i].getPosition());
+
+		if(inbounds){
+			if(++inside > 99){
+				break;
+			}
+			if(markers[i].getMap() === null){
+				markers[i].updateMap(map);
+			}
+		}else {
+			outside++;
+			if(markers[i].getMap() !== null){
+				markers[i].updateMap(null);
+			}
+		}
+	}
+	console.log("Processing local images ("+inside+":"+outside+")");
 }
 
 
 function initialize() {
+
+
+	
+	
 
 	//curLatLng = new google.maps.LatLng(curentPosition.lat, curentPosition.lng);
 	console.log("Map initialization");			
@@ -258,11 +277,41 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById("map"),mapOptions);
 
 
+	//////////////////////////////////////////////////////////////////////////
+	curPosMarker = new GeolocationMarker(map);
 
 
-	markerCluster = new MarkerClusterer(map, []);
-	getImagesFromLocalStorage();
+	google.maps.event.addListener(curPosMarker.getPin(), 'click', function() {
+		map.panTo(curPosMarker.getPosition());
+		console.log("Move to my location");
 
+	});
+
+    google.maps.event.addListenerOnce(curPosMarker, 'position_changed', function() {
+
+    	console.log("Location changed");
+
+		center = this.getPosition();
+
+	  	//curPosMarker.setPosition(center);
+
+	  	map.panTo(center);
+
+
+	  	localStorage.lat = center.lat();
+		localStorage.lng = center.lng();
+
+      	//map.setCenter(this.getPosition());
+      	//map.fitBounds(this.getBounds());
+    });
+
+    google.maps.event.addListener(curPosMarker, 'geolocation_error', function(e) {
+    	console.log("Geolocation error: " + e);
+      	alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
+    });
+
+
+	//////////////////////////////////////////////////////////////////////////
 	// Add curent position control
 	var controlDiv = document.createElement('div');
 
@@ -277,7 +326,7 @@ function initialize() {
 
 
 	var img = new Image();
-	img.src = "/img/location.gif"
+	img.src = "/img/location.gif";
 	img.alt = "Pan to my location";
 	controlUI.appendChild(img);
 
@@ -286,43 +335,18 @@ function initialize() {
 
 
 	google.maps.event.addDomListener(controlUI, 'click', function() {
-		map.panTo(marker.position);
+		map.panTo(curPosMarker.getPosition());
 		console.log("Move to my location");
 	});
 
+	
 
-	marker = new GeolocationMarker();
-
-
-	google.maps.event.addListener(marker.getMarker(), 'click', function() {
-		map.panTo(marker.position);
-		console.log("Move to my location");
-
-	});
-
-    google.maps.event.addListenerOnce(marker, 'position_changed', function() {
-
-    	console.log("Location changed");
-
-		center = this.getPosition();
-
-	  	//marker.setPosition(center);
-
-	  	map.panTo(center);
+	//////////////////////////////////////////////////////////////////////////
+	getImagesFromLocalStorage();
+	//////////////////////////////////////////////////////////////////////////
 
 
-	  	localStorage.lat = center.lat();
-		localStorage.lng = center.lng();
 
-      	//map.setCenter(this.getPosition());
-      	//map.fitBounds(this.getBounds());
-    });
-
-    google.maps.event.addListener(marker, 'geolocation_error', function(e) {
-      	alert('There was an error obtaining your position. Message: ' + e.message);
-    });
-
-	marker.setMap(map);
 
 
 
@@ -332,7 +356,7 @@ function initialize() {
 		console.log("Bounds changed");
 
 		
-		if(radius == 0){ //run for a first time
+		if(radius === 0){ //run for a first time
 
 			calcMapRadius();					
 
@@ -346,15 +370,16 @@ function initialize() {
 
 		getImagesFromInstagram();
 
+		processLocalImages();
 
-		
-		if(timer != 0){
+
+		if(timer !== 0){
 			clearInterval(timer);
 			timer = 0;
-			body.className += " ready";
+			body.className = "ready";
 			setTimeout(function(){
 				body.className += " complete";
-			},600)
+			},600);
 		}
 
 		
@@ -377,33 +402,65 @@ function initialize() {
 
 	});
 
-	window.onresize = function(event) {
-		google.maps.event.trigger(map, 'resize') 
+	window.onresize = function() {
+		google.maps.event.trigger(map, 'resize');
 	};
 
 
 }
-// function loadMapScript() {
-// 	var script = document.createElement('script');
-// 	script.type = 'text/javascript';
-// 	script.src = '//maps.googleapis.com/maps/api/js?v=3.exp&callback=initialize&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4';
-// 	document.body.appendChild(script);
-// }
-//window.onload = loadMapScript;
 
-if(!navigator.geolocation) { // add propper verification and better message
-    alert('Your browser does not support geolocation ;/');
-}else
-	google.maps.event.addDomListener(window, 'load', initialize);
 
+
+	
 
 /*********************Hamburger*********************************/
 
 document.getElementById("hamburger").addEventListener("click", function(){
 
 	var reg = new RegExp('(\\s|^)nav(\\s|$)');
-	if(reg.test(body.className))		
+	if(reg.test(body.className)){
 			body.className = body.className.replace(reg,'');
-	else										
+	} else{
 		body.className += " nav";
+	}
 });
+
+function loadResources() {
+
+	initialize();
+			
+	//CSS
+	var stylesheet = document.createElement('link');
+	stylesheet.href = '/css/footer.css';
+	stylesheet.rel = 'stylesheet';
+	stylesheet.type = 'text/css';
+	document.getElementsByTagName('head')[0].appendChild(stylesheet);
+
+
+
+	// GA 
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-40067737-9', 'aroundme.photos');
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
+
+}
+
+
+if(!navigator.geolocation ||  (typeof(Storage) === "undefined")) {
+    //alert('Your browser does not support geolocation ;/');
+    var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://browsehappy.com/"  target="_blank">upgrade your browser</a> to use this website.</p>';
+    document.getElementById("browserhappy").innerHTML = str;
+    body.className+= " ie";
+    clearInterval(timer);
+	timer = 0;
+	timerHolder.textContent = "";
+
+}else{	
+
+	google.maps.event.addDomListener(window, 'load', loadResources);
+
+}
