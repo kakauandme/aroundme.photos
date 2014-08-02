@@ -209,7 +209,7 @@ function getImagesFromLocalStorage(){
 		 	photo = JSON.parse(localStorage[key]);
 		 	photoTime =  new Date(parseInt(photo.created_time) * 1000); 	
 
-		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 14){
+		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 1){
 		 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
 		 		localStorage.removeItem(key);
 		 	}else{
@@ -379,7 +379,7 @@ function initialize() {
 			body.className = "ready";
 			setTimeout(function(){
 				body.className += " complete";
-			},600);
+			},1200);
 		}
 
 		
