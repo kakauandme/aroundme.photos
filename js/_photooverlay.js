@@ -1,5 +1,6 @@
 
 PhotoOverlay.prototype = new google.maps.OverlayView();
+
 var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
 var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
 
@@ -170,6 +171,7 @@ PhotoOverlay.prototype.zoom = function() {
 			user.title = this._photo.user.username;
 			user.target = "_blank";
 			user.textContent = (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
+			user.onclick = function(event) { event.stopPropagation(); };
 
 			this._marker.appendChild(overlay);
 			overlay.appendChild(likes);

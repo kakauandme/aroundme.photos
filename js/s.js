@@ -207,7 +207,7 @@ function getImagesFromLocalStorage(){
 	for(var key in localStorage) {
 		 if(key !== "lat" && key !== "lng" && key !== "length"){
 		 	photo = JSON.parse(localStorage[key]);
-		 	photoTime =  new Date(parseInt(photo.created_time) * 1000);		 	
+		 	photoTime =  new Date(parseInt(photo.created_time) * 1000); 	
 
 		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 14){
 		 		console.log("Old photo deleted (" +photoTime.toDateString() +")");
@@ -449,10 +449,9 @@ function loadResources() {
 
 }
 
-
-if(!navigator.geolocation ||  (typeof(Storage) === "undefined")) {
+if(!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
     //alert('Your browser does not support geolocation ;/');
-    var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://browsehappy.com/"  target="_blank">upgrade your browser</a> to use this website.</p>';
+    var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>';
     document.getElementById("browserhappy").innerHTML = str;
     body.className+= " ie";
     clearInterval(timer);

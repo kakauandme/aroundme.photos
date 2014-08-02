@@ -80,7 +80,7 @@ $description = 'Checkout real-time updates from Instagram around your location o
 				<span>
 					<span id="browserhappy">
 						<!--[if lt IE 9]>
-							<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://browsehappy.com/"  target="_blank">upgrade your browser</a> to use this website.</p>
+							<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>
 						<![endif]-->
 						<noscript>
 							<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
@@ -99,9 +99,9 @@ $description = 'Checkout real-time updates from Instagram around your location o
 							<a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
 								<?php include("img/facebook.svg"); ?>
 							</a>							
-							<a href="https://github.com/kakauandme/aroundme.photos" target="_blank" title="View on Github">
+							<!-- <a href="https://github.com/kakauandme/aroundme.photos" target="_blank" title="View on Github">
 								<?php include("img/github.svg"); ?>
-							</a>
+							</a> -->
 						</p>
 					</span>
 				</span>				
@@ -123,7 +123,7 @@ $description = 'Checkout real-time updates from Instagram around your location o
 						</p>
 					</span>
 				</span>
-				<div id="timer"><p></p></div>
+				<div id="timer"><p>&nbsp;</p></div>
 				<div id="hamburger" title="Navigation">
 				  <span></span>
 				</div>
