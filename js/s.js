@@ -81,6 +81,8 @@ var center;
 
 var radius = 0;
 
+var positionFlag = false;
+
 
 
 var stylers = [
@@ -290,6 +292,7 @@ function initialize() {
     google.maps.event.addListenerOnce(curPosMarker, 'position_changed', function() {
 
     	//console.log("Location changed");
+    	positionFlag = true;
 
 		center = this.getPosition();
 
@@ -305,9 +308,11 @@ function initialize() {
       	//map.fitBounds(this.getBounds());
     });
 
-    google.maps.event.addListener(curPosMarker, 'geolocation_error', function(e) {
+    google.maps.event.addListenerOnce(curPosMarker, 'geolocation_error', function(e) {
     	//console.log("Geolocation error: " + e);
-      	alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
+    	if(!positionFlag){
+      		alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
+      	}
     });
 
 
