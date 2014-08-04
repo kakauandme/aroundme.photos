@@ -4,6 +4,8 @@ $title = 'Around me photos';
 $subtitle = 'Explore social activity next to you';
 $description = 'Checkout real-time updates in your area and discover what is happening.';
 
+$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's around you with Around me photos.";
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="ie"> <![endif]-->
@@ -16,7 +18,7 @@ $description = 'Checkout real-time updates in your area and discover what is hap
 	<title><?php echo $title . " | " . $subtitle; ?></title>
 	
 	<!-- SEO -->
-	<meta name="description" content="<?php echo $description; ?>">
+	<meta name="description" content="<?php echo $SEO; ?>">
 	<!-- <meta name="keywords" content="map, Instagram, location, photos, pictures, images"> -->
 
 	<!-- CSS -->
@@ -71,7 +73,7 @@ $description = 'Checkout real-time updates in your area and discover what is hap
 
 
 	<!-- Google+ Schema.org microdata	 -->
-	<meta itemprop="image" content="/img/screenshot_lrg.png">
+	<meta itemprop="image" content="http://aroundme.photos/img/screenshot_lrg.png">
 
 </head>
 <body id="body" class="no-js" itemscope itemtype="http://schema.org/Website">
