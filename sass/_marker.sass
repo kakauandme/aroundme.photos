@@ -10,48 +10,58 @@
 	outline: 1em solid rgba(255,255,255, 0.75)
 	z-index: $z-marker
 	visibility: hidden
+	user-select: none
+	// transition: 
+	// 	property: transform, -webkit-trnasform 
+	// 	duration: $transition
+	// 	timing-function: ease-in
 	&.loaded
 		visibility: visible
-	&.flyin
+	// &.flyin
 
-		&:nth-child(4n+1)
-			animation: 
-				name: bounceInDown
-				duration: $transition*3
-				fill-mode: both
-		&:nth-child(4n+2)
-			animation: 
-				name: bounceInUp
-				duration: $transition*3
-				fill-mode: both
-		&:nth-child(4n+3)
-			animation: 
-				name: bounceInLeft
-				duration: $transition*3
-				fill-mode: both
-		&:nth-child(4n+4)
-			animation: 
-				name: bounceInRight
-				duration: $transition*3
-				fill-mode: both
+	// 	&:nth-child(4n+1)
+	// 		animation: 
+	// 			name: bounceInDown
+	// 			duration: $transition*3
+	// 			fill-mode: both
+	// 	&:nth-child(4n+2)
+	// 		animation: 
+	// 			name: bounceInUp
+	// 			duration: $transition*3
+	// 			fill-mode: both
+	// 	&:nth-child(4n+3)
+	// 		animation: 
+	// 			name: bounceInLeft
+	// 			duration: $transition*3
+	// 			fill-mode: both
+	// 	&:nth-child(4n+4)
+	// 		animation: 
+	// 			name: bounceInRight
+	// 			duration: $transition*3
+	// 			fill-mode: both
 	img
 		width: 100%
-	.overlay, .likes, hr, .author	
+	.overlay, .likes, hr, .author, .info
 		display: none
 	&:hover
-		animation: 
-			name: pulse
-			duration: $transition*3
-			fill-mode: both
+		// animation: 
+		// 	name: pulse
+		// 	duration: $transition*3
+		// 	fill-mode: both
+
+		//transform: scale($scale * 1.5)
 		z-index: $z-marker + 1
 	&.zoomed
+		// transition: 
+		// 	timing-function: cubic-bezier(0,1.68,0.62,0.79)
 		outline-width: 0
 		overflow: hidden
 		//box-shadow: 0 0 1em rgba(0,0,0,0.75)
-		animation: 
-			name: bounceIn
-			duration: $transition*3
-			fill-mode: both
+		// animation: 
+		// 	name: bounceIn
+		// 	duration: $transition*3
+		// 	fill-mode: both
+		transform: scale(1)
 		z-index: $z-marker + 2
 		.overlay
 			display: block
@@ -66,13 +76,39 @@
 			font:
 				family: L,  sans-serif
 			padding: 0 1em
+			.info
+				display: block
+				bottom: 0.25em
+				left: 6.75em
+				position: absolute				
+				//border: 0.125em solid #fff
+				//box-sizing: border-box
+				width: 1.5em
+				height: 1.5em
+				border-radius: 50%
+				background:
+					color: rgba(0,0,0,0.75)
+					image: url(../img/info.gif)
+					size: cover
+					position: center center
+				opacity: 0.25
+				&.close
+					transform: rotate(45deg)
+					//border-color: rgba(255,255,255,0)
+					background:
+						image: url(../img/close.gif)
+				&:hover
+					opacity: 15
+					background:
+						color: rgba(0,0,0,0.25)
+
+	&.detailed				
 		img
 			outline: 1px solid white
-			transition: all $transition ease
+			filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
+			filter: blur(2px) brightness(0.75)
 		.likes, hr, .author
 			display: block
-			opacity: 0
-			transition: opacity $transition ease
 		.likes
 			&:after
 				content: ""
@@ -92,13 +128,8 @@
 			margin: 0 auto
 		.author
 			color: white
-			padding: 1em 0
+			+breakpoint(kitten)
+				padding: 1em 0
+			margin: 0
 			a
 				word-break: break-word
-		&:hover
-			img
-				filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
-				filter: blur(2px) brightness(0.75)
-				
-			.likes, hr, .author
-				opacity: 1

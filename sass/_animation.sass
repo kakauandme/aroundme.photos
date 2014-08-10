@@ -1,21 +1,21 @@
 @keyframes pulse 
 	0% 
-		transform: scale3d($scale,$scale,1)
+		transform: scale($scale)
 	
 
 	50% 
-		transform: scale3d($scale + $scale/10,$scale + $scale/10,1)
+		transform: scale($scale + $scale/10)
 	
 
 	100% 
-		transform: scale3d($scale,$scale,1)
+		transform: scale($scale)
 	
 
 
 
 @keyframes bounceIn 
 	0% 
-		transform: scale($scale)
+		transform: scale($scale + $scale/10)
 	
 
 	50% 
@@ -57,7 +57,7 @@
 @keyframes bounceInDown 
 	0% 
 		opacity: 0
-		transform: translateY(-2000px) scale($scale)
+		transform: translateY(-200%) scale($scale)
 	
 
 	60% 
@@ -66,6 +66,7 @@
 	
 
 	80% 
+		
 		transform: translateY(-10px) scale($scale)
 	
 
@@ -77,7 +78,7 @@
 @keyframes bounceInLeft 
 	0% 
 		opacity: 0
-		transform: translateX(-2000px) scale($scale)
+		transform: translateX(-200%) scale($scale)
 	
 
 	60% 
@@ -86,6 +87,7 @@
 	
 
 	80% 
+
 		transform: translateX(-10px) scale($scale)
 	
 
@@ -98,7 +100,7 @@
 @-webkit-keyframes bounceInUp 
 	0% 
 		opacity: 0
-		transform: translateY(2000px) scale($scale)
+		transform: translateY(200%) scale($scale)
 	
 
 	60% 
@@ -107,6 +109,7 @@
 	
 
 	80% 
+	
 		transform: translateY(10px) scale($scale)
 	
 
@@ -118,7 +121,7 @@
 @keyframes bounceInRight 
 	0% 
 		opacity: 0
-		transform: translateX(2000px) scale($scale)
+		transform: translateX(200%) scale($scale)
 	
 
 	60% 
@@ -127,6 +130,7 @@
 	
 
 	80% 
+		
 		transform: translateX(10px) scale($scale)
 	
 

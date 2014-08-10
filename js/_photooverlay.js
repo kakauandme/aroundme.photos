@@ -1,8 +1,7 @@
 
 PhotoOverlay.prototype = new google.maps.OverlayView();
 
-var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
-var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
+
 
 function PhotoOverlay(photo, m ) {
 	this._map      = m || null;
@@ -17,7 +16,13 @@ function PhotoOverlay(photo, m ) {
 }
 
 PhotoOverlay.prototype.onAdd = function() {
-	
+
+
+	if(++loadingCount === 1){
+		ham.title="Loading ..."
+		ham.className = "loading";
+	}
+
 	var curItem = this;
 	var photo = this._photo;
 
@@ -32,11 +37,20 @@ PhotoOverlay.prototype.onAdd = function() {
 
     img.onload = function(){  
 
+
+
 		if(!curItem._zoomed){
-			marker.className+= " loaded flyin";
-			setTimeout(function(){
-				marker.className = marker.className.replace(regflyin,'');
-			},800);
+
+			if(--loadingCount === 0){
+				ham.title="Info"
+				ham.className = "";
+			}			
+				
+			
+			marker.className+= " loaded";
+			// setTimeout(function(){
+			// 	marker.className = marker.className.replace(regflyin,'');
+			// },800);
 
 		}
     };
@@ -44,23 +58,18 @@ PhotoOverlay.prototype.onAdd = function() {
     	localStorage.removeItem(photo.id);
     	if(curItem._zoomed){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
+    	}else{
+    		if(--loadingCount === 0){
+				ham.title="Info"
+				ham.className = "";
+			}	
     	}
+
     };
 
     img.src = photo.images.thumbnail.url;
 
 
-
-
-	// var x = document.createElement('span');
-	// x.title = "Close";
-	// x.className = "close";
-	// x.textContent = 'x';
-
-	// var i = document.createElement('span');
-	// i.title = "Info";
-	// i.className = "info";
-	// i.textContent = 'i';
 
 
 	
@@ -69,8 +78,7 @@ PhotoOverlay.prototype.onAdd = function() {
 
 	
 
-	// marker.appendChild(x);
-	// marker.appendChild(i);	
+
 
 	this._marker = marker;
 	this._img = img;
@@ -110,6 +118,9 @@ PhotoOverlay.prototype.onRemove = function() {
   google.maps.event.clearInstanceListeners(this._marker);
   this._marker.parentNode.removeChild(this._marker);
   this._marker = null;
+	this._img  = null;
+	this._zoomed = false;
+	this._map  = null;
 };
 
 
@@ -134,8 +145,9 @@ PhotoOverlay.prototype.zoom = function() {
 
 	if(regzoomed.test(marker.className)){
 		
-		marker.className = marker.className.replace(regzoomed,'');
-		//container.className += " unzoomed";
+		marker.className = "marker loaded";
+		this._marker.getElementsByTagName("span")[0].className = "info";
+		this._marker.getElementsByTagName("span")[0].title="Info";
 
 	}else{
 		
@@ -173,12 +185,32 @@ PhotoOverlay.prototype.zoom = function() {
 			user.textContent = (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
 			user.onclick = function(event) { event.stopPropagation(); };
 
+
+
+			var i = document.createElement('span');
+			i.title = "Info";
+			i.className = "info";
+			i.onclick = function(event) { 
+				event.stopPropagation();
+				if(this.className.length === 4){ // check if info
+					this.title="Close";
+					this.className += " close";
+					this.parentNode.parentNode.className += " detailed"; 
+				}else{
+					this.title="Info";
+					this.className = "info";
+					this.parentNode.parentNode.className = this.parentNode.parentNode.className.replace(regdetailed,'');
+				}
+			};
+
 			this._marker.appendChild(overlay);
 			overlay.appendChild(likes);
 			overlay.appendChild(hr);
 			overlay.appendChild(author);
 
 			author.appendChild(user);
+
+			overlay.appendChild(i);
 
 
 

@@ -21,6 +21,13 @@ var colors = {
 	"light-grey" : "#8c8f91" 
 };
 
+var regnav = new RegExp('(\\s|^)nav(\\s|$)');
+var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
+var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
+var regdetailed = new RegExp('(\\s|^)detailed(\\s|$)');
+
+
+
 
 var rad = function(x) {
 	return x * Math.PI / 180;
@@ -47,6 +54,8 @@ var getDistance = function(p1, p2) {
 
 
 var body = document.getElementById("body");
+
+var ham = document.getElementById("hamburger");
 
 
 var mSeconds = 0;
@@ -82,6 +91,9 @@ var center;
 var radius = 0;
 
 var positionFlag = false;
+
+
+var loadingCount = 0;
 
 
 
@@ -172,9 +184,11 @@ function getImagesFromInstagram(){
 
 function processInstagramImages(respond){		
 
-	if(respond.meta.code === 200){
+	if(respond.meta.code === 200 && respond.data.length > 0){
 		//console.log("Processing images (" + respond.data.length + ")");
 		////console.log(respond.data);
+
+
 		for(var i = 0; i < respond.data.length; i++){
 
 			if(respond.data[i].type !== "image") {
@@ -191,8 +205,6 @@ function processInstagramImages(respond){
 			}
 		}
 
-	}else{
-		//console.log("Images failed");
 	}
 
 
@@ -228,7 +240,6 @@ function getImagesFromLocalStorage(){
 function processLocalImages(){		
 	var inbounds = false;
 	var inside = 0;
-	var outside = 0;
 	for (var i = 0; i < markers.length; i++) {
 		inbounds = bounds.contains(markers[i].getPosition());
 
@@ -240,13 +251,12 @@ function processLocalImages(){
 				markers[i].updateMap(map);
 			}
 		}else {
-			outside++;
 			if(markers[i].getMap() !== null){
 				markers[i].updateMap(null);
 			}
 		}
 	}
-	//console.log("Processing local images ("+inside+":"+outside+")");
+	//console.log("Processing local images ("+inside+")");
 }
 
 
@@ -373,6 +383,9 @@ function initialize() {
 		}
 
 
+
+	
+
 		getImagesFromInstagram();
 
 		processLocalImages();
@@ -420,13 +433,20 @@ function initialize() {
 
 /*********************Hamburger*********************************/
 
-document.getElementById("hamburger").addEventListener("click", function(){
+ham.addEventListener("click", function(){
 
-	var reg = new RegExp('(\\s|^)nav(\\s|$)');
-	if(reg.test(body.className)){
-			body.className = body.className.replace(reg,'');
+	if(ham.className.length != 0){
+		return;
+	}
+
+
+	
+	if(regnav.test(body.className)){
+			body.className = body.className.replace(regnav,'');
+			ham.title="Info";
 	} else{
 		body.className += " nav";
+		ham.title="Close";
 	}
 });
 

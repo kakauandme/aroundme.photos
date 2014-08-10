@@ -5,6 +5,44 @@
 	background: $green
 	border-radius: 0.1em
 
+
+@keyframes yel
+	0% 
+		background: $green
+	
+	33%
+		background: $red
+
+	66% 
+		background: $blue
+
+	100% 
+		background: $green
+@keyframes blue 
+	0% 
+		background: $blue
+	
+	33%
+		background: $green
+
+	66% 
+		background: $red
+
+	100% 
+		background: $blue
+@keyframes red 
+	0% 
+		background: $red
+	
+	33%
+		background: $blue
+
+	66% 
+		background: $green
+
+	100% 
+		background: $red
+
 #hamburger
 	position: absolute
 	top: $size 
@@ -24,7 +62,6 @@
 		transition: background 0s $transition ease,  transform $transition ease
 		.nav &
 			background: transparent
-
 		&:before, &:after
 			+line
 			position: absolute
@@ -49,3 +86,26 @@
 			transform:  scale(1 + $scale/2)
 			.nav &
 				transform:  scale(1 - $scale/2)
+	&.loading
+		cursor: default
+		&:hover
+			> span
+				transform:  scale(1)
+		> span
+			animation: 
+				name: yel
+				duration: $transition*4
+				iteration-count: infinite
+				fill-mode: both
+			&:before
+				animation: 
+					name: red
+					duration: $transition*4
+					iteration-count: infinite
+					fill-mode: both
+			&:after
+				animation: 
+					name: blue
+					duration: $transition*4
+					iteration-count: infinite
+					fill-mode: both
