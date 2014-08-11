@@ -65,7 +65,8 @@ function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
     'fillColor': colors.green,
     'fillOpacity': .4,
     'strokeWeight': 1,
-    'zIndex': 1
+    'zIndex': 1,
+    'visible': false
   };
 
 
@@ -235,6 +236,9 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
   if (this.accuracy != position.coords.accuracy) {
     // The local set method does not allow accuracy to be updated
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
+
+    var showAccuracy = position.coords.accuracy > radius/3;
+    this.circle_.setVisible(showAccuracy);
     //console.log("Accuracy: " + position.coords.accuracy );
   }
 

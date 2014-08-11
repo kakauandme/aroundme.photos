@@ -21,7 +21,9 @@ PhotoOverlay.prototype.onAdd = function() {
 	if(++loadingCount === 1){
 		ham.title="Loading ..."
 		ham.className = "loading";
+
 	}
+	
 
 	var curItem = this;
 	var photo = this._photo;
@@ -41,12 +43,10 @@ PhotoOverlay.prototype.onAdd = function() {
 
 		if(!curItem._zoomed){
 
-			if(--loadingCount === 0){
+			if(--loadingCount <= 0){
 				ham.title="Info"
 				ham.className = "";
 			}			
-				
-			
 			marker.className+= " loaded";
 			// setTimeout(function(){
 			// 	marker.className = marker.className.replace(regflyin,'');
@@ -59,7 +59,7 @@ PhotoOverlay.prototype.onAdd = function() {
     	if(curItem._zoomed){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
     	}else{
-    		if(--loadingCount === 0){
+    		if(--loadingCount <= 0){
 				ham.title="Info"
 				ham.className = "";
 			}	
@@ -180,9 +180,9 @@ PhotoOverlay.prototype.zoom = function() {
 
 			var user = document.createElement('a');
 			user.href = this._photo.link;
-			user.title = this._photo.user.username;
+			user.title =  (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
 			user.target = "_blank";
-			user.textContent = (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
+			user.textContent =  this._photo.user.username;
 			user.onclick = function(event) { event.stopPropagation(); };
 
 

@@ -46,6 +46,7 @@ var getDistance = function(p1, p2) {
 	return d; // returns the distance in meter
 };
 
+var radius = 0;
 
 // @codekit-prepend "_geolocationmarker.js"
 // @codekit-prepend "_photooverlay.js"
@@ -88,12 +89,16 @@ var bounds;
 var center;
 
 
-var radius = 0;
+
 
 var positionFlag = false;
 
 
 var loadingCount = 0;
+
+if (window.navigator.standalone) {
+    document.getElementById("c").style.paddingTop="10px";
+}
 
 
 
@@ -144,11 +149,7 @@ function calcMapRadius(){
 
 	var showAccuracy = curPosMarker.circle_.getRadius() > radius/3;
 	curPosMarker.circle_.setVisible(showAccuracy);
-	if(showAccuracy){
-		//console.log("Accuracy shown");
-	}else{
-		//console.log("Accuracy hidden");
-	}
+	
 
 	if(radius >= 5000){
 		map.setOptions({ minZoom: map.getZoom()});
@@ -182,7 +183,10 @@ function getImagesFromInstagram(){
     document.body.appendChild(script);
 }
 
-function processInstagramImages(respond){		
+function processInstagramImages(respond){	
+
+
+	
 
 	if(respond.meta.code === 200 && respond.data.length > 0){
 		//console.log("Processing images (" + respond.data.length + ")");
@@ -213,11 +217,17 @@ function processInstagramImages(respond){
 
 function getImagesFromLocalStorage(){
 	//console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
+
+
+	
+
+
 	var now = new Date();
 	var photoTime;
 	//var diff = 0;
 	var photo;
 	var cnt = 0;
+
 	for(var key in localStorage) {
 		 if(key !== "lat" && key !== "lng" && key !== "length"){
 		 	photo = JSON.parse(localStorage[key]);
@@ -369,6 +379,8 @@ function initialize() {
 
 
 		//console.log("Bounds changed");
+
+	
 
 		
 		if(radius === 0){ //run for a first time

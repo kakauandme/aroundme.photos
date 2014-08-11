@@ -79,12 +79,12 @@
 			.info
 				display: block
 				bottom: 0.25em
-				left: 6.75em
+				left: 6.65em
 				position: absolute				
 				//border: 0.125em solid #fff
 				//box-sizing: border-box
-				width: 1.5em
-				height: 1.5em
+				width: 1.7em
+				height: 1.7em
 				border-radius: 50%
 				background:
 					color: rgba(0,0,0,0.75)
@@ -92,13 +92,14 @@
 					size: cover
 					position: center center
 				opacity: 0.25
+
 				&.close
 					transform: rotate(45deg)
 					//border-color: rgba(255,255,255,0)
 					background:
 						image: url(../img/close.gif)
 				&:hover
-					opacity: 15
+					opacity: 1
 					background:
 						color: rgba(0,0,0,0.25)
 
@@ -125,11 +126,9 @@
 			border-width: 0px
 			border-color: rgba(255,255,255, 0.75)
 			border-bottom-width: 1px
-			margin: 0 auto
+			margin: 0 auto 0.5em
 		.author
 			color: white
-			+breakpoint(kitten)
-				padding: 1em 0
 			margin: 0
 			a
 				word-break: break-word

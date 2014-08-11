@@ -4,8 +4,6 @@
 @import _animation.sass
 @import _marker.sass
 
-#container
-	overflow: hidden
 
 #timer
 	.ready &
@@ -19,15 +17,13 @@
 	background-color: $black
 	position: relative
 	transition:
-		timing-function: ease-in
-		duration: $transition*3
+		timing-function: ease
+		duration: $transition*2
 		property: transform
-		//delay: 1s
+	// 	//delay: 1s
 
 	.ready &
 		transform: translate3d(-100%, 0, 0)
-		transition:
-			duration: $transition*2	
 	
 	.nav &
 		+breakpoint(mouse)
@@ -77,24 +73,17 @@
 					&#github
 						fill: $light-grey
 				
-#wrap
-	position: absolute 
-	top: 0
-	left: 0 
-	width: 100%
+
+#map
 	height: 100%
-	transform: translate3d(100%, 0, 0)
-	z-index: $z-layout + 1
-	#map
-		height: 100%
-		.gm-style
-			font-size: inherit
-		.gm-style-cc
-			line-height: normal
-		.cur-position-control
-			cursor: pointer
+	.gm-style
+		font-size: inherit
+	.gm-style-cc
+		line-height: normal
+	.cur-position-control
+		cursor: pointer
+		width: 13px
+		line-height: 0
+		user-select: none
+		img
 			width: 13px
-			line-height: 0
-			user-select: none
-			img
-				width: 13px

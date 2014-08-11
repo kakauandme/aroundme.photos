@@ -23,7 +23,10 @@ $SEO = "Check out real-time Instagram updates in your area and discover what is 
 	<!-- CSS -->
 	<style>
 		@font-face{font-family:L;src:url("/f/l.eot");src:url("/f/l.eot?#iefix") format("eot"),url("/f/l.woff") format("woff"),url("/f/l.ttf") format("truetype"),url("/f/l.svg") format("svg");font-weight:normal;font-style:normal}@media (min-width: 0){body{font-size:0.6em}}@media (min-width: 768px){body{font-size:0.75em}}@media (min-width: 960px){body{font-size:0.8em}}@media (min-width: 1200px){body{font-size:1em}}
-		html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-serif}h1,.likes{color:#f74552;font-size:3.4em;font-weight:normal;line-height:1.325em;margin:34px 0 34px}h2{color:#1a75cf;font-size:1.2em;font-weight:normal;line-height:1.41667em;margin:34px 0 34px}p,em,strong{font-size:1em;font-weight:normal;font-style:normal;line-height:1.7em;margin:0 0 34px}#social p,#social em,#social strong{margin:0}a{color:#fff5a1;text-decoration:none}a:hover{text-decoration:underline}.ie #browserhappy,.no-js #browserhappy{display:table-cell !important;padding:0 !important;vertical-align:top}.ie #browserhappy p,.no-js #browserhappy p{background-color:#4f007d;padding:1em}html{height:100%;-webkit-text-size-adjust:100%}body,#container,#pusher{height:100%;margin:0}#c{position:relative;width:100%;height:100%;display:table;background-color:#24292e}#c>span{display:table-row}#c>span>span{padding:1em;display:table-cell;text-align:right}#pusher{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}#header{vertical-align:middle;height:100%}#footer{vertical-align:bottom}#footer p{margin-bottom:0}#timer{bottom:0;position:absolute;padding:1em;color:#414b56}#timer p{margin-bottom:0}#description{color:#66d43d}#social a,#devtext,#c>span>span#browserhappy{display:none}
+		html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-serif}h1,.likes{color:#f74552;font-size:3.4em;font-weight:normal;line-height:1.325em;margin:0.7em 0 0.7em}h2{color:#1a75cf;font-size:1.2em;font-weight:normal;line-height:1.41667em;margin:1em 0 1em}p,em,strong{font-size:1em;font-weight:normal;font-style:normal;line-height:1.7em;margin:0 0 1em}#social p,#social em,#social strong{margin:0}a{color:#fff5a1;text-decoration:none}a:hover{text-decoration:underline}.ie #browserhappy,.no-js #browserhappy{display:table-cell !important;padding:0 !important;vertical-align:top}.ie #browserhappy p,.no-js #browserhappy p{background-color:#4f007d;padding:1em}html{height:100%;-webkit-text-size-adjust:100%}body,#container,#pusher{height:100%;margin:0}#container{overflow:hidden}#c{position:relative;width:100%;height:100%;display:table;background-color:#24292e}#c>span{display:table-row}#c>span>span{padding:1em;display:table-cell;text-align:right}#pusher{-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}#header{vertical-align:middle;height:100%}#footer{vertical-align:bottom}#footer p{margin-bottom:0}#timer{bottom:0;position:absolute;padding:1em;color:#414b56}#timer p{margin-bottom:0}#description{color:#66d43d}#wrap{position:absolute;top:0;left:0;width:100%;height:100%;-webkit-transform:translate3d(100%, 0, 0);transform:translate3d(100%, 0, 0)}#wrap #map{height:100%}#social a,#devtext,#c>span>span#browserhappy{display:none}
+
+
+
 	</style>
 
 	<!--browsers -->
@@ -31,6 +34,10 @@ $SEO = "Check out real-time Instagram updates in your area and discover what is 
 
 	<!-- iOS -->
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="apple-touch-startup-image" href="/apple-startup-image.png">
+ 
+      
 
 	<meta name="apple-mobile-web-app-capable" content="yes">
 
