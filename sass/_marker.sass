@@ -11,56 +11,43 @@
 	z-index: $z-marker
 	visibility: hidden
 	user-select: none
-	// transition: 
-	// 	property: transform, -webkit-trnasform 
-	// 	duration: $transition
-	// 	timing-function: ease-in
 	&.loaded
 		visibility: visible
-	// &.flyin
+	&.flyin
+		animation: 
+			duration: 1000ms
+			fill-mode: both
+		&:nth-child(4n+1)
+			animation: 
+				name: bounceInDown
 
-	// 	&:nth-child(4n+1)
-	// 		animation: 
-	// 			name: bounceInDown
-	// 			duration: $transition*3
-	// 			fill-mode: both
-	// 	&:nth-child(4n+2)
-	// 		animation: 
-	// 			name: bounceInUp
-	// 			duration: $transition*3
-	// 			fill-mode: both
-	// 	&:nth-child(4n+3)
-	// 		animation: 
-	// 			name: bounceInLeft
-	// 			duration: $transition*3
-	// 			fill-mode: both
-	// 	&:nth-child(4n+4)
-	// 		animation: 
-	// 			name: bounceInRight
-	// 			duration: $transition*3
-	// 			fill-mode: both
+		&:nth-child(4n+2)
+			animation: 
+				name: bounceInUp
+
+		&:nth-child(4n+3)
+			animation: 
+				name: bounceInLeft
+
+		&:nth-child(4n+4)
+			animation: 
+				name: bounceInRight
+
 	img
-		width: 100%
+		width: 100%	
+
 	.overlay, .likes, hr, .author, .info
 		display: none
 	&:hover
-		// animation: 
-		// 	name: pulse
-		// 	duration: $transition*3
-		// 	fill-mode: both
-
-		//transform: scale($scale * 1.5)
+		transform: scale($scale * 1.1)
 		z-index: $z-marker + 1
 	&.zoomed
-		// transition: 
-		// 	timing-function: cubic-bezier(0,1.68,0.62,0.79)
+		transition: 
+			property: transform, -webkit-transform
+			timing-function: ease
+			duration: $transition			
 		outline-width: 0
 		overflow: hidden
-		//box-shadow: 0 0 1em rgba(0,0,0,0.75)
-		// animation: 
-		// 	name: bounceIn
-		// 	duration: $transition*3
-		// 	fill-mode: both
 		transform: scale(1)
 		z-index: $z-marker + 2
 		.overlay
@@ -87,29 +74,45 @@
 				height: 1.7em
 				border-radius: 50%
 				background:
-					color: rgba(0,0,0,0.75)
+					color: $green
 					image: url(../img/info.gif)
 					size: cover
 					position: center center
-				opacity: 0.25
-
+				opacity: 0.5
+				transition: all $transition ease
 				&.close
-					transform: rotate(45deg)
+					opacity: 1
+					transform: rotate(-135deg)
 					//border-color: rgba(255,255,255,0)
 					background:
 						image: url(../img/close.gif)
+						color: $purple
+					&:hover
+						background:						
+							color: $purple
 				&:hover
 					opacity: 1
 					background:
-						color: rgba(0,0,0,0.25)
+						color: rgba($green, 1)
+		img
+			outline: 1px solid white
+			transition: all $transition ease
+		
 
 	&.detailed				
 		img
-			outline: 1px solid white
+			
 			filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
 			filter: blur(2px) brightness(0.75)
 		.likes, hr, .author
+			
 			display: block
+			animation:
+				name: jelly
+				duration: 1000ms
+				fill-mode: both
+
+
 		.likes
 			&:after
 				content: ""

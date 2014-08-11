@@ -1,116 +1,73 @@
-@keyframes pulse 
-	0% 
-		transform: scale($scale)
-	
-
-	50% 
-		transform: scale($scale + $scale/10)
-	
-
-	100% 
-		transform: scale($scale)
-	
-
-
-
-@keyframes bounceIn 
-	0% 
-		transform: scale($scale + $scale/10)
-	
-
-	50% 
-		transform: scale(1.05)
-	
-
-	70% 
-		transform: scale(.9)
-	
-
-	100% 
-		transform: scale(1)
-	
-@keyframes still 
-	0%, 100%
-		transform: scale($scale)
-
-
-
-
-@keyframes bounceOut 
-	0% 
-		transform: scale(1)
-	
-
-	25% 
-		transform: scale(.95)
-	
-
-	50% 
-		transform: scale(1.1)
-	
-
-	100% 
-		transform: scale($scale)
-	
-
-
 @keyframes bounceInDown 
 	0% 
 		opacity: 0
-		transform: translateY(-200%) scale($scale)
+		transform: translateY(-100%) scale($scale)
 	
 
 	60% 
 		opacity: 1
-		transform: translateY(30px) scale($scale)
+		transform: translateY(25px) scale($scale)
+
+	75%
+		transform: translateY(-12px) scale($scale)
 	
 
-	80% 
-		
-		transform: translateY(-10px) scale($scale)
+	90% 		
+		transform: translateY(5px) scale($scale)
 	
 
 	100% 
 		transform: translateY(0) scale($scale)
-	
 
 
-@keyframes bounceInLeft 
+
+
+@keyframes bounceInLeft
+
 	0% 
 		opacity: 0
-		transform: translateX(-200%) scale($scale)
+		transform: translateX(-100%) scale($scale)
 	
 
 	60% 
 		opacity: 1
-		transform: translateX(30px) scale($scale)
-	
+		transform: translateX(25px) scale($scale)
 
-	80% 
-
+	75%
 		transform: translateX(-10px) scale($scale)
 	
 
+	90% 
+
+		transform: translateX(7px) scale($scale)
+	
+
 	100% 
 		transform: translateX(0) scale($scale)
 	
 
 
 
-@-webkit-keyframes bounceInUp 
+
+
+@keyframes bounceInUp 
+
 	0% 
 		opacity: 0
-		transform: translateY(200%) scale($scale)
+		transform: translateY(100%) scale($scale)
 	
 
 	60% 
 		opacity: 1
-		transform: translateY(-30px) scale($scale)
+		transform: translateY(-28px) scale($scale)
+
+	75%
+		transform: translateY(10px) scale($scale)
 	
 
-	80% 
+	90% 
 	
-		transform: translateY(10px) scale($scale)
+		transform: translateY(-5px) scale($scale)
 	
 
 	100% 
@@ -118,25 +75,94 @@
 	
 
 
-@keyframes bounceInRight 
+@keyframes bounceInRight
+
 	0% 
 		opacity: 0
-		transform: translateX(200%) scale($scale)
+		transform: translateX(100%) scale($scale)
 	
 
 	60% 
 		opacity: 1
-		transform: translateX(-30px) scale($scale)
+		transform: translateX(-25px) scale($scale)
+
+	75%
+		transform: translateX(8px) scale($scale)
+
 	
 
-	80% 
+	90% 
 		
-		transform: translateX(10px) scale($scale)
+		transform: translateX(-5px) scale($scale)
 	
 
 	100% 
 		transform: translateX(0) scale($scale)
-	
+
+@keyframes jelly
+	0%
+		transform: matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	3.333333%
+		transform: matrix3d(0.64545, 0, 0, 0, 0, 0.68602, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	6.666667%
+		transform: matrix3d(0.79842, 0, 0, 0, 0, 0.90691, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	10%
+		transform: matrix3d(0.92774, 0, 0, 0, 0, 1.07226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	13.333333%
+		transform: matrix3d(1.01897, 0, 0, 0, 0, 1.14684, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	16.666667%
+		transform: matrix3d(1.07044, 0, 0, 0, 0, 1.14088, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	20%
+		transform: matrix3d(1.08847, 0, 0, 0, 0, 1.08847, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	23.333333%
+		transform: matrix3d(1.08303, 0, 0, 0, 0, 1.02623, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	26.666667%
+		transform: matrix3d(1.06445, 0, 0, 0, 0, 0.97964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	30%
+		transform: matrix3d(1.04137, 0, 0, 0, 0, 0.95863, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	33.333333%
+		transform: matrix3d(1.01985, 0, 0, 0, 0, 0.9603, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	36.666667%
+		transform: matrix3d(1.00322, 0, 0, 0, 0, 0.97507, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	40%
+		transform: matrix3d(0.99261, 0, 0, 0, 0, 0.99261, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	43.333333%
+		transform: matrix3d(0.98758, 0, 0, 0, 0, 1.00574, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	46.666667%
+		transform: matrix3d(0.98684, 0, 0, 0, 0, 1.01166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	50%
+		transform: matrix3d(0.98881, 0, 0, 0, 0, 1.01119, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	53.333333%
+		transform: matrix3d(0.99207, 0, 0, 0, 0, 1.00702, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	56.666667%
+		transform: matrix3d(0.99549, 0, 0, 0, 0, 1.00208, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	60%
+		transform: matrix3d(0.99838, 0, 0, 0, 0, 0.99838, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	63.333333%
+		transform: matrix3d(1.00042, 0, 0, 0, 0, 0.99672, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	66.666667%
+		transform: matrix3d(1.00158, 0, 0, 0, 0, 0.99685, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	70%
+		transform: matrix3d(1.00198, 0, 0, 0, 0, 0.99802, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	73.333333%
+		transform: matrix3d(1.00186, 0, 0, 0, 0, 0.99941, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	76.666667%
+		transform: matrix3d(1.00144, 0, 0, 0, 0, 1.00046, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	80%
+		transform: matrix3d(1.00093, 0, 0, 0, 0, 1.00093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	83.333333%
+		transform: matrix3d(1.00044, 0, 0, 0, 0, 1.00089, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	86.666667%
+		transform: matrix3d(1.00007, 0, 0, 0, 0, 1.00056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	90%
+		transform: matrix3d(0.99983, 0, 0, 0, 0, 1.00017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	93.333333%
+		transform: matrix3d(0.99972, 0, 0, 0, 0, 0.99987, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	96.666667%
+		transform: matrix3d(0.99971, 0, 0, 0, 0, 0.99974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+	100%
+		transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1) 
+
 
 
 

@@ -47,10 +47,10 @@ PhotoOverlay.prototype.onAdd = function() {
 				ham.title="Info"
 				ham.className = "";
 			}			
-			marker.className+= " loaded";
-			// setTimeout(function(){
-			// 	marker.className = marker.className.replace(regflyin,'');
-			// },800);
+			marker.className+= " loaded flyin";
+			setTimeout(function(){
+				marker.className = marker.className.replace(regflyin,'');
+			},1200);
 
 		}
     };
