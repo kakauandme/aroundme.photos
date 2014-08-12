@@ -193,7 +193,7 @@ PhotoOverlay.prototype.zoom = function() {
 			i.onclick = function(event) { 
 				event.stopPropagation();
 				if(this.className.length === 4){ // check if info
-					this.title="Close";
+					this.title="Hide info";
 					this.className += " close";
 					this.parentNode.parentNode.className += " detailed"; 
 				}else{

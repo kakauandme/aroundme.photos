@@ -5,7 +5,6 @@
 	cursor: pointer
 	perspective: 1000
 	backface-visibility: hidden
-	border-radius: 0.2em
 	transform: scale(0.2)
 	outline: 1em solid rgba(255,255,255, 0.75)
 	z-index: $z-marker
@@ -44,14 +43,14 @@
 	&.zoomed
 		transition: 
 			property: transform, -webkit-transform
-			timing-function: ease
+			timing-function: easecome
 			duration: $transition			
 		outline-width: 0
-		overflow: hidden
 		transform: scale(1)
 		z-index: $z-marker + 2
 		.overlay
 			display: block
+			border-radius: 0.2em
 			border: 1em solid rgba(255,255,255, 0.25)
 			box-sizing: border-box
 			position: absolute
@@ -65,8 +64,8 @@
 			padding: 0 1em
 			.info
 				display: block
-				bottom: 0.25em
-				left: 6.65em
+				top: -1.7em
+				left: -1.7em
 				position: absolute				
 				//border: 0.125em solid #fff
 				//box-sizing: border-box
@@ -75,35 +74,25 @@
 				border-radius: 50%
 				background:
 					color: $green
-					image: url(../img/info.gif)
+					image: url(../img/close.gif)
 					size: cover
 					position: center center
-				opacity: 0.5
 				transition: all $transition ease
 				&.close
-					opacity: 1
 					transform: rotate(-135deg)
-					//border-color: rgba(255,255,255,0)
 					background:
-						image: url(../img/close.gif)
 						color: $purple
-					&:hover
-						background:						
-							color: $purple
-				&:hover
-					opacity: 1
-					background:
-						color: rgba($green, 1)
 		img
-			outline: 1px solid white
+			border-radius: 0.2em
 			transition: all $transition ease
 		
 
 	&.detailed				
-		img
-			
-			filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
-			filter: blur(2px) brightness(0.75)
+		img			
+			filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.5\'/><feFuncG type=\'linear\'  slope=\'0.5\' /><feFuncB type=\'linear\'  slope=\'0.5\' /></feComponentTransfer></filter></svg>#darkerblur")
+			//filter: url("data:image/svg+xml;utf8,<svg height=\'0\' xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'darkerblur\'><feGaussianBlur in=\'SourceGraphic\' stdDeviation=\'2\'/><feComponentTransfer><feFuncR type=\'linear\' slope=\'0.25\'/><feFuncG type=\'linear\'  slope=\'0.25\' /><feFuncB type=\'linear\'  slope=\'0.25\' /></feComponentTransfer></filter></svg>#darkerblur")
+			//filter: blur(2px) brightness(0.75)
+			filter: grayscale(1) brightness(0.5)
 		.likes, hr, .author
 			
 			display: block
