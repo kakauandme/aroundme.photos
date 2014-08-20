@@ -18,11 +18,7 @@ function PhotoOverlay(photo, m ) {
 PhotoOverlay.prototype.onAdd = function() {
 
 
-	if(++loadingCount === 1){
-		ham.title="Loading ..."
-		ham.className = "loading";
-
-	}
+	increment();
 	
 
 	var curItem = this;
@@ -43,14 +39,17 @@ PhotoOverlay.prototype.onAdd = function() {
 
 		if(!curItem._zoomed){
 
-			if(--loadingCount <= 0){
-				ham.title="Info"
-				ham.className = "";
-			}			
 			marker.className+= " loaded flyin";
+			
 			setTimeout(function(){
 				marker.className = marker.className.replace(regflyin,'');
-			},1200);
+				google.maps.event.addDomListener(marker, 'click', function(e) {
+					return function(){
+						e.zoom();
+				    };		
+				}(curItem));
+			},1500);
+			decrement();
 
 		}
     };
@@ -59,10 +58,7 @@ PhotoOverlay.prototype.onAdd = function() {
     	if(curItem._zoomed){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
     	}else{
-    		if(--loadingCount <= 0){
-				ham.title="Info"
-				ham.className = "";
-			}	
+    		decrement();
     	}
 
     };
@@ -89,11 +85,7 @@ PhotoOverlay.prototype.onAdd = function() {
  // 	panes.overlayLayer.appendChild(container);
 
 
-	google.maps.event.addDomListener(marker, 'click', function(e) {
-		return function(){
-			e.zoom();
-	    };		
-	}(this));
+	
 
 	
 };
@@ -179,7 +171,13 @@ PhotoOverlay.prototype.zoom = function() {
 			author.textContent = "by ";
 
 			var user = document.createElement('a');
-			user.href = this._photo.link;
+			//user.href = this._photo.link;
+			if(iOS){
+				user.href = "instagram://user?username=" + this._photo.user.username;
+			}else{
+				user.href = "http://instagram.com/" + this._photo.user.username;
+			}
+			
 			user.title =  (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
 			user.target = "_blank";
 			user.textContent =  this._photo.user.username;

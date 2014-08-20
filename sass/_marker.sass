@@ -14,7 +14,6 @@
 		visibility: visible
 	&.flyin
 		animation: 
-			duration: 1000ms
 			fill-mode: both
 		&:nth-child(4n+1)
 			animation: 
@@ -30,10 +29,27 @@
 
 		&:nth-child(4n+4)
 			animation: 
-				name: bounceInRight
+				name: bounceInRight		
+
+		&:nth-child(3n+1)
+			animation:
+				duration: 1000ms
+				delay: 300ms
+
+		&:nth-child(3n+2)
+			animation: 
+				duration: 1400ms
+				delay: 100ms
+
+		&:nth-child(3n+3)
+			animation:
+				duration: 600ms
+				delay: 800ms
+
 
 	img
-		width: 100%	
+		width: 100%
+		height: 100%	
 
 	.overlay, .likes, hr, .author, .info
 		display: none
@@ -84,7 +100,7 @@
 						color: $purple
 		img
 			border-radius: 0.2em
-			transition: all $transition ease
+			//transition: all $transition ease
 		
 
 	&.detailed				

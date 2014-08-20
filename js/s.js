@@ -26,7 +26,7 @@ var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
 var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
 var regdetailed = new RegExp('(\\s|^)detailed(\\s|$)');
 
-
+var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
 
 
 var rad = function(x) {
@@ -95,6 +95,26 @@ var positionFlag = false;
 
 
 var loadingCount = 0;
+
+
+function increment(){
+	if(++loadingCount === 1){
+		ham.title="Loading ..."
+		ham.className = "loading";
+	}
+
+	//console.log(str + " + " + loadingCount);
+}
+
+function decrement(){
+	if(--loadingCount === 0){
+		ham.title="Info"
+		ham.className = "";
+		//loadingCount = 0;
+	}
+
+	//console.log(str + " - " + loadingCount);
+}
 
 if (window.navigator.standalone) {
     document.getElementById("c").style.paddingTop="10px";
@@ -373,12 +393,48 @@ function initialize() {
 
 
 
+	
 
+	google.maps.event.addListener(map, 'dragstart', function(){
+		//console.log("dragstart");
+		increment();
+	});
+
+	google.maps.event.addListener(map, 'dragend', function(){
+		//console.log("dragend");
+		decrement();
+	});
+
+
+
+
+	google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+
+		//console.log("tilesloadedONCE");
+			clearInterval(timer);
+			timer = 0;
+			body.className = "ready";
+			setTimeout(function(){
+				body.className += " complete";
+			},1200);
+
+
+				
+
+	});
+
+	google.maps.event.addListener(map, 'idle', function(){
+				//console.log("idle");
+				increment();
+				setTimeout(decrement, 1000);
+			});
 
 	google.maps.event.addListener(map, 'tilesloaded', function(){
 
 
-		//console.log("Bounds changed");
+		//console.log("tilesloaded");
+
+		increment();
 
 	
 
@@ -402,15 +458,11 @@ function initialize() {
 
 		processLocalImages();
 
+		
+		setTimeout(decrement, 1000);
 
-		if(timer !== 0){
-			clearInterval(timer);
-			timer = 0;
-			body.className = "ready";
-			setTimeout(function(){
-				body.className += " complete";
-			},1200);
-		}
+
+		
 
 		
 	});
@@ -419,6 +471,8 @@ function initialize() {
 	google.maps.event.addListener(map, 'zoom_changed', function(){
 
 		//console.log("Zoomed(" + map.getZoom()+")");
+		increment();
+		setTimeout(decrement, 1000);
 
 		calcMapRadius();	
 
@@ -497,6 +551,6 @@ if(!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.use
 
 }else{	
 
-	google.maps.event.addDomListener(window, 'load', loadResources);
+	google.maps.event.addDomListenerOnce(window, 'load', loadResources);
 
 }
