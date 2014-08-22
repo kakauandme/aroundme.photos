@@ -1,7 +1,12 @@
-.ie #browserhappy, .no-js #browserhappy
-	display: table-cell !important
-	padding: 0 !important
-	vertical-align: top
-	p
-		background-color: $dark-purple
-		padding: 1em
+#browserhappy
+	display: none
+	.ie &, .no-js &
+		display: block
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		text-align: right
+		p
+			background-color: $dark-purple
+			padding: 1em
