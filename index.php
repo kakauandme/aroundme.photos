@@ -67,9 +67,11 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
 <?php include("img/facebook.svg"); ?>
 </a>
+<?php /*
 <a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
 <?php include("img/github.svg"); ?>
 </a>
+*/ ?>
 </p>
 </span>
 </span>
