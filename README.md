@@ -1,5 +1,6 @@
-# aroundme.photos
+# [aroundme.photos](http://aroundme.photos/)
 Checkout real-time updates in your area and discover what is happening.
+[http://aroundme.photos/](http://aroundme.photos/)
 
 *More features coming...*
 
