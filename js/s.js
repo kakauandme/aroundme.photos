@@ -371,8 +371,10 @@ function initialize() {
 
 
 	var img = new Image();
-	img.src = "/img/location.gif";
+	img.src = "/img/location.png";
 	img.alt = "Pan to my location";
+	img.width = 26;
+	img.height = 26;
 	controlUI.appendChild(img);
 
 

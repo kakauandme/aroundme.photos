@@ -62,6 +62,8 @@ PhotoOverlay.prototype.onAdd = function() {
     	}
 
     };
+    img.width = 150;
+    img.height = 150;
 
     img.src = photo.images.thumbnail.url;
 
