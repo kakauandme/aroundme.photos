@@ -4,88 +4,89 @@
 @import _animation.sass
 @import _marker.sass
 
-
 #timer
-	.ready &
-		color: $light-grey
-	.complete &
-		display: none
+    .ready &
+        color: $light-grey
+    .complete &
+        display: none
 
 #pusher
-	-webkit-backface-visibility: hidden
-	-webkit-transform-style: preserve-3d
-	background-color: $black
-	position: relative
-	transition:
-		timing-function:  ease-out
-		duration: $transition*2
-		property: transform
-	// 	//delay: 1s
+    -webkit-backface-visibility: hidden
+    -webkit-transform-style: preserve-3d
+    background-color: $black
+    position: relative
+    transition:
+        timing-function: ease-out
+        duration: $transition * 2
+        property: transform
+    // 	//delay: 1s
+    .ready &
+        transform: translate3d(-100%, 0, 0)
+    .nav &
+        +breakpoint(mouse)
+            transform: translate3d(-25%, 0, 0)
 
-	.ready &
-		transform: translate3d(-100%, 0, 0)
-	
-	.nav &
-		+breakpoint(mouse)
-			transform: translate3d(-25%, 0, 0)	
-		+breakpoint(kitten)
-			transform: translate3d(-33%, 0, 0)
-		+breakpoint(horse)
-			transform: translate3d(-50%, 0, 0)
-		+breakpoint(elephant)
-			transform: translate3d(-55%, 0, 0)
+        +breakpoint(kitten)
+            transform: translate3d(-33%, 0, 0)
+
+        +breakpoint(horse)
+            transform: translate3d(-50%, 0, 0)
+
+        +breakpoint(elephant)
+            transform: translate3d(-55%, 0, 0)
+
 #c
-	z-index: $z-layout
-	.complete &		
-		float: right
-		+breakpoint(mouse)
-			width: 75.1%
-		+breakpoint(kitten)
-			width: 67.1%
-		+breakpoint(horse)
-			width: 50.1%
-		+breakpoint(elephant)
-			width: 45.1%%
+    z-index: $z-layout
+    .complete &
+        float: right
+        +breakpoint(mouse)
+            width: 75.1%
 
+        +breakpoint(kitten)
+            width: 67.1%
+
+        +breakpoint(horse)
+            width: 50.1%
+
+        +breakpoint(elephant)
+            width: 45.1%%
 
 #social
-	vertical-align: top
-	a
-		user-select: none
-		.complete &
-			display: inline-block
-	
-		line-height: 0
-		margin-left: 0.5em
-		svg
-			width: 1.7em
-			height: 1.7em
-			path
-				fill: $grey
-			&:hover
-				path
-					&#twitter
-						fill: #55ACEE
-					&#facebook
-						fill: #3B5998
-					&#google
-						fill: #DD4B39
-					&#github
-						fill: $light-grey
-				
+    vertical-align: top
+    a
+        user-select: none
+        .complete &
+            display: inline-block
+        line-height: 0
+        margin-left: 0.5em
+        svg
+            width: 1.7em
+            height: 1.7em
+            path
+                fill: $grey
+            &:hover
+                path
+                    &#twitter
+                        fill: #55acee
+                    &#facebook
+                        fill: #3b5998
+                    &#google
+                        fill: #dd4b39
+                    &#github
+                        fill: $light-grey
 
 #map
-	height: 100%
-	.gm-style
-		font-size: inherit
-	.gm-style-cc
-		line-height: normal
-	.cur-position-control
-		cursor: pointer
-		width: 13px
-		height: 13px
-		line-height: 0
-		user-select: none
-		img
-			width: 13px
-			height: 13px
+    height: 100%
+    .gm-style
+        font-size: inherit
+    .gm-style-cc
+        line-height: normal
+    .cur-position-control
+        cursor: pointer
+        width: 13px
+        height: 13px
+        line-height: 0
+        user-select: none
+        img
+            width: 13px
+            height: 13px

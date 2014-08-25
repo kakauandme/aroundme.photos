@@ -17,7 +17,7 @@ Checkout real-time updates in your area and discover what is happening.
 * [Instagram API](http://instagram.com/developer/)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
 * [Navicon Transformicons](http://sarasoueidan.com/blog/navicon-transformicons/)
-* [TRANSITIONS FOR OFF-CANVAS NAVIGATIONS](http://tympanus.net/codrops/2013/08/28/transitions-for-off-canvas-navigations/)
+* [Transitions for Off-Canvas Navigations](http://tympanus.net/codrops/2013/08/28/transitions-for-off-canvas-navigations/)
 * [Points Of Interest](http://codyhouse.co/gem/points-of-interest/)
 * [iOS 7 Web App](https://gist.github.com/tfausak/2222823)
 * [Geolocation Marker](http://google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/docs/reference.html)
