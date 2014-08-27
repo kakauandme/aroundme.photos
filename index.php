@@ -1,8 +1,8 @@
 <?php
 $title = 'Around me photos';
 $subtitle = 'Explore social activity next to you';
-$description = 'Checkout real-time updates in your area and discover what is happening.';
-$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location";
+$description = 'Checkout real-time updates on a map and discover what is happening in your area.';
+$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's around you with Around me photos.";
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
@@ -79,7 +79,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span id="header">
 <h1 itemprop="name"><?php echo $title; ?></h1>
 <h2><?php echo $subtitle; ?>.</h2>
-<p id="description" itemprop="description">Checkout real-time updates around your location <br>and discover what is happening.</p>
+<p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
 </span>
 </span>
 <span>
