@@ -1,8 +1,28 @@
 <?php
-$title = 'Around me photos';
-$subtitle = 'Explore social activity next to you';
-$description = 'Checkout real-time updates on a map and discover what is happening in your area.';
-$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's around you with Around me photos.";
+
+$siteName = "Around me photos";
+
+
+$URL =  "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+$cityExists = isset($_GET["city"]);
+if($cityExists){
+
+	$city = ucfirst($_GET["city"]);
+
+	$title = "Photos of " . $city;
+	$pageTitle = $city . " | " . $siteName;
+
+	$subtitle = 'Explore social activity in ' . $city . " area";
+}else{
+	$title = $siteName;
+	$subtitle = 'Explore social activity next to you';
+	$pageTitle = $siteName . " | " . $subtitle;
+	
+}
+
+$description = 'Checkout real-time updates on a map and discover what is happening in ' .($cityExists?$city:'your') . ' area.';
+$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's next you with Around me photos.";
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
@@ -10,7 +30,7 @@ $SEO = "Check out real-time Instagram updates in your area and discover what is 
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui" />
-<title><?php echo $title . " | " . $subtitle; ?></title>
+<title><?php echo $pageTitle; ?></title>
 <?php /*SEO */ ?>
 <meta name="description" content="<?php echo $SEO; ?>">
 <?php /*CSS */ ?>
@@ -24,25 +44,25 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="apple-touch-startup-image" href="/apple-startup-image.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="<?php echo $title; ?>">
+<meta name="apple-mobile-web-app-title" content="<?php echo $siteName; ?>">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <?php /*Android */ ?>
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
 <?php /*MS Tiles */ ?>
-<meta name="application-name" content="<?php echo $title; ?>"/>
+<meta name="application-name" content="<?php echo $siteName; ?>"/>
 <meta name="msapplication-config" content="browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#1a75cf">
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <?php /*Twitter cards */ ?>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kakauandme">
-<meta name="twitter:title" content="<?php echo $title . " - " . $subtitle; ?>">
+<meta name="twitter:title" content="<?php echo ($cityExists?$title:$siteName . " - " . $subtitle); ?>">
 <meta name="twitter:description" content="<?php echo $description; ?>">
 <meta name="twitter:image:src" content="http://aroundme.photos/img/screenshot_sml.png">
 <?php /*Facebook OG */ ?>
-<meta property="og:title" content="<?php echo $subtitle; ?>" />
-<meta property="og:site_name" content="<?php echo $title; ?>"/>
+<meta property="og:title" content="<?php echo ($cityExists?$title:$subtitle); ?>" />
+<meta property="og:site_name" content="<?php echo $siteName; ?>"/>
 <meta property="og:url" content="http://aroundme.photos/" />
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="fb:app_id" content="587080064742659" />
@@ -58,13 +78,13 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span>
 <span id="social">
 <p>&nbsp;
-<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos&text=<?php echo $subtitle; ?>" target="_blank" title="Tweet">
+<a href="https://twitter.com/share?url=<?php echo $URL; ?>&hashtags=aroundmephotos&text=<?php echo ($cityExists?$title:$subtitle); ?>" target="_blank" title="Tweet">
 <?php include("img/twitter.svg"); ?>
 </a>
-<a href="https://plus.google.com/share?url=http://aroundme.photos/" target="_blank" title="Share on Google+">
+<a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
 <?php include("img/google-plus.svg"); ?>
 </a>
-<a href="https://www.facebook.com/dialog/feed?app_id=587080064742659&display=popup&link=http://aroundme.photos/&redirect_uri=http://aroundme.photos/" target="_blank" title="Share on Facebook">
+<a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=<?php echo $URL; ?>&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
 <?php include("img/facebook.svg"); ?>
 </a>
 <?php /*
@@ -77,6 +97,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="header">
+
 <h1 itemprop="name"><?php echo $title; ?></h1>
 <h2><?php echo $subtitle; ?>.</h2>
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
@@ -107,7 +128,9 @@ Copyright &copy; <?php echo date("Y") ?>
 </div>
 </div>
 <!--[if gt IE 9]><!-->
-<script><?php
+<script>
+if (window.location.hash == '#_=_') window.close();
+<?php
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";   
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>

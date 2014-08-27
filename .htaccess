@@ -211,9 +211,28 @@ AddDefaultCharset utf-8
 
 <IfModule mod_rewrite.c>
     Options +FollowSymlinks
-  # Options +SymLinksIfOwnerMatch
+    # Options +SymLinksIfOwnerMatch
     RewriteEngine On
-  # RewriteBase /
+    # RewriteBase /
+
+
+
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-z-]+)/([a-z-]+)/?$ /?country=$1&city=$2 [NC]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-z-]+)/?$ /?city=$1 [NC]
+
+    RewriteCond %{THE_REQUEST} ^GET.*index\.php [NC]
+    RewriteRule (.*?)index\.php/*(.*) /$1$2 [R=301,NE,L]
+
+   
+
+
+
 </IfModule>
 
 # ------------------------------------------------------------------------------
