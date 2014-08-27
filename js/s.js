@@ -85,6 +85,8 @@ var curPosMarker;
 //Overlays
 var markers = [];
 
+var curMarker = null;
+
 var bounds;
 var center;
 
@@ -399,6 +401,7 @@ function initialize() {
 
 	google.maps.event.addListener(map, 'dragstart', function(){
 		//console.log("dragstart");
+		
 		increment();
 	});
 
@@ -474,6 +477,7 @@ function initialize() {
 
 		//console.log("Zoomed(" + map.getZoom()+")");
 		increment();
+
 		setTimeout(decrement, 1000);
 
 		calcMapRadius();	
@@ -542,7 +546,7 @@ function loadResources() {
 
 }
 
-if(!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
+if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) && !modernBrowser) {
     //alert('Your browser does not support geolocation ;/');
     var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>';
     document.getElementById("browserhappy").innerHTML = str;

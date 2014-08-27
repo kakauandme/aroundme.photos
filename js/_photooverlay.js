@@ -2,7 +2,6 @@
 PhotoOverlay.prototype = new google.maps.OverlayView();
 
 
-
 function PhotoOverlay(photo, m ) {
 	this._map      = m || null;
 	this._position = new google.maps.LatLng(photo.location.latitude, photo.location.longitude);
@@ -33,6 +32,9 @@ PhotoOverlay.prototype.onAdd = function() {
 
 	var img = new Image();
 
+
+	
+
     img.onload = function(){  
 
 
@@ -43,9 +45,11 @@ PhotoOverlay.prototype.onAdd = function() {
 			
 			setTimeout(function(){
 				marker.className = marker.className.replace(regflyin,'');
-				google.maps.event.addDomListener(marker, 'click', function(e) {
-					return function(){
-						e.zoom();
+				google.maps.event.addDomListener(marker, 'click', function(m) {
+					return function(event){
+						event.stopPropagation(); 
+						m.zoom();
+						return false;
 				    };		
 				}(curItem));
 			},1500);
@@ -109,6 +113,8 @@ PhotoOverlay.prototype.updateMap = function (m) {
 };
 
 PhotoOverlay.prototype.onRemove = function() {
+	if(this === curMarker)
+		curMarker = null;
   google.maps.event.clearInstanceListeners(this._marker);
   this._marker.parentNode.removeChild(this._marker);
   this._marker = null;
@@ -133,20 +139,34 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 
-	var marker = this._marker;
+
+
+
+
+
 	//console.log("Zoomed");
 
 
-	if(regzoomed.test(marker.className)){
-		
-		marker.className = "marker loaded";
-		this._marker.getElementsByTagName("span")[0].className = "info";
-		this._marker.getElementsByTagName("span")[0].title="Info";
 
-	}else{
+	if(curMarker !== null){
+
+		var tmpMarker = curMarker._marker;
+		tmpMarker.className = "marker loaded zoom";
+		tmpMarker.getElementsByTagName("span")[0].className = "info";
+		tmpMarker.getElementsByTagName("span")[0].title="Info";
+
+		setTimeout(function(){
+			tmpMarker.className = "marker loaded";
+		},300);
+	}
+
+
+	if(curMarker !== this){
 		
 		//container.className = container.className.replace(new RegExp('(\\s|^)unzoomed(\\s|$)'),'zoomed');
-		marker.className += " zoomed";
+		var marker = this._marker;
+	
+		marker.className += " zoom zoomed";
 
 		if(!this._zoomed){
 			this._zoomed = true;
@@ -211,11 +231,13 @@ PhotoOverlay.prototype.zoom = function() {
 			author.appendChild(user);
 
 			overlay.appendChild(i);
-
-
-
 		}
 
+		curMarker = this;
 
 	}
+	else{
+		curMarker = null;
+	}
+	
 };
