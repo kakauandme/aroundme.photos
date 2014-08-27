@@ -542,7 +542,7 @@ function loadResources() {
 
 }
 
-if(!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
+if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) && !modernBrowser) {
     //alert('Your browser does not support geolocation ;/');
     var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>';
     document.getElementById("browserhappy").innerHTML = str;

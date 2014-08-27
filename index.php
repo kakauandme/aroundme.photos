@@ -107,6 +107,9 @@ Copyright &copy; <?php echo date("Y") ?>
 </div>
 </div>
 <!--[if gt IE 9]><!-->
+<script><?php
+	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";   
+?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>
 <script async type="text/javascript" src="/js/s.min.js"></script>
 <!--<![endif]-->
