@@ -85,6 +85,8 @@ var curPosMarker;
 //Overlays
 var markers = [];
 
+var curMarker = null;
+
 var bounds;
 var center;
 
@@ -399,6 +401,7 @@ function initialize() {
 
 	google.maps.event.addListener(map, 'dragstart', function(){
 		//console.log("dragstart");
+		
 		increment();
 	});
 
@@ -474,6 +477,7 @@ function initialize() {
 
 		//console.log("Zoomed(" + map.getZoom()+")");
 		increment();
+
 		setTimeout(decrement, 1000);
 
 		calcMapRadius();	
