@@ -1,30 +1,6 @@
 <?php
-
-$siteName = "Around me photos";
-
-
-$URL =  "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-$cityExists = isset($_GET["city"]);
-if($cityExists){
-
-	$city = ucfirst($_GET["city"]);
-
-	$title = "Photos of " . $city;
-	$pageTitle = $city . " | " . $siteName;
-
-	$subtitle = 'Explore social activity in ' . $city . " area";
-}else{
-	$title = $siteName;
-	$subtitle = 'Explore social activity next to you';
-	$pageTitle = $siteName . " | " . $subtitle;
-	
-}
-
-$description = 'Checkout real-time updates on a map and discover what is happening in ' .($cityExists?$city:'your') . ' area.';
-$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's next you with Around me photos.";
-?>
-<!DOCTYPE html>
+include_once("config.php");
+?><!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
 <head>
@@ -57,19 +33,19 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <?php /*Twitter cards */ ?>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kakauandme">
-<meta name="twitter:title" content="<?php echo ($cityExists?$title:$siteName . " - " . $subtitle); ?>">
+<meta name="twitter:title" content="<?php echo $twitterTitle; ?>">
 <meta name="twitter:description" content="<?php echo $description; ?>">
-<meta name="twitter:image:src" content="http://aroundme.photos/img/screenshot_sml.png">
+<meta name="twitter:image:src" content="<?php echo $baseURL; ?>/img/screenshot_sml.png">
 <?php /*Facebook OG */ ?>
-<meta property="og:title" content="<?php echo ($cityExists?$title:$subtitle); ?>" />
+<meta property="og:title" content="<?php echo $socialTitle; ?>" />
 <meta property="og:site_name" content="<?php echo $siteName; ?>"/>
-<meta property="og:url" content="http://aroundme.photos/" />
+<meta property="og:url" content="<?php echo $baseURL; ?>" />
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="fb:app_id" content="587080064742659" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="http://aroundme.photos/img/screenshot_lrg.png" />
+<meta property="og:image" content="<?php echo $baseURL; ?>/img/screenshot_lrg.png" />
 <?php /*Google+ Schema.org microdata */ ?>
-<meta itemprop="image" content="http://aroundme.photos/img/screenshot_lrg.png">
+<meta itemprop="image" content="<?php echo $baseURL; ?>/img/screenshot_lrg.png">
 </head>
 <body id="body" class="no-js" itemscope itemtype="http://schema.org/Website">
 <div id="container">
@@ -78,7 +54,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span>
 <span id="social">
 <p>&nbsp;
-<a href="https://twitter.com/share?url=<?php echo $URL; ?>&hashtags=aroundmephotos&text=<?php echo ($cityExists?$title:$subtitle); ?>" target="_blank" title="Tweet">
+<a href="https://twitter.com/share?url=<?php echo $URL; ?>&hashtags=aroundmephotos&text=<?php echo $socialTitle; ?>" target="_blank" title="Tweet">
 <?php include("img/twitter.svg"); ?>
 </a>
 <a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
@@ -108,7 +84,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <p>
 <a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
 from
-<a href="//www.studiothick.com.au/" title="Studio Thick" target="_blank">Thick</a>
+<a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>
 Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
@@ -116,10 +92,10 @@ Copyright &copy; <?php echo date("Y") ?>
 <div id="timer"><p>&nbsp;</p></div>
 <div id="browserhappy">
 <!--[if lt IE 10]>
-<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/" target="_blank">upgrade your browser</a> to use this website.</p>
+<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
 <![endif]-->
 <noscript>
-<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
+<p>JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.</p>
 </noscript>
 </div>
 </div>
@@ -131,9 +107,16 @@ Copyright &copy; <?php echo date("Y") ?>
 <script>
 if (window.location.hash == '#_=_') window.close();
 <?php
-	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";   
+	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
+	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
+	if($cityExists){
+		echo "var city = '" . $city  . "';";	
+	}
+	if($countryExists){
+		echo "var country = '" . $country . "';";
+	}	
 ?></script>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>
 <script async type="text/javascript" src="/js/s.min.js"></script>
 <!--<![endif]-->
 </body>
