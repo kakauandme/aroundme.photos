@@ -235,11 +235,9 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
     // The local set method does not allow accuracy to be updated
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
 
-    curBounds = this.map.getBounds();
-    if(curBounds && curBounds.contains(newPosition)){
-      var showAccuracy = position.coords.accuracy > radius/3;
-      this.circle_.setVisible(showAccuracy);
-    }
+ 
+    this.circle_.setVisible(position.coords.accuracy > radius/3);
+    
     //console.log("Accuracy: " + position.coords.accuracy );
   }
 

@@ -1,8 +1,9 @@
 <?php
 include_once("config.php");
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui" />
@@ -91,11 +92,21 @@ Copyright &copy; <?php echo date("Y") ?>
 </span>
 <div id="timer"><p>&nbsp;</p></div>
 <div id="browserhappy">
+<?php /*
+
+LETTER MIX: Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.
+ORIGINAL: You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website. 
+
+LETTER MIX: JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.
+ORIGINAL: JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website. 
+
+
+*/ ?>
 <!--[if lt IE 10]>
-<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
+<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>
 <![endif]-->
 <noscript>
-<p>JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.</p>
+<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
 </noscript>
 </div>
 </div>
@@ -105,6 +116,8 @@ Copyright &copy; <?php echo date("Y") ?>
 </div>
 <!--[if gt IE 9]><!-->
 <script>
+var body = document.getElementById("body");
+body.className = "";
 if (window.location.hash == '#_=_') window.close();
 <?php
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";

@@ -57,7 +57,7 @@ var radius = 0;
 
 
 
-var body = document.getElementById("body");
+
 
 var ham = document.getElementById("hamburger");
 
@@ -97,10 +97,6 @@ var curMarker = null;
 var bounds;
 var center;
 
-
-
-
-var positionFlag = false;
 
 
 var loadingCount = 0;
@@ -181,11 +177,9 @@ function calcMapRadius(){
 	radius = (toTop < toRight)?toTop:toRight;
 
 	//console.log("Radius: " + radius);
-	if(curPosMarker.getPosition() && bounds.contains(curPosMarker.getPosition())){
-		var showAccuracy = curPosMarker.circle_.getRadius() > radius/3;
-		curPosMarker.circle_.setVisible(showAccuracy);
-	}
-	
+
+	curPosMarker.circle_.setVisible(curPosMarker.circle_.getRadius() > radius/3);
+
 
 	if(radius >= 5000){
 		map.setOptions({ minZoom: map.getZoom()});
@@ -393,10 +387,7 @@ function initialize() {
     google.maps.event.addListenerOnce(curPosMarker, 'position_changed', function() {
 
     	//console.log("Location found");
-    	positionFlag = true;
-
-
-
+ 
     	if(!geocoding){
 			center = this.getPosition();
 	  		map.panTo(center);
@@ -412,7 +403,7 @@ function initialize() {
 
     google.maps.event.addListenerOnce(curPosMarker, 'geolocation_error', function(e) {
     	//console.log("Geolocation error: " + e);
-    	if(!positionFlag && !geocoding){
+    	if(!curPosMarker.getPosition() && !geocoding){
       		alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
       	}
     });
@@ -612,10 +603,10 @@ function loadResources() {
 }
 
 if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) && !modernBrowser) {
-    //alert('Your browser does not support geolocation ;/');	   
-    var str = '<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>';
+   
+    var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/" target="_blank">upgrade your browser</a> to use this website.</p>';
     document.getElementById("browserhappy").innerHTML = str;
-    body.className+= " ie";
+    body.className= "ie";
     clearInterval(timer);
 	timer = 0;
 	timerHolder.textContent = "";
