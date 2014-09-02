@@ -74,7 +74,6 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="header">
-
 <h1 itemprop="name"><?php echo $title; ?></h1>
 <h2><?php echo $subtitle; ?>.</h2>
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
@@ -91,8 +90,7 @@ Copyright &copy; <?php echo date("Y") ?>
 </span>
 </span>
 <div id="timer"><p>&nbsp;</p></div>
-<div id="browserhappy">
-<?php /*
+<div id="browserhappy"><?php /*
 
 LETTER MIX: Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.
 ORIGINAL: You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website. 
@@ -101,8 +99,7 @@ LETTER MIX: JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a hr
 ORIGINAL: JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website. 
 
 
-*/ ?>
-<!--[if lt IE 10]>
+*/ ?><!--[if lt IE 10]>
 <p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>
 <![endif]-->
 <noscript>
@@ -111,14 +108,20 @@ ORIGINAL: JavaScript is <strong>disabled</strong>. <br>Please <a href="http://ww
 </div>
 </div>
 <div id="hamburger" title="Info"><span></span></div>
+<div id="search" class="open" onclick="this.parentNode().className='open'; return false;" title="Search">
+	<form autocomplete="off">
+		<input class="input" placeholder="Type here ..." type="search" value="">
+		<input class="submit" type="submit" value="">
+	</form>
+
+</div>
 <div id="wrap"><div id="map"></div></div>
 </div>
 </div>
 <!--[if gt IE 9]><!-->
 <script>
-var body = document.getElementById("body");
-body.className = "";
-if (window.location.hash == '#_=_') window.close();
+if (window.location.hash == '#_=_'){window.close();}//facebook popup
+var body = document.getElementById("body"); body.className = ""; //remove no-js
 <?php
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
 	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
