@@ -50,16 +50,15 @@ var getDistance = function(p1, p2) {
 
 var radius = 0;
 
+
+var ham = document.getElementById("hamburger");
+
+
+
 // @codekit-prepend "_geocodingmarker.js"
 // @codekit-prepend "_geolocationmarker.js"
 // @codekit-prepend "_photooverlay.js"
-
-
-
-
-
-
-var ham = document.getElementById("hamburger");
+// @codekit-prepend "_search.js"
 
 
 var mSeconds = 0;
@@ -88,6 +87,11 @@ var curPosMarker;
 
 // _geocodingmarker
 var cityMarker;
+
+
+var autocomplete;
+
+
 
 //Overlays
 var markers = [];
@@ -444,6 +448,11 @@ function initialize() {
 	//////////////////////////////////////////////////////////////////////////
 	getImagesFromLocalStorage();
 	//////////////////////////////////////////////////////////////////////////
+
+
+
+	autocomplete = new google.maps.places.AutocompleteService();
+
 
 
 

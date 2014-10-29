@@ -108,11 +108,13 @@ ORIGINAL: JavaScript is <strong>disabled</strong>. <br>Please <a href="http://ww
 </div>
 </div>
 <div id="hamburger" title="Info"><span></span></div>
-<div id="search" class="open" onclick="this.parentNode().className='open'; return false;" title="Search">
-	<form autocomplete="off">
-		<input class="input" placeholder="Type here ..." type="search" value="">
-		<input class="submit" type="submit" value="">
+<div id="search" >
+	<form  id="search_form" autocomplete="off">
+		<input id="s_input" name="city" placeholder="Type location name &hellip;" title="Type location name" type="search" value="">
+		<!-- <span id="s_reset" title="Close"></span> -->
+		<input id="s_submit" type="submit" value="" title="Search">
 	</form>
+	<div id="search_suggestions"></div>
 
 </div>
 <div id="wrap"><div id="map"></div></div>
@@ -132,7 +134,7 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 		echo "var country = '" . $country . "';";
 	}	
 ?></script>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
 <script async type="text/javascript" src="/js/s.min.js"></script>
 <!--<![endif]-->
 </body>
