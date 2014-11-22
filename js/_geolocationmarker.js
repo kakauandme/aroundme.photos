@@ -26,10 +26,8 @@
  * @constructor
  * @extends {google.maps.MVCObject}
  * @param {google.maps.Map=} opt_map
- * @param {(google.maps.MarkerOptions|Object.<string>)=} opt_markerOpts
- * @param {(google.maps.CircleOptions|Object.<string>)=} opt_circleOpts
  */
-function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
+function GeolocationMarker(opt_map) {
 
 
   var markerOpts = {
@@ -37,7 +35,7 @@ function GeolocationMarker(opt_map, opt_markerOpts, opt_circleOpts) {
     'cursor': 'pointer',
     'icon':
     {
-          path: 'M44.3,38.1c-24.2,0-43.8,20-43.8,44.7s19.7,44.8,43.8,44.8s43.8-20.1,43.8-44.8S68.5,38.1,44.3,38.1z M47.9,114.9l-6.5-27.6l-26.8-6.9l53-19.9L47.9,114.9z M74.3,0.5c13.6,0,27.2,5.3,37.6,15.9s15.6,24.5,15.6,38.4h-11.7c0-10.9-4-21.7-12.2-29.9S84.9,12.5,74.2,12.5L74.3,0.5L74.3,0.5z M74.3,35c4.9,0,10,1.9,13.7,5.8c3.8,3.8,5.7,9,5.7,14H106c1.4-11.7-2.6-17.8-9.3-22.9c-6.2-6.3-14.3-9.5-22.5-9.5V35L74.3,35z',
+          path: curIcon,
           fillColor: colors.red,
           fillOpacity: 1,
           scale: 0.7,
@@ -199,6 +197,7 @@ GeolocationMarker.prototype.setMap = function(map) {
     this.accuracy = null;
     this.position = null;
     navigator.geolocation.clearWatch(this.watchId_);
+    google.maps.event.clearInstanceListeners(this.marker_);
     this.watchId_ = -1;
     this.marker_.setMap(map);
   }
@@ -219,6 +218,7 @@ GeolocationMarker.prototype.setCircleOptions = function(circleOpts) {
  * @param {GeolocationPosition} position
  */
 GeolocationMarker.prototype.updatePosition_ = function(position) {
+  
   var newPosition = new google.maps.LatLng(position.coords.latitude,
       position.coords.longitude), mapNotSet = this.marker_.getMap() == null;
 
@@ -237,8 +237,9 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
     // The local set method does not allow accuracy to be updated
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
 
-    var showAccuracy = position.coords.accuracy > radius/3;
-    this.circle_.setVisible(showAccuracy);
+ 
+    this.circle_.setVisible(position.coords.accuracy > radius/3);
+    
     //console.log("Accuracy: " + position.coords.accuracy );
   }
 

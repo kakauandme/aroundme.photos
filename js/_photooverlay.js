@@ -113,11 +113,12 @@ PhotoOverlay.prototype.updateMap = function (m) {
 };
 
 PhotoOverlay.prototype.onRemove = function() {
-	if(this === curMarker)
+	if(this === curMarker){
 		curMarker = null;
-  google.maps.event.clearInstanceListeners(this._marker);
-  this._marker.parentNode.removeChild(this._marker);
-  this._marker = null;
+	}
+	google.maps.event.clearInstanceListeners(this._marker);
+	this._marker.parentNode.removeChild(this._marker);
+	this._marker = null;
 	this._img  = null;
 	this._zoomed = false;
 	this._map  = null;

@@ -3,6 +3,8 @@
 	width: $size
 	height: $size/10
 	background: $green
+	backface-visibility: hidden
+	transform-style: preserve-3d
 	border-radius: 0.1em
 
 
@@ -48,9 +50,11 @@
 	top: $size 
 	right: 0
 	line-height: 0
+	backface-visibility: hidden
+	transform-style: preserve-3d
 	transform: translate3d(99%, 0, 0)
 
-	padding: ($size - 1em) 1em
+	padding: 2.5em 1em
 	cursor: pointer
 	user-select: none
 	background-color: $grey

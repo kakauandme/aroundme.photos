@@ -4,8 +4,6 @@ $title = 'Around me photos';
 
 ?>
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="ie"> <![endif]-->
-<!--[if gt IE 8]><!--> <html> <!--<![endif]-->
 <html lang="en">
 <head>
 	<meta charset="utf-8">
@@ -47,21 +45,11 @@ $title = 'Around me photos';
 <body id="body" class="no-js" itemscope itemtype="http://schema.org/Website">
 	<div id="container">
 		<div id="pusher">
-			<div id="c">				
-				<span>
-					<span id="browserhappy">
-						<!--[if lt IE 9]>
-							<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>
-						<![endif]-->
-						<noscript>
-							<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
-						</noscript>
-					</span>
-				</span>				
+			<div id="c">		
 				<span>
 					<span id="header">
 						<h1 itemprop="name"><?php echo $title; ?></h1>
-						<h2>404 Page not found :(</h2>
+						<h2>Page not found :(</h2>
 					</span>
 				</span>		    	
 				<span>
@@ -69,7 +57,7 @@ $title = 'Around me photos';
 						<p>
 							<a href="mailto:kirill@studiothick.com?subject=aroundme.photos">@kakauandme</a>
 							from
-							<a href="//www.studiothick.com.au/" title="Studio Thick" target="_blank">Thick</a>
+							<a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>
 							Copyright &copy; <?php echo date("Y") ?>
 						</p>
 					</span>

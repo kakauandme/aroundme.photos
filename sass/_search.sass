@@ -1,0 +1,151 @@
+#search
+	position: absolute
+	top: $size * 4
+	right: 0	
+	backface-visibility: hidden
+	transform-style: preserve-3d
+	transform: translate3d(99%, 0, 0)
+
+	transition: width $transition ease-out
+	z-index: $z-hamburger
+	overflow: hidden
+	width: $size + 2
+	form 
+		height: $size + 2
+		line-height: 0
+		position: relative
+
+	input
+		-webkit-appearance: none
+		border: none
+		outline: none
+		border-radius: 0
+		margin: 0
+		position: absolute
+		top: 0
+	#s_input
+		display: block
+		left: 0			
+		width: 100%
+		cursor: auto
+		box-sizing: border-box
+		font:
+			size: 1em
+			weight: normal
+			family: R, sans-serif
+		line-height: 1.7em
+		height: 100%
+		padding:
+			left: 1em
+		color: $yellow
+		vertical-align: middle	
+		background-color: $grey
+		&::placeholder
+			color: $light-grey
+			vertical-align: top
+		&::-webkit-search-cancel-button
+			-webkit-appearance: none
+	// #s_reset
+	// 	position: absolute
+	// 	top: 0
+	// 	width: $size + 2
+	// 	height: 100%
+	// 	display: block		
+	// 	right: $size + 2
+	// 	padding: 0
+	// 	cursor: pointer
+	// 	font-size: 1em
+	// 	user-select: none
+	// 	&:after
+	// 		content: ""
+	// 		position: absolute
+	// 		top: ($size + 2) /2 - 0.85
+	// 		left: ($size + 2) /2 - 0.85
+	// 		width: 1.7em
+	// 		height: 1.7em
+	// 		transform: rotate(45deg)
+	// 		transition: all $transition ease
+	// 		border-radius: 50%
+	// 		background:
+	// 			color: $purple
+	// 			image: url(../img/close.png)
+	// 			repeat: no-repeat
+	// 			position: center center
+	// 			size: cover
+
+		//border-radius: 50%
+		
+		// &:hover
+		// 	&:after
+		// 		background:
+		// 			color: $red
+		// 		transform: rotate(-135deg)
+
+		
+
+	#s_submit
+		width: $size + 2
+		height: 100%
+		display: block		
+		right: 0
+		padding: 0
+		cursor: pointer
+		font-size: 1em
+		user-select: none
+		background:
+			color: $grey
+			image: url(../img/magnifier.svg)
+			position: center center
+			size: $size $size
+			repeat: no-repeat
+		transform: rotate(0deg)
+		transition: 
+			property: transform, -webkit-transform
+			timing-function: ease
+			duration: $transition	
+		
+	&.open
+		+breakpoint(mouse)
+			width: $size * 7
+		+breakpoint(kitten)
+			width: $size * 10
+		+breakpoint(horse)
+			width: $size * 14
+		+breakpoint(elephant)
+			width: $size * 16
+
+		transform: translate3d(100%, 0, 0)
+		#s_input
+			padding:
+				right: 3 * $size
+	&.empty
+		#s_submit
+			background:
+				image: url(../img/close.svg)
+				size: 90%
+			transform: rotate(135deg)
+	&.noresults
+		#s_input
+			background:
+				color: $red
+		#s_submit
+			background:
+				color: $red
+
+#search_suggestions
+	background-color: $purple
+	> p
+		padding: 1em
+		margin-bottom: 0
+		cursor: pointer
+		strong
+			color: $yellow
+		&:hover
+			background-color: $yellow
+			strong
+				color: $grey
+		&.selected
+			background-color: darken($yellow, 5%)
+			strong
+				color: $grey
+

@@ -5,6 +5,7 @@
 	cursor: pointer
 	perspective: 1000
 	backface-visibility: hidden
+	transform-style: preserve-3d
 	transform: scale(0.2)
 	outline: 1em solid rgba(255,255,255, 0.75)
 	z-index: $z-marker
@@ -12,7 +13,7 @@
 	user-select: none
 	transition: 
 		property: transform, -webkit-transform
-		timing-function: easecome
+		timing-function: ease
 		duration: $transition		
 	&.loaded
 		visibility: visible

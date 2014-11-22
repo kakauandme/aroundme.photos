@@ -1,16 +1,12 @@
 <?php
-$title = 'Around me photos';
-$subtitle = 'Explore social activity next to you';
-$description = 'Checkout real-time updates on a map and discover what is happening in your area.';
-$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's around you with Around me photos.";
-?>
-<!DOCTYPE html>
+include_once("config.php");
+?><!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui" />
-<title><?php echo $title . " | " . $subtitle; ?></title>
+<title><?php echo $pageTitle; ?></title>
 <?php /*SEO */ ?>
 <meta name="description" content="<?php echo $SEO; ?>">
 <?php /*CSS */ ?>
@@ -24,32 +20,32 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="apple-touch-startup-image" href="/apple-startup-image.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="<?php echo $title; ?>">
+<meta name="apple-mobile-web-app-title" content="<?php echo $siteName; ?>">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <?php /*Android */ ?>
 <meta name="mobile-web-app-capable" content="yes">
 <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
 <?php /*MS Tiles */ ?>
-<meta name="application-name" content="<?php echo $title; ?>"/>
+<meta name="application-name" content="<?php echo $siteName; ?>"/>
 <meta name="msapplication-config" content="browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#1a75cf">
 <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 <?php /*Twitter cards */ ?>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kakauandme">
-<meta name="twitter:title" content="<?php echo $title . " - " . $subtitle; ?>">
+<meta name="twitter:title" content="<?php echo $twitterTitle; ?>">
 <meta name="twitter:description" content="<?php echo $description; ?>">
-<meta name="twitter:image:src" content="http://aroundme.photos/img/screenshot_sml.png">
+<meta name="twitter:image:src" content="<?php echo $baseURL; ?>/img/screenshot_sml.png">
 <?php /*Facebook OG */ ?>
-<meta property="og:title" content="<?php echo $subtitle; ?>" />
-<meta property="og:site_name" content="<?php echo $title; ?>"/>
-<meta property="og:url" content="http://aroundme.photos/" />
+<meta property="og:title" content="<?php echo $socialTitle; ?>" />
+<meta property="og:site_name" content="<?php echo $siteName; ?>"/>
+<meta property="og:url" content="<?php echo $baseURL; ?>" />
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="fb:app_id" content="587080064742659" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="http://aroundme.photos/img/screenshot_lrg.png" />
+<meta property="og:image" content="<?php echo $baseURL; ?>/img/screenshot_lrg.png" />
 <?php /*Google+ Schema.org microdata */ ?>
-<meta itemprop="image" content="http://aroundme.photos/img/screenshot_lrg.png">
+<meta itemprop="image" content="<?php echo $baseURL; ?>/img/screenshot_lrg.png">
 </head>
 <body id="body" class="no-js" itemscope itemtype="http://schema.org/Website">
 <div id="container">
@@ -58,12 +54,13 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span>
 <span id="social">
 <p>&nbsp;
-<a href="https://twitter.com/share?url=http://aroundme.photos/&hashtags=aroundmephotos&text=<?php echo $subtitle; ?>" target="_blank" title="Tweet">
+<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Checkout real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
 <?php include("img/twitter.svg"); ?>
-</a>
-<a href="https://plus.google.com/share?url=http://aroundme.photos/" target="_blank" title="Share on Google+">
+</a><?php /*
+<a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
 <?php include("img/google-plus.svg"); ?>
 </a>
+<<<<<<< HEAD
 <a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=http://aroundme.photos/&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
 <?php include("img/facebook.svg"); ?>
 </a>
@@ -72,13 +69,26 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <?php include("img/github.svg"); ?>
 </a>
 */ ?>
+=======
+*/ ?><a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=##URL##&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href.replace('##URL##', document.URL), 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
+<?php include("img/facebook.svg"); ?>
+</a><a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
+<?php include("img/github.svg"); ?>
+</a>
+
+>>>>>>> search-feature
 </p>
 </span>
 </span>
 <span>
 <span id="header">
+<<<<<<< HEAD
 <h1 itemprop="name"><?php echo $title; ?></h1>
 <h2><?php echo $subtitle; ?>.</h2>
+=======
+<h1 itemprop="name" id="title"><?php echo $title; ?></h1>
+<h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
+>>>>>>> search-feature
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
 </span>
 </span>
@@ -87,7 +97,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <p>
 <a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
 from
-<a href="//www.studiothick.com.au/" title="Studio Thick" target="_blank">Thick</a>
+<a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>
 Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
@@ -95,25 +105,40 @@ Copyright &copy; <?php echo date("Y") ?>
 <div id="timer"><p>&nbsp;</p></div>
 <div id="browserhappy">
 <!--[if lt IE 10]>
-<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/" target="_blank">upgrade your browser</a> to use this website.</p>
+<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
 <![endif]-->
 <noscript>
-<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
+<p>JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.</p>
 </noscript>
 </div>
 </div>
 <div id="hamburger" title="Info"><span></span></div>
+<div id="search" >
+<form  id="search_form" autocomplete="off">
+<input id="s_input" name="city" placeholder="Type location name &hellip;" title="Type location name" type="search" value="">
+<input id="s_submit" type="submit" value="" title="Search">
+</form>
+<div id="search_suggestions"></div>
+</div>
 <div id="wrap"><div id="map"></div></div>
 </div>
 </div>
 <!--[if gt IE 9]><!-->
 <script>
-if (window.location.hash == '#_=_') window.close();
+if (window.location.hash == '#_=_'){window.close();}//facebook popup
+var body = document.getElementById("body"); body.className = ""; //remove no-js
 <?php
-	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";   
+	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
+	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
+	if($cityExists){
+		echo "var city = '" . $city  . "';";	
+	}
+	if($countryExists){
+		echo "var country = '" . $country . "';";
+	}	
 ?></script>
-<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4"></script>
-<script async type="text/javascript" src="/js/s.min.js"></script>
+<script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
+<script async type="text/javascript" src="/js/s.min.js?searchcomplete=1"></script>
 <!--<![endif]-->
 </body>
 </html>

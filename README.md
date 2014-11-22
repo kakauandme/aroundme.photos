@@ -24,4 +24,5 @@ Checkout real-time updates in your area and discover what is happening.
 * [Circle Hover Effects with CSS Transitions](http://tympanus.net/codrops/2012/08/08/circle-hover-effects-with-css-transitions/)
 * [Bounce.js](http://bouncejs.com/)
 * [Animation.css](http://daneden.github.io/animate.css/)
+* [Expanding search bar deconstructed](http://tympanus.net/codrops/2013/06/26/expanding-search-bar-deconstructed/)
 
