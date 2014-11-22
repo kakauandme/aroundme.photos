@@ -60,35 +60,19 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
 <?php include("img/google-plus.svg"); ?>
 </a>
-<<<<<<< HEAD
-<a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=http://aroundme.photos/&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
-<?php include("img/facebook.svg"); ?>
-</a>
-<?php /*
-<a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
-<?php include("img/github.svg"); ?>
-</a>
-*/ ?>
-=======
 */ ?><a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=##URL##&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href.replace('##URL##', document.URL), 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
 <?php include("img/facebook.svg"); ?>
 </a><a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
 <?php include("img/github.svg"); ?>
 </a>
-
->>>>>>> search-feature
 </p>
 </span>
 </span>
 <span>
 <span id="header">
-<<<<<<< HEAD
-<h1 itemprop="name"><?php echo $title; ?></h1>
-<h2><?php echo $subtitle; ?>.</h2>
-=======
+
 <h1 itemprop="name" id="title"><?php echo $title; ?></h1>
 <h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
->>>>>>> search-feature
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
 </span>
 </span>
