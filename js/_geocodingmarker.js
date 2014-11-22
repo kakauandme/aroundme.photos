@@ -1,5 +1,5 @@
 
-function GeocodingMarker(opt_map, curCity, curCountry) { 
+function GeocodingMarker(opt_map) { 
 
 
   
@@ -8,19 +8,9 @@ function GeocodingMarker(opt_map, curCity, curCountry) {
    * @expose
    * @type {google.maps.LatLng?}
    */
-  this.position = null;
+  this.position =  null;
 
-  /**
-   * @expose
-   * @type {string?}
-   */
-  this.city = curCity || null;
 
-  /**
-   * @expose
-   * @type {string?}
-   */
-  this.country = curCountry || null;
 
   /**
    * @expose
@@ -52,7 +42,7 @@ function GeocodingMarker(opt_map, curCity, curCountry) {
 
     'optimized': true, 
     'position': new google.maps.LatLng(0, 0),
-    'title': this.city,
+    //'title': this.address,
     'zIndex': 2
   };
 
@@ -114,15 +104,6 @@ GeocodingMarker.prototype.getBounds = function() {
    return this.bounds;
 };
 
-/** @return {string?} */
-GeocodingMarker.prototype.getCountry = function() {
-   return this.country;
-};
-
-/** @return {string?} */
-GeocodingMarker.prototype.getCity = function() {
-   return this.country;
-};
 
 
 
@@ -131,57 +112,76 @@ GeocodingMarker.prototype.getCity = function() {
 GeocodingMarker.prototype.setMap = function(map) {
   this.map = map;
   this.notify('map');
-  if (map && this.city) {
-    this.updatePosition_();//////////////////////////////////////////
-  } else {
+
+  if (!map){
     this.marker_.unbind('position');
     this.position = null;
     this.bounds = null;
+    google.maps.event.clearInstanceListeners(this.marker_);
     this.marker_.setMap(map);
   }
 };
 
+
+/** @param {google.maps.MarkerOptions|Object.<string>} markerOpts */
+GeolocationMarker.prototype.setMarkerOptions = function(markerOpts) {
+  this.marker_.setOptions(this.copyOptions_({}, markerOpts));
+};
 
 
 /**
  * @private 
  * @return {undefined}
  */
-GeocodingMarker.prototype.updatePosition_ = function() {
+GeocodingMarker.prototype.updatePosition_= function(_place) {
 
+
+  var newPosition = _place.geometry.location , 
+
+  mapNotSet = this.marker_.getMap() == null;
+
+  if(mapNotSet) {    
+    this.marker_.setMap(this.map);
+    this.marker_.bindTo('position', this);  
+  }
+
+  if (mapNotSet || this.position == null || !this.position.equals(newPosition)) {
   
-  var self = this;
-  var geocoder = new google.maps.Geocoder();
 
+    this.bounds = _place.geometry.viewport;
+    this.marker_.setTitle(_place.formatted_address);
+    // The local set method does not allow position to be updated
+    google.maps.MVCObject.prototype.set.call(this, 'position', newPosition);
+  }
 
-  geocoder.geocode( { 'address': this.city  + (this.country?(", " + this.country):"")}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      var newPosition = results[0].geometry.location , mapNotSet = self.marker_.getMap() == null;
-      if(mapNotSet) {    
-        self.marker_.setMap(self.map);
-        self.marker_.bindTo('position', self);
-      
-      }
-
-      if (mapNotSet || self.position == null || !self.position.equals(newPosition)) {
-      
-
-        self.bounds = results[0].geometry.viewport;
-
-        self.marker_.setTitle(results[0].formatted_address);
-        // The local set method does not allow position to be updated
-        google.maps.MVCObject.prototype.set.call(self, 'position', newPosition);
-      }
+};
 
 
 
-
-
-    } else {
-      google.maps.event.trigger(self, "geocoding_error", status); 
+/**
+ * @private
+ * @param {Object.<string,*>} target
+ * @param {Object.<string,*>} source
+ * @return {Object.<string,*>}
+ */
+GeolocationMarker.prototype.copyOptions_ = function(target, source) {
+  for(var opt in source) {
+    if(GeolocationMarker.DISALLOWED_OPTIONS[opt] !== true) {
+      target[opt] = source[opt];
     }
-  });
+  }
+  return target;
+};
 
+
+/**
+ * @const
+ * @type {Object.<string, boolean>}
+ */
+GeolocationMarker.DISALLOWED_OPTIONS = {
+  'map': true,
+  'position': true,
+  'radius': true
 };
 
 

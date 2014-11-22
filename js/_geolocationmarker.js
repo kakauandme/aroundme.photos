@@ -197,6 +197,7 @@ GeolocationMarker.prototype.setMap = function(map) {
     this.accuracy = null;
     this.position = null;
     navigator.geolocation.clearWatch(this.watchId_);
+    google.maps.event.clearInstanceListeners(this.marker_);
     this.watchId_ = -1;
     this.marker_.setMap(map);
   }
@@ -217,6 +218,7 @@ GeolocationMarker.prototype.setCircleOptions = function(circleOpts) {
  * @param {GeolocationPosition} position
  */
 GeolocationMarker.prototype.updatePosition_ = function(position) {
+  
   var newPosition = new google.maps.LatLng(position.coords.latitude,
       position.coords.longitude), mapNotSet = this.marker_.getMap() == null;
 

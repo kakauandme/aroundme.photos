@@ -84,10 +84,20 @@
         line-height: normal
     .cur-position-control
         cursor: pointer
-        width: 13px
-        height: 13px
+        width: 1.7rem
+        height: 1.7rem
+        margin-bottom: 1.7em
+        margin-right: 1.7em
+        border-radius: 50%
+        background: 
+            color: $red
+            image: url(../img/location.png) 
+            size: 75%
+            repeat: no-repeat
+            position: center center
+        box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28)
         line-height: 0
         user-select: none
-        img
-            width: 13px
-            height: 13px
+        &:hover
+            box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32)
+            transition: box-shadow 150ms cubic-bezier(0,0,.2,1)

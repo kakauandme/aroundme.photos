@@ -108,7 +108,7 @@ var loadingCount = 0;
 
 function increment(){
 	if(++loadingCount === 1){
-		ham.title="Loading ..."
+		ham.title="Loading ...";
 		ham.className = "loading";
 	}
 
@@ -117,7 +117,7 @@ function increment(){
 
 function decrement(){
 	if(--loadingCount === 0){
-		ham.title="Info"
+		ham.title="Info";
 		ham.className = "";
 		//loadingCount = 0;
 	}
@@ -334,46 +334,46 @@ function initialize() {
 	map = new google.maps.Map(document.getElementById("map"),mapOptions);
 
 
+	cityMarker = new GeocodingMarker(map);
+	google.maps.event.addListener(cityMarker, 'position_changed', function() {
+
+		//	console.log("City changed");
+
+		center = this.getPosition();
+	  	map.setCenter(center);
+	  	var cityBounds = this.getBounds();
+		var ne = cityBounds.getNorthEast();
+		var sw = cityBounds.getSouthWest();
+
+		var dist = getDistance(ne, sw );			
+		if(dist/2 < 5000){
+	  		map.fitBounds(cityBounds);
+	  	}
+		  
+
+	});
+
+    google.maps.event.addListener(cityMarker.getPin(), 'click', function() {
+		map.panTo(cityMarker.getPosition());
+		//console.log("Move to my location");
+
+	});
 
 	if(geocoding){
-		cityMarker = new GeocodingMarker(map, city, (typeof country !== "undefined")?country:null);
+		var address = city;
+		if(typeof country !== "undefined" && country.length !== 0){
+			address+=", " + country;
+		}
 
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode( { 'address': address}, function(results, status) {
+			if (status === google.maps.GeocoderStatus.OK) {
+				cityMarker.updatePosition_(results[0]);
 
-		google.maps.event.addListenerOnce(cityMarker, 'position_changed', function() {
-
-    		//	console.log("City changed");
-	    	
-
-	    
-			center = this.getPosition();
-		  	map.setCenter(center);
-
-		  	var cityBounds = this.getBounds();
-			var ne = cityBounds.getNorthEast();
-
-			var sw = cityBounds.getSouthWest();;
-
-
-
-			var dist = getDistance(ne, sw );			
-			if(dist/2 < 5000){
-		  		map.fitBounds(cityBounds);
-		  	}
-		  
-
-	    });
-	    google.maps.event.addListenerOnce(cityMarker, 'geocoding_error', function() {
-
-    		//	console.log("City changed");
-
-	    	window.location.href =  "/404.php";
-		  
-
-	    });
-
-
-
-
+			} else {
+				window.location.href =  "/404.php";
+			}
+		});
 	}
 	
 
@@ -396,7 +396,6 @@ function initialize() {
 			center = this.getPosition();
 	  		map.panTo(center);
 	  	}
-
 
 	  	localStorage.lat = this.getPosition().lat();
 		localStorage.lng = this.getPosition().lng();
@@ -425,15 +424,6 @@ function initialize() {
 	controlUI.title = 'Pan to my location';
 
 	controlDiv.appendChild(controlUI);
-
-
-	var img = new Image();
-	img.src = "/img/location.png";
-	img.alt = "Pan to my location";
-	img.width = 26;
-	img.height = 26;
-	controlUI.appendChild(img);
-
 
 	map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
 
@@ -572,7 +562,7 @@ function initialize() {
 
 ham.addEventListener("click", function(){
 
-	if(ham.className.length != 0){
+	if(ham.className.length !== 0){
 		return;
 	}
 
@@ -581,9 +571,11 @@ ham.addEventListener("click", function(){
 	if(regnav.test(body.className)){
 			body.className = body.className.replace(regnav,'');
 			ham.title="Info";
+
 	} else{
 		body.className += " nav";
 		ham.title="Close";
+
 	}
 });
 
@@ -613,7 +605,7 @@ function loadResources() {
 
 if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) && !modernBrowser) {
    
-    var str = '<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/" target="_blank">upgrade your browser</a> to use this website.</p>';
+    var str = '<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>';
     document.getElementById("browserhappy").innerHTML = str;
     body.className= "ie";
     clearInterval(timer);

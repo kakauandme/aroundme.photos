@@ -1,7 +1,6 @@
 <?php
 include_once("config.php");
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
 <head>
@@ -55,27 +54,25 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span>
 <span id="social">
 <p>&nbsp;
-<a href="https://twitter.com/share?url=<?php echo $URL; ?>&hashtags=aroundmephotos&text=<?php echo $socialTitle; ?>" target="_blank" title="Tweet">
+<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Checkout real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
 <?php include("img/twitter.svg"); ?>
-</a>
+</a><?php /*
 <a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
 <?php include("img/google-plus.svg"); ?>
 </a>
-<a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=<?php echo $URL; ?>&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
+*/ ?><a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=##URL##&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href.replace('##URL##', document.URL), 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
 <?php include("img/facebook.svg"); ?>
-</a>
-<?php /*
-<a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
+</a><a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
 <?php include("img/github.svg"); ?>
 </a>
-*/ ?>
+
 </p>
 </span>
 </span>
 <span>
 <span id="header">
-<h1 itemprop="name"><?php echo $title; ?></h1>
-<h2><?php echo $subtitle; ?>.</h2>
+<h1 itemprop="name" id="title"><?php echo $title; ?></h1>
+<h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
 </span>
 </span>
@@ -90,32 +87,22 @@ Copyright &copy; <?php echo date("Y") ?>
 </span>
 </span>
 <div id="timer"><p>&nbsp;</p></div>
-<div id="browserhappy"><?php /*
-
-LETTER MIX: Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.
-ORIGINAL: You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website. 
-
-LETTER MIX: JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.
-ORIGINAL: JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website. 
-
-
-*/ ?><!--[if lt IE 10]>
-<p>You are using an <strong>outdated</strong> browser. <br>Please <a href="http://www.google.com/chrome/browser/"  target="_blank">upgrade your browser</a> to use this website.</p>
+<div id="browserhappy">
+<!--[if lt IE 10]>
+<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
 <![endif]-->
 <noscript>
-<p>JavaScript is <strong>disabled</strong>. <br>Please <a href="http://www.enable-javascript.com/" target="_blank">enable it in browser settings</a> to use this website.</p>
+<p>JаvаSсrіpt іs <strong>dіsаbled</strong>. <br>Рlеаsе <a href="http://www.enable-javascript.com/" target="_blank">еnаblе іt іn brоwsеr sеttіngs</a> tо usе thіs wеbsіtе.</p>
 </noscript>
 </div>
 </div>
 <div id="hamburger" title="Info"><span></span></div>
 <div id="search" >
-	<form  id="search_form" autocomplete="off">
-		<input id="s_input" name="city" placeholder="Type location name &hellip;" title="Type location name" type="search" value="">
-		<!-- <span id="s_reset" title="Close"></span> -->
-		<input id="s_submit" type="submit" value="" title="Search">
-	</form>
-	<div id="search_suggestions"></div>
-
+<form  id="search_form" autocomplete="off">
+<input id="s_input" name="city" placeholder="Type location name &hellip;" title="Type location name" type="search" value="">
+<input id="s_submit" type="submit" value="" title="Search">
+</form>
+<div id="search_suggestions"></div>
 </div>
 <div id="wrap"><div id="map"></div></div>
 </div>
