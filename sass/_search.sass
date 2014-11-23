@@ -26,6 +26,8 @@
 		width: 100%
 		cursor: auto
 		box-sizing: border-box
+		backface-visibility: hidden
+		transform-style: preserve-3d
 		font:
 			size: 1em
 			weight: normal
@@ -64,16 +66,19 @@
 			left: 0
 			backface-visibility: hidden
 			transform-style: preserve-3d
+			border-radius: 50%
 			background:
+				color: $purple
 				image: url(../img/magnifier.svg)
 				position: center center
 				size: $size $size
 				repeat: no-repeat
 			transform: rotate(0deg)
 			transition: 
-				property: transform, -webkit-transform
-				timing-function: ease
-				duration: $transition	
+				property: transform, -webkit-transform, background
+				timing-function: ease,ease, linear
+				duration: $transition, $transition, 0
+				delay: 0,0, $transition/2
 		
 	&.open
 		+breakpoint(mouse)
@@ -85,7 +90,7 @@
 		+breakpoint(elephant)
 			width: $size * 16
 
-		transform: translate3d(100%, 0, 0)
+		//transform: translate3d(100%, 0, 0)
 		#s_input
 			padding:
 				right: 3 * $size

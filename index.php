@@ -98,9 +98,9 @@ Copyright &copy; <?php echo date("Y") ?>
 </div>
 <div id="hamburger" title="Info"><span></span></div>
 <div id="search" >
-<form  id="search_form">
-<input id="s_input" autocomplete="off" name="city" placeholder="Type location name &hellip;" title="Type location name" type="search" value="">
-<span  id="s_submit" title="Search"></span>
+<form  id="search_form" autocomplete="off">
+<input tabindex="0" id="s_input" autocomplete="off" name="city" placeholder="Type location name &hellip;" title="Type location name" type="text" value="">
+<span tabindex="1" id="s_submit" title="Search"></span>
 </form>
 <div id="search_suggestions"></div>
 </div>
@@ -122,7 +122,7 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 	}	
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
-<script async type="text/javascript" src="/js/s.min.js?searchcomplete=2"></script>
+<script async type="text/javascript" src="/js/s.min.js?searchcomplete=4"></script>
 <!--<![endif]-->
 </body>
 </html>

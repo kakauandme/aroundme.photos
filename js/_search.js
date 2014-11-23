@@ -37,6 +37,7 @@ function resetInput(){
   	selected_segesstion=-1;
   	search_suggestions.innerHTML="";
   	s_submit.title = "Search";
+  	s_submit.focus();
 
   	setTimeout(function(){
 		s_input.value = "";
@@ -109,11 +110,10 @@ function selectSugestion(){
 
 function displaySuggestion(){
 	if(search.className.length === 0){//open
-		search.className = "open empty";
+		s_input.focus();
 		selected_segesstion = -1;
 		s_submit.title = "Close";
-		setTimeout(function(){s_input.focus();},600);
-		
+		search.className = "open empty";		
 
 
 	}else if(s_input.value.length === 0){//close
