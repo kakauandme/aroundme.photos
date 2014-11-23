@@ -16,6 +16,7 @@ Checkout real-time updates in your area and discover what is happening.
 * [Thick recources](http://www.studiothick.com.au/)
 * [Instagram API](http://instagram.com/developer/)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
+* [Google Places API](https://developers.google.com/places/documentation/)
 * [Navicon Transformicons](http://sarasoueidan.com/blog/navicon-transformicons/)
 * [Transitions for Off-Canvas Navigations](http://tympanus.net/codrops/2013/08/28/transitions-for-off-canvas-navigations/)
 * [Points Of Interest](http://codyhouse.co/gem/points-of-interest/)
