@@ -112,7 +112,8 @@ function displaySuggestion(){
 		search.className = "open empty";
 		selected_segesstion = -1;
 		s_submit.title = "Close";
-		s_input.focus();
+		setTimeout(function(){s_input.focus();},600);
+		
 
 
 	}else if(s_input.value.length === 0){//close
@@ -178,7 +179,12 @@ form.addEventListener("submit", function(e){
 
 });
 
+s_submit.addEventListener("click", function(){	
 
+	
+	displaySuggestion();
+
+});
 
 s_input.addEventListener("keypress", function (e) {
 	//console.log("keypress" + e.keyCode);

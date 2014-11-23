@@ -4,8 +4,7 @@
 	right: 0	
 	backface-visibility: hidden
 	transform-style: preserve-3d
-	transform: translate3d(99%, 0, 0)
-
+	transform: translate3d(99.9%, 0, 0)
 	transition: width $transition ease-out
 	z-index: $z-hamburger
 	overflow: hidden
@@ -14,8 +13,7 @@
 		height: $size + 2
 		line-height: 0
 		position: relative
-
-	input
+	#s_input
 		-webkit-appearance: none
 		border: none
 		outline: none
@@ -23,7 +21,6 @@
 		margin: 0
 		position: absolute
 		top: 0
-	#s_input
 		display: block
 		left: 0			
 		width: 100%
@@ -39,51 +36,15 @@
 			left: 1em
 		color: $yellow
 		vertical-align: middle	
-		background-color: $grey
+		background-color: $purple
 		&::placeholder
-			color: $light-grey
+			color: $dark-purple
 			vertical-align: top
 		&::-webkit-search-cancel-button
 			-webkit-appearance: none
-	// #s_reset
-	// 	position: absolute
-	// 	top: 0
-	// 	width: $size + 2
-	// 	height: 100%
-	// 	display: block		
-	// 	right: $size + 2
-	// 	padding: 0
-	// 	cursor: pointer
-	// 	font-size: 1em
-	// 	user-select: none
-	// 	&:after
-	// 		content: ""
-	// 		position: absolute
-	// 		top: ($size + 2) /2 - 0.85
-	// 		left: ($size + 2) /2 - 0.85
-	// 		width: 1.7em
-	// 		height: 1.7em
-	// 		transform: rotate(45deg)
-	// 		transition: all $transition ease
-	// 		border-radius: 50%
-	// 		background:
-	// 			color: $purple
-	// 			image: url(../img/close.png)
-	// 			repeat: no-repeat
-	// 			position: center center
-	// 			size: cover
-
-		//border-radius: 50%
-		
-		// &:hover
-		// 	&:after
-		// 		background:
-		// 			color: $red
-		// 		transform: rotate(-135deg)
-
-		
-
 	#s_submit
+		position: absolute
+		display: block
 		width: $size + 2
 		height: 100%
 		display: block		
@@ -93,16 +54,26 @@
 		font-size: 1em
 		user-select: none
 		background:
-			color: $grey
-			image: url(../img/magnifier.svg)
-			position: center center
-			size: $size $size
-			repeat: no-repeat
-		transform: rotate(0deg)
-		transition: 
-			property: transform, -webkit-transform
-			timing-function: ease
-			duration: $transition	
+			color: $purple
+		&:before
+			position: absolute
+			content: ""
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+			backface-visibility: hidden
+			transform-style: preserve-3d
+			background:
+				image: url(../img/magnifier.svg)
+				position: center center
+				size: $size $size
+				repeat: no-repeat
+			transform: rotate(0deg)
+			transition: 
+				property: transform, -webkit-transform
+				timing-function: ease
+				duration: $transition	
 		
 	&.open
 		+breakpoint(mouse)
@@ -120,10 +91,11 @@
 				right: 3 * $size
 	&.empty
 		#s_submit
-			background:
-				image: url(../img/close.svg)
-				size: 90%
-			transform: rotate(135deg)
+			&:before
+				background:
+					image: url(../img/close.svg)
+					size: 90%
+				transform: rotate(45deg)
 	&.noresults
 		#s_input
 			background:
@@ -133,7 +105,7 @@
 				color: $red
 
 #search_suggestions
-	background-color: $purple
+	background-color: $dark-purple
 	> p
 		padding: 1em
 		margin-bottom: 0
