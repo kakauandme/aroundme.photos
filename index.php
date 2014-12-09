@@ -115,11 +115,11 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
 	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
 	if($cityExists){
-		echo "var city = '" . $city  . "';";	
+		echo "var city = '" . $city  . "';";
 	}
 	if($countryExists){
 		echo "var country = '" . $country . "';";
-	}	
+	}
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
 <script async type="text/javascript" src="/js/s.min.js?searchcomplete=4"></script>

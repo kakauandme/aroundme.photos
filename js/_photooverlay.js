@@ -149,7 +149,7 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 
-	if(curMarker !== null){
+	if(curMarker !== null){// marker is zoomed in
 
 		var tmpMarker = curMarker._marker;
 		tmpMarker.className = "marker loaded zoom";
@@ -162,12 +162,14 @@ PhotoOverlay.prototype.zoom = function() {
 	}
 
 
-	if(curMarker !== this){
+	if(curMarker !== this){// unzoomed marker is clicked
 		
 		//container.className = container.className.replace(new RegExp('(\\s|^)unzoomed(\\s|$)'),'zoomed');
 		var marker = this._marker;
 	
 		marker.className += " zoom zoomed";
+
+		ga('send', 'event', 'Photo', 'Zoomed');
 
 		if(!this._zoomed){
 			this._zoomed = true;
@@ -214,6 +216,7 @@ PhotoOverlay.prototype.zoom = function() {
 			i.onclick = function(event) { 
 				event.stopPropagation();
 				if(this.className.length === 4){ // check if info
+					ga('send', 'event', 'Photo', 'Details showed');
 					this.title="Hide info";
 					this.className += " close";
 					this.parentNode.parentNode.className += " detailed"; 

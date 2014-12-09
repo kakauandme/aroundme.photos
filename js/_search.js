@@ -110,6 +110,7 @@ function selectSugestion(){
 
 function displaySuggestion(){
 	if(search.className.length === 0){//open
+		ga('send', 'event', 'Interface', 'Search');
 		s_input.focus();
 		selected_segesstion = -1;
 		s_submit.title = "Close";
@@ -151,6 +152,10 @@ function displaySuggestion(){
 			      	_url += "/" + place.name.toLowerCase().replace(" ", "-");
 
 			      	history.replaceState({}, document.title, _url);
+			      	ga('send', 'pageview', {
+					  'page': _url,
+					  'title': document.title
+					});
 			      	resetInput();
 			      
 			    }else{

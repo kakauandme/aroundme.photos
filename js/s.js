@@ -355,6 +355,7 @@ function initialize() {
 
     google.maps.event.addListener(cityMarker.getPin(), 'click', function() {
 		map.panTo(cityMarker.getPosition());
+		ga('send', 'event', 'Interface', 'City location marker');
 		//console.log("Move to my location");
 
 	});
@@ -384,6 +385,7 @@ function initialize() {
 
 	google.maps.event.addListener(curPosMarker.getPin(), 'click', function() {
 		map.panTo(curPosMarker.getPosition());
+		ga('send', 'event', 'Interface', 'Current location marker');
 		//console.log("Move to my location");
 
 	});
@@ -430,6 +432,7 @@ function initialize() {
 
 	google.maps.event.addDomListener(controlUI, 'click', function() {
 		map.panTo(curPosMarker.getPosition());
+		ga('send', 'event', 'Interface', 'Current location button');
 		//console.log("Move to my location");
 	});
 
@@ -575,6 +578,7 @@ ham.addEventListener("click", function(){
 	} else{
 		body.className += " nav";
 		ham.title="Close";
+		ga('send', 'event', 'Interface', 'Hamburger');
 
 	}
 });
