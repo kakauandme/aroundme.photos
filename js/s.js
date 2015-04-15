@@ -590,7 +590,7 @@ function loadResources() {
 			
 	//CSS
 	var stylesheet = document.createElement('link');
-	stylesheet.href = '/css/footer.css';
+	stylesheet.href = '/css/footer.css?newmobilelayout=1';
 	stylesheet.rel = 'stylesheet';
 	stylesheet.type = 'text/css';
 	document.getElementsByTagName('head')[0].appendChild(stylesheet);
