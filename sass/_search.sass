@@ -1,4 +1,6 @@
 #search
+	.nav &
+		width: 0 !important
 	position: absolute
 	top: $size * 4
 	right: 0	
@@ -75,10 +77,10 @@
 				repeat: no-repeat
 			transform: rotate(0deg)
 			transition: 
-				property: transform, -webkit-transform, background
-				timing-function: ease,ease, linear
-				duration: $transition, $transition, 0
-				delay: 0,0, $transition/2
+				property: transform, background
+				timing-function: ease, linear
+				duration: $transition, 0
+				delay: 0, $transition/2
 		
 	&.open
 		+breakpoint(mouse)

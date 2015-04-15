@@ -30,6 +30,9 @@ $z-layout : 10
 	@if $point == mouse
 		@media (min-width: 0)
 			@content
+	@else if $point == onlymouse
+		@media (max-width: 767px)
+			@content
 
 	@else if $point == kitten
 		@media (min-width: 768px)

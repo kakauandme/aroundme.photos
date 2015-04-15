@@ -139,12 +139,6 @@ PhotoOverlay.prototype.draw = function() {
 PhotoOverlay.prototype.zoom = function() {
 
 
-
-
-
-
-
-
 	//console.log("Zoomed");
 
 
@@ -159,10 +153,18 @@ PhotoOverlay.prototype.zoom = function() {
 		setTimeout(function(){
 			tmpMarker.className = "marker loaded";
 		},300);
+
+		if(curMarker === this){
+			body.className = body.className.replace(regnoui,'');
+		}
 	}
 
 
 	if(curMarker !== this){// unzoomed marker is clicked
+
+		if(curMarker === null){
+			body.className += " noui";
+		}
 		
 		//container.className = container.className.replace(new RegExp('(\\s|^)unzoomed(\\s|$)'),'zoomed');
 		var marker = this._marker;

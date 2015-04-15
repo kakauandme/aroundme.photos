@@ -5,7 +5,7 @@ include_once("config.php");
 <!--[if gt IE 9]><!--><html lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimal-ui" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title><?php echo $pageTitle; ?></title>
 <?php /*SEO */ ?>
 <meta name="description" content="<?php echo $SEO; ?>">
@@ -104,7 +104,7 @@ Copyright &copy; <?php echo date("Y") ?>
 </form>
 <div id="search_suggestions"></div>
 </div>
-<div id="wrap"><div id="map"></div></div>
+<div id="wrap"><div id="cover"></div><div id="map"></div></div>
 </div>
 </div>
 <!--[if gt IE 9]><!-->

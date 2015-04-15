@@ -27,6 +27,7 @@ var regnav = new RegExp('(\\s|^)nav(\\s|$)');
 //var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
 var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
 var regdetailed = new RegExp('(\\s|^)detailed(\\s|$)');
+var regnoui = new RegExp('(\\s|^)noui(\\s|$)');
 
 var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
 
