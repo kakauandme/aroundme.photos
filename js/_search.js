@@ -203,7 +203,7 @@ s_input.onkeydown = function (e) {
 	if(e.keyCode ===8){ // backspace
     	getSuggestions();
 
-    }else if(e.keyCode === 27){
+    }else if(e.keyCode === 27){//esc
     	e.preventDefault();
     	resetInput();
 

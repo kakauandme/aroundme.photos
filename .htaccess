@@ -568,3 +568,13 @@ FileETag None
 # <IfModule mod_headers.c>
 #    Header set Connection Keep-Alive
 # </IfModule>
+
+# BAN USER BY IP
+<Limit GET POST>
+ order allow,deny
+ allow from all
+ deny from 173.245.54.144
+ deny from 173.245.52.138
+ deny from 173.245.54.110
+ deny from 108.162.219.223
+</Limit>
