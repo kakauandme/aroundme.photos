@@ -8,6 +8,7 @@ function PhotoOverlay(photo, m ) {
 	this._photo = photo;
 	this._marker  = null; //div
 	this._img  = null;
+	this._HQ = false;
 	this._zoomed = false;
 	if(m){
 		this.setMap(m);
@@ -39,12 +40,13 @@ PhotoOverlay.prototype.onAdd = function() {
 
 
 
-		if(!curItem._zoomed){
+		if(!curItem._HQ){
 
-			marker.className+= " loaded flyin";
+			marker.classList.add("loaded");
+			marker.classList.add("flyin");
 			
 			setTimeout(function(){
-				marker.className = marker.className.replace(regflyin,'');
+				marker.classList.remove("flyin");
 				google.maps.event.addDomListener(marker, 'click', function(m) {
 					return function(event){
 						event.stopPropagation(); 
@@ -59,7 +61,7 @@ PhotoOverlay.prototype.onAdd = function() {
     };
     img.onerror = function(){ 
     	localStorage.removeItem(photo.id);
-    	if(curItem._zoomed){ // if hires failes fallback to thumbnail
+    	if(curItem._HQ){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
     	}else{
     		decrement();
@@ -120,7 +122,7 @@ PhotoOverlay.prototype.onRemove = function() {
 	this._marker.parentNode.removeChild(this._marker);
 	this._marker = null;
 	this._img  = null;
-	this._zoomed = false;
+	this._HQ = false;
 	this._map  = null;
 };
 
@@ -132,8 +134,12 @@ PhotoOverlay.prototype.draw = function() {
 
 	var container = this._marker;
 
-	container.style.left = (point.x + (-container.offsetWidth/2)) + 'px';
-	container.style.top  = (point.y + (-container.offsetHeight/2)) + 'px';
+	var l = (point.x + (-container.offsetWidth/2));
+	var t = (point.y + (-container.offsetHeight/2));
+
+	container.style.left = l + 'px';
+	container.style.top  = t + 'px';
+
 };
 
 PhotoOverlay.prototype.zoom = function() {
@@ -146,35 +152,42 @@ PhotoOverlay.prototype.zoom = function() {
 	if(curMarker !== null){// marker is zoomed in
 
 		var tmpMarker = curMarker._marker;
-		tmpMarker.className = "marker loaded zoom";
+		
+		curMarker._zoomed  = false;
+		
+		tmpMarker.classList.remove("zoomed");
 		tmpMarker.getElementsByTagName("span")[0].className = "info";
 		tmpMarker.getElementsByTagName("span")[0].title="Info";
 
 		setTimeout(function(){
-			tmpMarker.className = "marker loaded";
+			tmpMarker.classList.remove("zoom");
 		},300);
 
 		if(curMarker === this){
-			body.className = body.className.replace(regnoui,'');
+			body.classList.remove("noui");
 		}
 	}
 
 
 	if(curMarker !== this){// unzoomed marker is clicked
-
+		var self = this;
 		if(curMarker === null){
-			body.className += " noui";
+			//body.className += " noui";
+			body.classList.add("noui");
 		}
-		
+		this._zoomed = true;
 		//container.className = container.className.replace(new RegExp('(\\s|^)unzoomed(\\s|$)'),'zoomed');
 		var marker = this._marker;
+		
 	
-		marker.className += " zoom zoomed";
+		//marker.className += " zoom zoomed";
+		marker.classList.add("zoom");
+		marker.classList.add("zoomed");
 
 		ga('send', 'event', 'Photo', 'Zoomed');
 
-		if(!this._zoomed){
-			this._zoomed = true;
+		if(!this._HQ){
+			this._HQ = true;
 			//console.log("Updated to hi-res");
 		    this._img.src = this._photo.images.standard_resolution.url;
 
@@ -220,12 +233,13 @@ PhotoOverlay.prototype.zoom = function() {
 				if(this.className.length === 4){ // check if info
 					ga('send', 'event', 'Photo', 'Details showed');
 					this.title="Hide info";
-					this.className += " close";
-					this.parentNode.parentNode.className += " detailed"; 
+					//this.className += " close";
+					this.classList.add("close");
+					this.parentNode.parentNode.classList.add("detailed"); 
 				}else{
 					this.title="Info";
-					this.className = "info";
-					this.parentNode.parentNode.className = this.parentNode.parentNode.className.replace(regdetailed,'');
+					this.classList.remove("close");//remove .close
+					this.parentNode.parentNode.classList.remove("detailed");
 				}
 			};
 
@@ -238,6 +252,10 @@ PhotoOverlay.prototype.zoom = function() {
 
 			overlay.appendChild(i);
 		}
+		setTimeout(function(){
+			map.panTo(self.getPosition());
+		},300);
+		
 
 		curMarker = this;
 

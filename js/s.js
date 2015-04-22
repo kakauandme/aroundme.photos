@@ -23,11 +23,6 @@ var colors = {
 	"light-grey" : "#8c8f91" 
 };
 
-var regnav = new RegExp('(\\s|^)nav(\\s|$)');
-//var regzoomed = new RegExp('(\\s|^)zoomed(\\s|$)');
-var regflyin = new RegExp('(\\s|^)flyin(\\s|$)');
-var regdetailed = new RegExp('(\\s|^)detailed(\\s|$)');
-var regnoui = new RegExp('(\\s|^)noui(\\s|$)');
 
 var iOS = /(iPad|iPhone|iPod)/g.test( navigator.userAgent );
 
@@ -298,7 +293,13 @@ function processLocalImages(){
 			}
 		}else {
 			if(markers[i].getMap() !== null){
+
+				if(markers[i]._zoomed){
+					body.classList.remove("noui");
+				}
+				
 				markers[i].updateMap(null);
+
 			}
 		}
 	}
@@ -572,12 +573,12 @@ ham.addEventListener("click", function(){
 
 
 	
-	if(regnav.test(body.className)){
-			body.className = body.className.replace(regnav,'');
+	if(body.classList.contains("nav")){
+			body.classList.remove("nav");
 			ham.title="Info";
 
 	} else{
-		body.className += " nav";
+		body.classList.add("nav");
 		ham.title="Close";
 		ga('send', 'event', 'Interface', 'Hamburger');
 

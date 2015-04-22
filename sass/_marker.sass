@@ -1,7 +1,10 @@
 .marker
 	position: absolute
-	width: $marker-size
-	height: $marker-size
+	width: 100vmin
+	height: 100vmin
+	+breakpoint(kitten)
+		width: $marker-size
+		height: $marker-size
 	cursor: pointer
 	perspective: 1000
 	backface-visibility: hidden
@@ -119,11 +122,6 @@
 			border-radius: 0.2em
 			//transition: all $transition ease
 	&.zoomed
-		+breakpoint(onlymouse)	
-			left: 0 !important
-			//top: 0 !important
-			width: 100vmin
-			height: 100vmin		
 		transform: scale(1)	
 
 	&.detailed				
