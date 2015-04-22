@@ -230,11 +230,11 @@ function processInstagramImages(respond){
 				////console.log("video");
 				continue;
 			}
-			if(typeof(localStorage[respond.data[i].id]) === "undefined"){
+			if(typeof(localStorage.getItem(respond.data[i].id)) === "undefined"){
 		    	markers.push(new PhotoOverlay(respond.data[i], map));
 			}
 			try{
-				localStorage[respond.data[i].id] = JSON.stringify(respond.data[i]);
+				localStorage.setItem(respond.data[i].id, JSON.stringify(respond.data[i]));
 			}catch(e){
 				//console.log("Localstorage error: " + e);
 			}
@@ -258,10 +258,14 @@ function getImagesFromLocalStorage(){
 	//var diff = 0;
 	var photo;
 	var cnt = 0;
-
+	console.log(localStorage);
 	for(var key in localStorage) {
-		 if(key !== "lat" && key !== "lng" && key !== "length"){
-		 	photo = JSON.parse(localStorage[key]);
+		 if(key !== "lat" && key !== "lng" && key !== "length" && key !== "key" && key !== "getItem" && key !== "setItem" && key !== "removeItem" && key !== "clear"){
+		 	console.log(key);
+		 	photo = JSON.parse(localStorage.getItem(key));
+		 	if(!photo){
+		 		continue;
+		 	}
 		 	photoTime =  new Date(parseInt(photo.created_time) * 1000); 	
 
 		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 1){
@@ -591,7 +595,7 @@ function loadResources() {
 			
 	//CSS
 	var stylesheet = document.createElement('link');
-	stylesheet.href = '/css/footer.css?newmobilelayout=1';
+	stylesheet.href = '/css/footer.css?v='+cacheBuster;
 	stylesheet.rel = 'stylesheet';
 	stylesheet.type = 'text/css';
 	document.getElementsByTagName('head')[0].appendChild(stylesheet);

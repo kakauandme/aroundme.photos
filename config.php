@@ -1,5 +1,8 @@
 <?php
 
+
+$cacheBuster=4;
+
 $siteName = "Around me photos";
 
 $baseURL = "http://" . $_SERVER[HTTP_HOST];
