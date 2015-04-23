@@ -71,8 +71,8 @@ var timer = setInterval(function(){
 //////////Map Variables
 var curentPosition = {lat: -37.803501, lng: 144.977001};  //Thick
 
-curentPosition.lat = parseFloat(localStorage.lat) || curentPosition.lat;
-curentPosition.lng = parseFloat(localStorage.lng) || curentPosition.lng;
+curentPosition.lat = parseFloat(localStorage.getItem("lat")) || curentPosition.lat;
+curentPosition.lng = parseFloat(localStorage.getItem("lng")) || curentPosition.lng;
 
 var map;
 
@@ -221,7 +221,7 @@ function processInstagramImages(respond){
 
 	if(respond.meta.code === 200 && respond.data.length > 0){
 		//console.log("Processing images (" + respond.data.length + ")");
-		////console.log(respond.data);
+		//console.log(respond.data);
 
 
 		for(var i = 0; i < respond.data.length; i++){
@@ -230,13 +230,13 @@ function processInstagramImages(respond){
 				////console.log("video");
 				continue;
 			}
-			if(typeof(localStorage.getItem(respond.data[i].id)) === "undefined"){
+			if(!localStorage.getItem(respond.data[i].id)){
 		    	markers.push(new PhotoOverlay(respond.data[i], map));
 			}
 			try{
 				localStorage.setItem(respond.data[i].id, JSON.stringify(respond.data[i]));
 			}catch(e){
-				//console.log("Localstorage error: " + e);
+				console.error("Localstorage error: " + e);
 			}
 		}
 
@@ -258,10 +258,10 @@ function getImagesFromLocalStorage(){
 	//var diff = 0;
 	var photo;
 	var cnt = 0;
-	console.log(localStorage);
+	//console.log(localStorage);
 	for(var key in localStorage) {
 		 if(key !== "lat" && key !== "lng" && key !== "length" && key !== "key" && key !== "getItem" && key !== "setItem" && key !== "removeItem" && key !== "clear"){
-		 	console.log(key);
+		 	//console.log(key);
 		 	photo = JSON.parse(localStorage.getItem(key));
 		 	if(!photo){
 		 		continue;
@@ -299,10 +299,17 @@ function processLocalImages(){
 			if(markers[i].getMap() !== null){
 
 				if(markers[i]._zoomed){
-					body.classList.remove("noui");
+					//body.classList.remove("noui");
+					var tmp =markers[i];
+					tmp.zoom();
+					setTimeout(function(){
+						tmp.updateMap(null);
+					}, 600);
+				}else{
+					markers[i].updateMap(null);	
 				}
 				
-				markers[i].updateMap(null);
+				
 
 			}
 		}
@@ -405,8 +412,8 @@ function initialize() {
 	  		map.panTo(center);
 	  	}
 
-	  	localStorage.lat = this.getPosition().lat();
-		localStorage.lng = this.getPosition().lng();
+	  	localStorage.setItem("lat", this.getPosition().lat());
+		localStorage.setItem("lng", this.getPosition().lng());
 
       	//map.setCenter(this.getPosition());
       	//map.fitBounds(this.getBounds());

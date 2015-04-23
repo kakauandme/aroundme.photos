@@ -73,7 +73,7 @@ PhotoOverlay.prototype.onAdd = function() {
 
     img.src = photo.images.thumbnail.url;
 
-
+ 
 
 
 	
@@ -123,6 +123,7 @@ PhotoOverlay.prototype.onRemove = function() {
 	this._marker = null;
 	this._img  = null;
 	this._HQ = false;
+	this._zoomed = false;
 	this._map  = null;
 };
 
@@ -171,18 +172,26 @@ PhotoOverlay.prototype.zoom = function() {
 
 	if(curMarker !== this){// unzoomed marker is clicked
 		var self = this;
-		if(curMarker === null){
-			//body.className += " noui";
-			body.classList.add("noui");
-		}
+		
 		this._zoomed = true;
 		//container.className = container.className.replace(new RegExp('(\\s|^)unzoomed(\\s|$)'),'zoomed');
 		var marker = this._marker;
 		
+
+		var noUI = curMarker === null;
+		setTimeout(function(){
+				//marker.className += " zoom zoomed";
+			if(noUI){
+				//body.className += " noui";
+				body.classList.add("noui");
+			}
+			marker.classList.add("zoom");
+			marker.classList.add("zoomed");
+			
+		},100);
+		
 	
-		//marker.className += " zoom zoomed";
-		marker.classList.add("zoom");
-		marker.classList.add("zoomed");
+		
 
 		ga('send', 'event', 'Photo', 'Zoomed');
 
@@ -252,9 +261,9 @@ PhotoOverlay.prototype.zoom = function() {
 
 			overlay.appendChild(i);
 		}
-		setTimeout(function(){
-			map.panTo(self.getPosition());
-		},300);
+
+		map.panTo(this.getPosition());
+		
 		
 
 		curMarker = this;
