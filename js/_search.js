@@ -54,7 +54,7 @@ function processSugesstions(predictions, status) {
 
  // var results = document.getElementById('results');
  	
-	for (var i = 0, prediction; prediction = predictions[i], i<3; i++) {
+	for (var i = 0, prediction; prediction = predictions[i], ( i<3 && i < predictions.length); i++) {
 		//console.log(prediction);
 		var d = document.createElement('p');
 		d.innerHTML = highlight(prediction.description,s_input.value);

@@ -221,16 +221,29 @@ PhotoOverlay.prototype.zoom = function() {
 
 			var user = document.createElement('a');
 			//user.href = this._photo.link;
-			if(iOS){
-				user.href = "instagram://user?username=" + this._photo.user.username;
-			}else{
-				user.href = "http://instagram.com/" + this._photo.user.username;
-			}
-			
+			//if(iOS){
+			// 	user.href = "instagram://user?username=" + self._photo.user.username;
+			// 	// user.onclick = function(event){
+			// 	// 	//clickedAt = +new Date;			
+			// 	// 	event.stopPropagation();
+			// 	// 	//event.preventDefault();
+			// 	// 	setTimeout(function() {
+	  //  //      			//if (+new Date - clickedAt < 2000) {
+			// 	// 		   	document.location = "http://instagram.com/" + this._photo.user.username;
+			// 	// 		   //	event.preventDefault();
+			// 	// 	    //}
+			// 	// 	},100);
+			// 	// };
+			// }else{
+			// 	user.href = "http://instagram.com/" + this._photo.user.username;
+			// 	//user.onclick = function(event) { event.stopPropagation(); };
+			// }
+			user.href = "http://instagram.com/" + this._photo.user.username;
 			user.title =  (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
 			user.target = "_blank";
 			user.textContent =  this._photo.user.username;
 			user.onclick = function(event) { event.stopPropagation(); };
+			
 
 
 

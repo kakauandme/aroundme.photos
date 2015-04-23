@@ -94,7 +94,9 @@
 				width: 1.7rem
 				height: 1.7rem
 				+breakpoint(onlymouse)
-					box-shadow: 0 0 4px rgba(0,0,0,.14),0 0px 8px rgba(0,0,0,.28)  
+					box-shadow: 0 0 4px rgba(0,0,0,.14),0 0px 8px rgba(0,0,0,.28) 
+					&:hover
+						box-shadow: 0 0 6px rgba(0,0,0,.16),0 0px 12px rgba(0,0,0,.32)
 				+breakpoint(kitten)
 					bottom: auto
 					top: -1.7em
@@ -111,7 +113,11 @@
 					image: url(../img/info.png)
 					size: cover
 					position: center center
-				transition: all $transition ease
+
+				transition: 
+					property: transform, background-color
+					duration: $transition
+					timing-function: ease
 				&.close
 					transform: rotate(135deg)
 					background:

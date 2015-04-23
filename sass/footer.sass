@@ -61,19 +61,18 @@
 			.complete &
 				transition: 
 					property: transform
-					duration: $transition
-					timing: ease-in
+					duration: $transition/1.5
+					timing-function: ease
 			.complete.noui &  				         
 				transform: translate3d(0, 0, 0)
 		#search
 			.complete &
 				transition: 
 					property: transform, width
-					duration: $transition/1.5
 
 		.cur-position-control
 			.complete.noui & 
-				transform: translate3d(100%, 100%, 0)
+				transform: translate3d(100%, -1.7em, 0)
 
 #c
 	z-index: $z-layout
@@ -138,4 +137,4 @@
 		user-select: none
 		&:hover
 			box-shadow: 0 0 6px rgba(0,0,0,.16),0 6px 12px rgba(0,0,0,.32)
-			transition: box-shadow 150ms cubic-bezier(0,0,.2,1)
+			//transition: box-shadow 150ms cubic-bezier(0,0,.2,1)
