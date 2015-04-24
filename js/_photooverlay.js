@@ -157,6 +157,7 @@ PhotoOverlay.prototype.zoom = function() {
 		curMarker._zoomed  = false;
 		
 		tmpMarker.classList.remove("zoomed");
+		tmpMarker.classList.remove("detailed");
 		tmpMarker.getElementsByTagName("span")[0].className = "info";
 		tmpMarker.getElementsByTagName("span")[0].title="Info";
 

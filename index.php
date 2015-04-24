@@ -70,7 +70,6 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="header">
-
 <h1 itemprop="name" id="title"><?php echo $title; ?></h1>
 <h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
 <p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
@@ -78,7 +77,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="footer">
-<p>
+<p>v<?php echo $cacheBuster; ?> by 
 <a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
 from
 <a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>

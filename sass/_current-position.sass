@@ -1,0 +1,30 @@
+.cur-position-control
+	cursor: pointer
+	width: 2rem
+	height: 2rem
+	transform: translate3d(-2em,-2em,0)
+	border-radius: 50%
+	background: 
+		color: $red
+	line-height: 0
+	user-select: none
+	&:hover
+		box-shadow: 0 0 4px rgba(0,0,0,.14),0 0px 8px rgba(0,0,0,.28) 
+	&:before, &:after
+		position: absolute
+		display: inline-block
+		width: 30%
+		height: 30%
+		top: 35%
+		left: 35%
+		content: ""
+		border: 0.1rem solid white
+		border-left-width: 0
+		border-bottom-width: 0
+		transform: translate3d(-0.1rem,0,0)
+	// 	background: white	
+	// 	transform-origin: 100% 100%
+	// &:before
+	// 	//transform: translate3d(0,0.13rem,0)
+	// &:after
+	// 	transform: translate3d(0,-100%,0) rotate(-90deg)
