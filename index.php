@@ -77,8 +77,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="footer">
-<p>v<?php echo $cacheBuster; ?> by 
-<a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
+<p><a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
 from
 <a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>
 Copyright &copy; <?php echo date("Y") ?>
