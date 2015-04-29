@@ -120,13 +120,6 @@ function decrement(){
 
 	//console.log(str + " - " + loadingCount);
 }
-
-if (window.navigator.standalone) {
-    document.getElementById("c").style.paddingTop="10px";
-}
-
-
-
 var stylers = [
   {
     "stylers": [
