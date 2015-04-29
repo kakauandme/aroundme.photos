@@ -588,7 +588,9 @@ ham.addEventListener("click", function(){
 
 	}
 });
-
+//pingdom
+var _prum = [['id', '5540e633abe53d0e396d576c'],
+             ['mark', 'firstbyte', (new Date()).getTime()]];
 function loadResources() {
 
 	initialize();
@@ -610,6 +612,16 @@ function loadResources() {
 	ga('create', 'UA-40067737-9', 'aroundme.photos');
 	ga('require', 'displayfeatures');
 	ga('send', 'pageview');
+
+
+	//pingdom
+	(function() {
+	    var s = document.getElementsByTagName('script')[0]
+	      , p = document.createElement('script');
+	    p.async = 'async';
+	    p.src = '//rum-static.pingdom.net/prum.min.js';
+	    s.parentNode.insertBefore(p, s);
+	})();
 
 }
 
