@@ -145,11 +145,11 @@ function displaySuggestion(){
 			      	var _url = "";
 			      	for (var i = place.address_components.length - 1; i >= 0; i--) {
 			      		if(place.address_components[i].types[0] === "country"){
-			      			_url = "/" + place.address_components[i].long_name.toLowerCase().replace(" ", "-");
+			      			_url = "/" + place.address_components[i].long_name.toLowerCase().replace(/ /g, "-");
 			      			break;
 			      		}
 			      	}
-			      	_url += "/" + place.name.toLowerCase().replace(" ", "-");
+			      	_url += "/" + place.name.toLowerCase().replace(/ /g, "-");
 
 			      	history.replaceState({}, document.title, _url);
 			      	ga('send', 'pageview', {

@@ -3,211 +3,217 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   	<url> 
-		<loc>http://aroundme.photos/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>1</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/shanghai/</loc>
-		<lastmod>2014-08-30T16:27:12+00:00</lastmod>
+		<loc>http://aroundme.photos/china/shanghai</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/beijing/</loc>
-		<lastmod>2014-08-30T16:24:12+00:00</lastmod>
+		<loc>http://aroundme.photos/china/beijing</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/lagos/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/portugal/lagos</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/istanbul/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/turkey/istanbul</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/mumbai/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/india/mumbai</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/moscow/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/russia/moscow</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/sao-paulo/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/brazil/sao-paulo</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/seoul/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/korea/seoul</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.9</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/jakarta/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/indonesia/jakarta</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/tokyo/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/japan/tokyo</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.9</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/mexico-city/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/mexico/mexico-city</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/london/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/united-kingdom/london</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/nyc/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/united-states/new-york</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/bangkok/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/thailand/bangkok</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/hong-kong/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/hong-kong/hong-kong</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.9</priority>
 	</url>
 
 	<url> 
-		<loc>http://aroundme.photos/singapore/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/singapore/singapore</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 
 	<url> 
-		<loc>http://aroundme.photos/saint-petersburg/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/russia/st-petersburg</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 
 	<url> 
-		<loc>http://aroundme.photos/alexandria/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/south-africa/johannesburg</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 
 	<url> 
-		<loc>http://aroundme.photos/johannesburg/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-
-	<url> 
-		<loc>http://aroundme.photos/ankara/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/turkey/ankara</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/los-angeles/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/united-states/los-angeles</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/yokohama/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/japan/yokohama</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/berlin/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/germany/berlin</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/madrid/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/spain/madrid</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+		<url> 
+		<loc>http://aroundme.photos/united-states/san-francisco</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	
+	<url> 
+		<loc>http://aroundme.photos/czech-republic/prague</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/netherlands/amsterdam</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/canada/montreal</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/united-states/seattle</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/switzerland/geneva</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/stockholm</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/sweden/stockholm</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
+		<changefreq>monthly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url> 
+		<loc>http://aroundme.photos/australia/sydney</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/prague/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/amsterdam/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/montreal/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/seattle/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/geneva/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/stockholm/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/vienna/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.9</priority>
-	</url>
-	<url> 
-		<loc>http://aroundme.photos/sydney/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/australia/melbourne</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url> 
-		<loc>http://aroundme.photos/melbourne/</loc>
-		<lastmod>2014-08-30T16:25:12+00:00</lastmod>
+		<loc>http://aroundme.photos/brazil/rio-de-janeiro</loc>
+		<lastmod>2015-04-29T19:01:12+00:00</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>

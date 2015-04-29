@@ -1,7 +1,7 @@
 <?php
 
 
-$cacheBuster=2.4;
+$cacheBuster=2.7;
 
 $siteName = "Around me photos";
 
@@ -31,7 +31,7 @@ if($cityExists = isset($_GET["city"])){
 	$pageTitle = $city . " | " . $siteName;
 }
 
-$description = 'Checkout real-time updates on a map and discover what is happening in ' .($cityExists?$city:'your') . ' area.';
+$description = 'Check out real-time photo updates on a map and discover what is happening ' .($cityExists?'around '.$city:'at your location') . ' through pictures and images taken nearby.';
 
 $twitterTitle = ($cityExists?$title:$siteName . " - " . $subtitle);
 
@@ -39,6 +39,3 @@ $socialTitle = ($cityExists?$title:$subtitle);
 
 
 $SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's next you with Around me photos.";
-
-
-?>

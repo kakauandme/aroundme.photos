@@ -8,7 +8,7 @@ include_once("config.php");
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <title><?php echo $pageTitle; ?></title>
 <?php /*SEO */ ?>
-<meta name="description" content="<?php echo $SEO; ?>">
+<meta name="description" content="<?php echo $description; ?>" itemprop="description">
 <link rel="canonical" href="<?php echo $baseURL; ?>" itemprop="url">
 <?php /*CSS */ ?>
 <style>
@@ -93,7 +93,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <span id="header">
 <h1 itemprop="name" id="title"><?php echo $title; ?></h1>
 <h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
-<p id="description" itemprop="description">Checkout real-time updates on a map <br> and discover what is happening.</p>
+<p id="description">Check out real-time photo updates on a map <br> and discover what is happening.</p>
 </span>
 </span>
 <span>
