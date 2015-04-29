@@ -10,6 +10,8 @@ include_once("config.php");
 <?php /*SEO */ ?>
 <meta name="description" content="<?php echo $description; ?>" itemprop="description">
 <link rel="canonical" href="<?php echo $baseURL; ?>" itemprop="url">
+<?php /*Pingdom */ ?>
+<script>var _prum = [['id', '5540e633abe53d0e396d576c'],['mark', 'firstbyte', (new Date()).getTime()]];</script>
 <?php /*CSS */ ?>
 <style>
 @font-face{font-family:L;src:url("/f/l.woff") format("woff"),url("/f/l.ttf") format("truetype"),url("/f/l.svg") format("svg");font-weight:normal;font-style:normal}@media (min-width: 0){body{font-size:0.6em}}@media (min-width: 768px){body{font-size:0.75em}}@media (min-width: 960px){body{font-size:0.8em}}@media (min-width: 1200px){body{font-size:1em}}

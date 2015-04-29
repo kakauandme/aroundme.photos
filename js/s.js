@@ -588,9 +588,6 @@ ham.addEventListener("click", function(){
 
 	}
 });
-//pingdom
-var _prum = [['id', '5540e633abe53d0e396d576c'],
-             ['mark', 'firstbyte', (new Date()).getTime()]];
 function loadResources() {
 
 	initialize();
