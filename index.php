@@ -2,7 +2,7 @@
 include_once("config.php");
 ?><!DOCTYPE html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
-<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" manifest="/manifest.appcache"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -137,7 +137,6 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 <?php
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
 	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
-	echo "var cacheBuster = ". $cacheBuster . ";";
 
 	if($cityExists){
 		echo "var city = '" . $city . "';";
@@ -147,7 +146,7 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 	}
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
-<script async type="text/javascript" src="/js/s.min.js?v=<?php echo $cacheBuster; ?>"></script>
+<script async type="text/javascript" src="/js/s.min.js"></script>
 <!--<![endif]-->
 </body>
 </html>

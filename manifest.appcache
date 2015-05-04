@@ -1,0 +1,26 @@
+CACHE MANIFEST
+# 3.1
+
+# Explicitly cached 'master entries'.
+CACHE:
+
+#fonts
+/f/l.woff
+/f/r.woff
+
+#scripts
+/js/s.min.js
+
+
+#css
+/css/footer.css
+
+#images
+/img/config/favicon.ico
+/img/config/favicon-196x196.png
+/img/config/apple-touch-icon.png
+
+
+# Resources that require the user to be online.
+NETWORK:
+*
