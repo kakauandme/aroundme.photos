@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# 3.3
+# 3.5
 
 # Explicitly cached 'master entries'.
 CACHE:
@@ -17,7 +17,7 @@ CACHE:
 
 #images
 /img/config/favicon.ico
-/img/config/favicon-196x196.png
+/img/config/favicon-192x192.png
 /img/config/apple-touch-icon.png
 
 
