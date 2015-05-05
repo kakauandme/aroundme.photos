@@ -152,7 +152,7 @@ var body = document.getElementById("body"); body.className = ""; //remove no-js
 	}
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyAdTpn_GSHnRcfX3vd6jcfibpJMpICcJW4&libraries=places"></script>
-<script async type="text/javascript" src="/js/s.min.js?v=<?php echo $cacheBuster; ?>"></script>
+<script async type="text/javascript" src="/js/s.min.<?php echo $cacheBuster; ?>.js"></script>
 <!--<![endif]-->
 </body>
 </html>

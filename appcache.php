@@ -13,11 +13,11 @@ CACHE:
 /f/r.woff2
 
 #scripts
-/js/s.min.js?v=<?php echo $cacheBuster ?>
+/js/s.min.<?php echo $cacheBuster; ?>.js
 
 
 #css
-/css/footer.css?v=<?php echo $cacheBuster ?>
+/css/footer.<?php echo $cacheBuster; ?>.css
 
 #images
 /img/config/favicon.ico

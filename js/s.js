@@ -594,7 +594,7 @@ function loadResources() {
 			
 	//CSS
 	var stylesheet = document.createElement('link');
-	stylesheet.href = '/css/footer.css?v='+cacheBuster;;
+	stylesheet.href = '/css/footer.'+cacheBuster+'.css';
 	stylesheet.rel = 'stylesheet';
 	stylesheet.type = 'text/css';
 	document.getElementsByTagName('head')[0].appendChild(stylesheet);

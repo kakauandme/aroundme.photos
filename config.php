@@ -1,6 +1,6 @@
 <?php
 
-$cacheBuster=3.9;
+$cacheBuster="41";
 
 $siteName = "Around me photos";
 
