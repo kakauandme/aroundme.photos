@@ -167,7 +167,7 @@ function calcMapRadius(){
 	var toTop = getDistance(center, top );
 	var toRight = getDistance(center, right );
 
-	radius = (toTop < toRight)?toTop:toRight;
+	radius = (toTop > toRight)?toTop:toRight;
 
 	//console.log("Radius: " + radius);
 
