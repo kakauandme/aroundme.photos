@@ -1,8 +1,10 @@
 <?php
 
-$cacheBuster="52";
+$cacheBuster="54";
 
 $siteName = "Around me photos";
+
+$shortName = "Around me";
 
 $baseURL = "http://" . $_SERVER[HTTP_HOST];
 

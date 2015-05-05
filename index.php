@@ -42,7 +42,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <link href="/img/config/iPhone3.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
 <?php /* iOS meta */?>
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="<?php echo $siteName; ?>">
+<meta name="apple-mobile-web-app-title" content="<?php echo $shortName; ?>">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <?php /*Android */ ?>
 <meta name="mobile-web-app-capable" content="yes">
