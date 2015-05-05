@@ -1,6 +1,6 @@
 <?php
 include_once("config.php");
-?><!DOCTYPE html>
+?><!doctype html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" manifest="/appcache.php"><!--<![endif]-->
 <head>

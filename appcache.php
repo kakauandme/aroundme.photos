@@ -39,8 +39,6 @@ CACHE:
 /img/config/favicon-192x192.png
 
 
-
-
 # Resources that require the user to be online.
 NETWORK:
 *
