@@ -19,6 +19,10 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </style>
 <?php /*browsers */ ?>
 <link rel="shortcut icon" href="/img/config/favicon.ico" type="image/x-icon">
+<?php /* iOS meta */?>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="<?php echo $shortName; ?>">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <?php /*iOS */ ?>
 <link rel="apple-touch-icon" sizes="57x57" href="/img/config/apple-touch-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/img/config/apple-touch-icon-60x60.png">
@@ -40,23 +44,15 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 <link href="/img/config/iPhone5.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="/img/config/iPhone4.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
 <link href="/img/config/iPhone3.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
-<?php /* iOS meta */?>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="<?php echo $shortName; ?>">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <?php /*Android */ ?>
+<link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
-<link rel="icon" type="image/png" href="/img/config/favicon-16x16.png" sizes="16x16">
-<link rel="icon" type="image/png" href="/img/config/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="/img/config/favicon-96x96.png" sizes="96x96">
-<link rel="icon" type="image/png" href="/img/config/favicon-128x128.png" sizes="128x128">
-<link rel="icon" type="image/png" href="/img/config/favicon-192x192.png" sizes="192x192">
-
+<link rel="icon" sizes="192x192" href="/img/config/android-chrome-192x192.png">
+<meta name="theme-color" content="#4f007d">
 <?php /*MS Tiles */ ?>
 <meta name="application-name" content="<?php echo $siteName; ?>"/>
-<meta name="msapplication-config" content="browserconfig.xml" />
+<meta name="msapplication-config" content="/browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#f74552">
-<meta name="theme-color" content="#f74552">
 <meta name="msapplication-TileImage" content="/img/config/mstile-144x144.png">
 <?php /*Twitter cards */ ?>
 <meta name="twitter:card" content="summary_large_image">
