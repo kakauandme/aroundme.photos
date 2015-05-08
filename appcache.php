@@ -32,11 +32,12 @@ CACHE:
 /img/config/apple-touch-icon-180x180.png
 
 
-/img/config/favicon-16x16.png
-/img/config/favicon-32x32.png
-/img/config/favicon-96x96.png
-/img/config/favicon-128x128.png
-/img/config/favicon-192x192.png
+/img/config/android-chrome-36x36.png
+/img/config/android-chrome-48x48.png
+/img/config/android-chrome-72x72.png
+/img/config/android-chrome-96x96.png
+/img/config/android-chrome-144x144.png
+/img/config/android-chrome-192x192.png
 
 
 # Resources that require the user to be online.
