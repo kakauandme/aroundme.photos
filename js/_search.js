@@ -80,7 +80,7 @@ function getSuggestions(){
 	
 	clearTimeout(input_timer); // Clear the timer so we don't end up with dupes.
 	input_timer = setTimeout(function() { // assign timer a new timeout
-		//console.log(s_input.value.length);
+		//console.log(s_input.value);
 		if(s_input.value.length === 0){
 			s_suggestions.innerHTML = "";
 			selected_segesstion = -1;
@@ -191,18 +191,13 @@ s_submit.addEventListener("click", function(){
 
 });
 
-s_input.addEventListener("keypress", function (e) {
-	//console.log("keypress" + e.keyCode);
-	if(e.keyCode !== 13){
-		getSuggestions();
-	}
-});
 
-s_input.onkeydown = function (e) {
+
+s_input.addEventListener("keyup", function (e) {
 	//console.log("keydone" + e.keyCode);
-	if(e.keyCode ===8){ // backspace
+	if(e.keyCode === 8 || (e.keyCode <= 90 && e.keyCode >= 48)){ // backspace || letters and numbers
     	getSuggestions();
-
+    	console.log(e.keyCode);
     }else if(e.keyCode === 27){//esc
     	e.preventDefault();
     	resetInput();
@@ -224,8 +219,8 @@ s_input.onkeydown = function (e) {
 	  			  			
 	    	}
 	     	selectSugestion();
-	     	e.preventDefault();    	
+	     	e.preventDefault();  	
 
      	}
     }
-};
+});

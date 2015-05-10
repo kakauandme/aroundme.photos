@@ -1,7 +1,9 @@
 <?php
 
-$cacheBuster="58";
-
+$cacheBuster="60";
+if($_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
+	$cacheBuster = time();
+}
 $siteName = "Around me photos";
 
 $shortName = "Around me";
