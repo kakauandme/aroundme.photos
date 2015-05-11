@@ -40,5 +40,8 @@
 	],
 	"start_url": "http://aroundme.photos",
 	"display": "standalone",
-	"orientation": "portrait"
+	"orientation": "portrait",
+	"permissions": [
+          "geolocation"
+        ]
 }

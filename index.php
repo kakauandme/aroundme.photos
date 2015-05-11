@@ -108,7 +108,7 @@ Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
 </span>
-<div id="timer"><p>&nbsp;</p></div>
+<div id="timer"><p>v0.<?php echo $cacheBuster; ?></p></div>
 <div id="browserhappy">
 <!--[if lt IE 10]>
 <p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
