@@ -39,7 +39,6 @@ CACHE:
 /img/config/android-chrome-144x144.png
 /img/config/android-chrome-192x192.png
 
-
 # Resources that require the user to be online.
 NETWORK:
 *
