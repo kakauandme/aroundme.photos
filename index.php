@@ -10,8 +10,6 @@ include_once("config.php");
 <?php /*SEO */ ?>
 <meta name="description" content="<?php echo $description; ?>" itemprop="description">
 <link rel="canonical" href="<?php echo $baseURL; ?>" itemprop="url">
-<?php /*Pingdom */ ?>
-<script>var _prum = [['id', '5540e633abe53d0e396d576c'],['mark', 'firstbyte', (new Date()).getTime()]];</script>
 <?php /*CSS */ ?>
 <style>
 @font-face{font-family:L;src:url("/f/l.woff2") format("woff2"),url("/f/l.woff") format("woff");font-weight:normal;font-style:normal}@media (min-width: 0){body{font-size:0.6em}}@media (min-width: 768px){body{font-size:0.75em}}@media (min-width: 960px){body{font-size:0.8em}}@media (min-width: 1200px){body{font-size:1em}}
@@ -101,9 +99,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="footer">
-<p><a href="mailto:kirill@studiothick.com?subject=aroundme.photos" title="Author">@kakauandme</a>
-from
-<a href="//www.studiothick.com/" title="Studio Thick" target="_blank">Thick</a>
+<p><a href="https://twitter.com/KaKaUandME" title="Kirill Kliavin on Twitter">@kakauandme</a>
 Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
@@ -133,13 +129,12 @@ Copyright &copy; <?php echo date("Y") ?>
 <!--[if gt IE 9]><!-->
 <script>
 if (window.location.hash == '#_=_'){window.close();}//facebook popup
-if (window.navigator.standalone) { document.getElementById("c").style.paddingTop="10px";} // check for iOS app mode
+<?php /*if (window.navigator.standalone) { document.getElementById("c").style.paddingTop="10px";} // check for iOS app mode */ ?>
 var body = document.getElementById("body"); body.className = ""; //remove no-js
 <?php
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
 	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
 	echo "var cacheBuster = '". $cacheBuster . "';";
-
 	if($cityExists){
 		echo "var city = '" . $city . "';";
 	}

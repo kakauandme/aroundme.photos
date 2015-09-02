@@ -1,4 +1,4 @@
-////////Instagramm variables 
+////////Instagramm variables
 
 var APP_KEY = '4a37870c5f594c2c9c563a80fae04772'; // live
 
@@ -11,16 +11,16 @@ var instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processIn
 var curIcon = 'M44.3,38.1c-24.2,0-43.8,20-43.8,44.7s19.7,44.8,43.8,44.8s43.8-20.1,43.8-44.8S68.5,38.1,44.3,38.1z M47.9,114.9l-6.5-27.6l-26.8-6.9l53-19.9L47.9,114.9z M74.3,0.5c13.6,0,27.2,5.3,37.6,15.9s15.6,24.5,15.6,38.4h-11.7c0-10.9-4-21.7-12.2-29.9S84.9,12.5,74.2,12.5L74.3,0.5L74.3,0.5z M74.3,35c4.9,0,10,1.9,13.7,5.8c3.8,3.8,5.7,9,5.7,14H106c1.4-11.7-2.6-17.8-9.3-22.9c-6.2-6.3-14.3-9.5-22.5-9.5V35L74.3,35z';
 var geoIcon = 'M37,49.5l46.9-17.2L66.5,79.4l-5.7-24L37,49.5z M115.1,52.6c0,28.7-24.8,47.6-51.1,73.8c-26.2-26.3-51.1-45.2-51.1-73.8C12.9,24.4,35.8,1.5,64,1.5S115.1,24.4,115.1,52.6z M101.5,51.1c0-20.7-16.8-37.5-37.5-37.5c-20.7,0-37.5,16.8-37.5,37.5c0,20.7,16.8,37.5,37.5,37.5C84.7,88.5,101.5,71.8,101.5,51.1z';
 
-var colors = {	
-	red :"#f74552", 
-	"dark-purple" : "#4f007d", 
+var colors = {
+	red :"#f74552",
+	"dark-purple" : "#4f007d",
 	purple: "#7329b0",
-	blue: "#1a75cf", 
-	green: "#66d43d", 
-	yellow: "#fff5a1" , 
-	black: "#24292e", 
-	grey: "#414b56", 
-	"light-grey" : "#8c8f91" 
+	blue: "#1a75cf",
+	green: "#66d43d",
+	yellow: "#fff5a1" ,
+	black: "#24292e",
+	grey: "#414b56",
+	"light-grey" : "#8c8f91"
 };
 
 
@@ -181,7 +181,7 @@ function calcMapRadius(){
 		map.setOptions({ minZoom: null});
 	}
 
-	
+
 
 
 }
@@ -189,8 +189,8 @@ function calcMapRadius(){
 function getImagesFromInstagram(){
 
 	//console.log("Requesting images");
-	
-	
+
+
 
 	var curUrl = instagramUrl;
 
@@ -207,10 +207,10 @@ function getImagesFromInstagram(){
     document.body.appendChild(script);
 }
 
-function processInstagramImages(respond){	
+function processInstagramImages(respond){
 
 
-	
+
 
 	if(respond.meta.code === 200 && respond.data.length > 0){
 		//console.log("Processing images (" + respond.data.length + ")");
@@ -243,7 +243,7 @@ function getImagesFromLocalStorage(){
 	//console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
 
 
-	
+
 
 
 	var now = new Date();
@@ -259,14 +259,14 @@ function getImagesFromLocalStorage(){
 		 	if(!photo){
 		 		continue;
 		 	}
-		 	photoTime =  new Date(parseInt(photo.created_time) * 1000); 	
+		 	photoTime =  new Date(parseInt(photo.created_time) * 1000);
 
 		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 1){
 		 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
 		 		localStorage.removeItem(key);
 		 	}else{
 
-			    markers.push(new PhotoOverlay(photo));				 	
+			    markers.push(new PhotoOverlay(photo));
 			    if(++cnt > 999){
 			    	break;
 			    }
@@ -275,7 +275,7 @@ function getImagesFromLocalStorage(){
 	}
 }
 
-function processLocalImages(){		
+function processLocalImages(){
 	var inbounds = false;
 	var inside = 0;
 	for (var i = 0; i < markers.length; i++) {
@@ -299,10 +299,10 @@ function processLocalImages(){
 						tmp.updateMap(null);
 					}, 600);
 				}else{
-					markers[i].updateMap(null);	
+					markers[i].updateMap(null);
 				}
-				
-				
+
+
 
 			}
 		}
@@ -314,11 +314,11 @@ function processLocalImages(){
 function initialize() {
 
 
-	
-	
+
+
 
 	//curLatLng = new google.maps.LatLng(curentPosition.lat, curentPosition.lng);
-	//console.log("Map initialization");			
+	//console.log("Map initialization");
 
 
 
@@ -333,7 +333,7 @@ function initialize() {
 	  disableDoubleClickZoom: true,
 	  styles: stylers,
 	  backgroundColor: "#FFEEC6"
-		
+
 	};
 
 
@@ -351,11 +351,11 @@ function initialize() {
 		var ne = cityBounds.getNorthEast();
 		var sw = cityBounds.getSouthWest();
 
-		var dist = getDistance(ne, sw );			
+		var dist = getDistance(ne, sw );
 		if(dist/2 < 5000){
 	  		map.fitBounds(cityBounds);
 	  	}
-		  
+
 
 	});
 
@@ -382,7 +382,7 @@ function initialize() {
 			}
 		});
 	}
-	
+
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -399,7 +399,7 @@ function initialize() {
     google.maps.event.addListenerOnce(curPosMarker, 'position_changed', function() {
 
     	//console.log("Location found");
- 
+
     	if(!geocoding){
 			center = this.getPosition();
 	  		map.panTo(center);
@@ -428,7 +428,7 @@ function initialize() {
 
 	var controlUI = document.createElement('div');
 	controlUI.className = "cur-position-control";
-	
+
 	controlUI.title = 'Pan to my location';
 
 	controlDiv.appendChild(controlUI);
@@ -442,7 +442,7 @@ function initialize() {
 		//console.log("Move to my location");
 	});
 
-	
+
 
 	//////////////////////////////////////////////////////////////////////////
 	getImagesFromLocalStorage();
@@ -456,11 +456,11 @@ function initialize() {
 
 
 
-	
+
 
 	google.maps.event.addListener(map, 'dragstart', function(){
 		//console.log("dragstart");
-		
+
 		increment();
 	});
 
@@ -483,7 +483,7 @@ function initialize() {
 			},1200);
 
 
-				
+
 
 	});
 
@@ -500,12 +500,12 @@ function initialize() {
 
 		increment();
 
-	
 
-		
+
+
 		if(radius === 0){ //run for a first time
 
-			calcMapRadius();					
+			calcMapRadius();
 
 		}else{
 
@@ -516,19 +516,19 @@ function initialize() {
 
 
 
-	
+
 
 		getImagesFromInstagram();
 
 		processLocalImages();
 
-		
+
 		setTimeout(decrement, 1000);
 
 
-		
 
-		
+
+
 	});
 
 
@@ -539,7 +539,7 @@ function initialize() {
 
 		setTimeout(decrement, 1000);
 
-		calcMapRadius();	
+		calcMapRadius();
 
 	});
 
@@ -565,7 +565,7 @@ function initialize() {
 
 
 
-	
+
 
 /*********************Hamburger*********************************/
 
@@ -576,10 +576,10 @@ ham.addEventListener("click", function(){
 	}
 
 
-	
+
 	if(body.classList.contains("nav")){
-			body.classList.remove("nav");
-			ham.title="Info";
+		body.classList.remove("nav");
+		ham.title="Info";
 
 	} else{
 		body.classList.add("nav");
@@ -591,7 +591,7 @@ ham.addEventListener("click", function(){
 function loadResources() {
 
 	initialize();
-			
+
 	//CSS
 	var stylesheet = document.createElement('link');
 	stylesheet.href = '/css/footer.'+cacheBuster+'.css';
@@ -601,7 +601,7 @@ function loadResources() {
 
 
 
-	// GA 
+	// GA
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -611,14 +611,7 @@ function loadResources() {
 	ga('send', 'pageview');
 
 
-	//pingdom
-	(function() {
-	    var s = document.getElementsByTagName('script')[0]
-	      , p = document.createElement('script');
-	    p.async = 'async';
-	    p.src = '//rum-static.pingdom.net/prum.min.js';
-	    s.parentNode.insertBefore(p, s);
-	})();
+
 
 }
 
@@ -630,7 +623,7 @@ if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.us
 	timer = 0;
 	timerHolder.textContent = "";
 
-}else{	
+}else{
 
 	google.maps.event.addDomListenerOnce(window, 'load', loadResources);
 

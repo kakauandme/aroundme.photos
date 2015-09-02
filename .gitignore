@@ -9,3 +9,9 @@ css/header.css
 css/header.css.map
 
 js/s.min.js
+
+error_log
+
+custom_log
+
+*.css
