@@ -1,0 +1,1 @@
+"#_=_"==window.location.hash&&window.close();var body=document.getElementById("body");body.className="";
