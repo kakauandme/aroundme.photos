@@ -4,16 +4,13 @@
 
 .htaccess.renameme
 
-css/header.css
-
-css/header.css.map
 
 js/s.min.js
+js/inline.min.js
 
 error_log
 
 custom_log
 
 *.css
-
-*.css
+*.map
