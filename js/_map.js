@@ -28,7 +28,28 @@ map.stylers = [
       { "visibility": "on" }
     ]
   }
-]; 
+];
+
+function processGeolocation(response){
+	if(response){
+		//console.log(response);		
+		map.setGeolocationByIp(response.loc);			
+	}
+}
+
+map.setGeolocationByIp = function(locationString, accuracy){
+	var loc = locationString.split(",");
+	var position = {};
+	position.coords = {};
+	position.coords.accuracy = accuracy || 50000;
+	position.coords.latitude = parseFloat(loc[0]);
+	position.coords.longitude = parseFloat(loc[1]);
+	if(position.coords.latitude && position.coords.longitude){
+
+		map.curPosMarker.updatePosition_(position);
+	}
+};
+
 map.initialize =  function() {
 
 
@@ -114,17 +135,19 @@ map.initialize =  function() {
 
 	});
 
-    google.maps.event.addListenerOnce(map.curPosMarker, 'position_changed', function() {
+    google.maps.event.addListener(map.curPosMarker, 'position_changed', function() {
 
     	//console.log("Location found");
 
     	if(!geocoding){
 			map.center = this.getPosition();
 	  		map.map.panTo(map.center);
+	  		//geocoding = true;// don't move map
 	  	}
 
-	  	localStorage.setItem("lat", this.getPosition().lat());
-		localStorage.setItem("lng", this.getPosition().lng());
+	  	global.createCookie("lat", this.getPosition().lat(),7);
+		global.createCookie("lng", this.getPosition().lng(),7);
+		global.createCookie("accuracy",this.getAccuracy(),7);
 
       	//map.setCenter(this.getPosition());
       	//map.fitBounds(this.getBounds());
@@ -132,8 +155,19 @@ map.initialize =  function() {
 
     google.maps.event.addListenerOnce(map.curPosMarker, 'geolocation_error', function(e) {
     	//console.log("Geolocation error: " + e);
-    	if(!map.curPosMarker.getPosition() && !geocoding){
-      		alert('There was an error obtaining your position. Please make sure that geolocation is enabled.');
+    	if(!map.curPosMarker.getPosition()){
+      		alert('There was an error obtaining your position. For better experience make sure that geolocation is enabled.');
+      		if(global.readCookie("lat") && global.readCookie("lng") && (acc = global.readCookie("accuracy"))){
+      			map.setGeolocationByIp(map.curentPosition.lat + ","+map.curentPosition.lng, acc);
+      		}else{
+      			var t = document.getElementsByTagName('script')[0];
+	      		var s = document.createElement('script');
+				s.type = 'text/javascript';  
+				s.async = "async";
+				t.parentNode.insertBefore(s, t);
+				s.src = "http://ipinfo.io/?callback=processGeolocation"; 
+      		}
+      		
       	}
     });
 
@@ -335,9 +369,10 @@ map.calcMapRadius = function(){
 
 //////////Map Variables
 map.curentPosition = {lat: -37.803501, lng: 144.977001};  //Thick
-
-map.curentPosition.lat = parseFloat(localStorage.getItem("lat")) || map.curentPosition.lat;
-map.curentPosition.lng = parseFloat(localStorage.getItem("lng")) || map.curentPosition.lng;
+localStorage.removeItem("lat"); //legacy
+localStorage.removeItem("lng"); // legacy
+map.curentPosition.lat = parseFloat(global.readCookie("lat")) || map.curentPosition.lat;
+map.curentPosition.lng = parseFloat(global.readCookie("lng")) || map.curentPosition.lng;
 
 map.map = null;
 

@@ -2,7 +2,7 @@
 require_once("config.php");
 ?><!doctype html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
-<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" manifest="/appcache.php"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" <?php /**/?>manifest="/appcache.php"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

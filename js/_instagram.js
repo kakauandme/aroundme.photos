@@ -69,7 +69,7 @@ instagram.getImagesFromLocalStorage = function(){
 	var cnt = 0;
 	//console.log(localStorage);
 	for(var key in localStorage) {
-		 if(key !== "lat" && key !== "lng" && key !== "length" && key !== "key" && key !== "getItem" && key !== "setItem" && key !== "removeItem" && key !== "clear"){
+		 if(key !== "length" && key !== "key" && key !== "getItem" && key !== "setItem" && key !== "removeItem" && key !== "clear"){
 		 	//console.log(key);
 		 	photo = JSON.parse(localStorage.getItem(key));
 		 	if(!photo){
