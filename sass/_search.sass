@@ -1,16 +1,24 @@
 #search
 	.nav &
-		width: 0 !important
+		transform: translate3d(0, 0, 0) !important
 	position: absolute
 	top: $size * 4
 	right: 0	
 	backface-visibility: hidden
 	transform-style: preserve-3d
-	transform: translate3d(99.9%, 0, 0)
-	transition: width $transition ease-out
-	z-index: $z-hamburger
+	transform: translate3d($size + 2, 0, 0)
+	transition: transform $transition ease
+	z-index: $z-layout - 1
 	
-	width: $size + 2
+
+	+breakpoint(mouse)
+		width: $size * 7
+	+breakpoint(kitten)
+		width: $size * 10
+	+breakpoint(horse)
+		width: $size * 14
+	+breakpoint(elephant)
+		width: $size * 16
 	form 
 		height: $size + 2
 		line-height: 0
@@ -39,6 +47,7 @@
 		height: 100%
 		padding:
 			left: 1em
+			right: 3 * $size
 		color: $yellow
 		vertical-align: middle	
 		background-color: $purple
@@ -65,6 +74,8 @@
 		transition: transform $transition ease-out
 		background:
 			color: $purple
+		-webkit-tap-highlight-color: rgba(0,0,0,0)
+		-webkit-tap-highlight-color: transparent
 		&:hover
 			transform: scale(1 + $scale/2) rotate3d(0,0,1,45deg)
 		&:focus
@@ -76,12 +87,16 @@
 			width: 60%
 			left: 25%
 			height: $size/10
+			backface-visibility: hidden
+			transform-style: preserve-3d
 			background:
 				color: $yellow
 			top:  ($size + 2 - $size/10) / 2
 			//transform: rotate(45deg)
 			border-radius: 0.1em
 		&:after
+			backface-visibility: hidden
+			transform-style: preserve-3d
 			position: absolute
 			content: ""
 			width: 40%
@@ -94,19 +109,9 @@
 			border: solid $size/10 $yellow
 			box-sizing: border-box		
 	&.open
-		+breakpoint(mouse)
-			width: $size * 7
-		+breakpoint(kitten)
-			width: $size * 10
-		+breakpoint(horse)
-			width: $size * 14
-		+breakpoint(elephant)
-			width: $size * 16
 
 		transform: translate3d(100%, 0, 0)
-		#s_input
-			padding:
-				right: 3 * $size
+			
 	&.empty
 		#s_submit
 			transform: rotate(135deg)

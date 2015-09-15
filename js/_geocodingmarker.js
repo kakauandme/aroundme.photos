@@ -1,4 +1,5 @@
 
+
 function GeocodingMarker(opt_map) { 
 
 
@@ -23,18 +24,18 @@ function GeocodingMarker(opt_map) {
    * @type {google.maps.Map?}
    */
   this.map = null;
-
+  var geoIcon = 'M37,49.5l46.9-17.2L66.5,79.4l-5.7-24L37,49.5z M115.1,52.6c0,28.7-24.8,47.6-51.1,73.8c-26.2-26.3-51.1-45.2-51.1-73.8C12.9,24.4,35.8,1.5,64,1.5S115.1,24.4,115.1,52.6z M101.5,51.1c0-20.7-16.8-37.5-37.5-37.5c-20.7,0-37.5,16.8-37.5,37.5c0,20.7,16.8,37.5,37.5,37.5C84.7,88.5,101.5,71.8,101.5,51.1z';
   var markerOpts = {
     'clickable': true,
     'cursor': 'pointer',
     'icon':
     {
           path: geoIcon,
-          fillColor: colors.purple,
+          fillColor: global.colors.purple,
           fillOpacity: 1,
           scale: 0.7,
           strokeWeight: 0,
-          strokeColor:  colors.purple,
+          strokeColor:  global.colors.purple,
           strokeOpacity: 0,
           anchor: new google.maps.Point(64, 128)
 
@@ -124,7 +125,7 @@ GeocodingMarker.prototype.setMap = function(map) {
 
 
 /** @param {google.maps.MarkerOptions|Object.<string>} markerOpts */
-GeolocationMarker.prototype.setMarkerOptions = function(markerOpts) {
+GeocodingMarker.prototype.setMarkerOptions = function(markerOpts) {
   this.marker_.setOptions(this.copyOptions_({}, markerOpts));
 };
 
@@ -164,9 +165,9 @@ GeocodingMarker.prototype.updatePosition_= function(_place) {
  * @param {Object.<string,*>} source
  * @return {Object.<string,*>}
  */
-GeolocationMarker.prototype.copyOptions_ = function(target, source) {
+GeocodingMarker.prototype.copyOptions_ = function(target, source) {
   for(var opt in source) {
-    if(GeolocationMarker.DISALLOWED_OPTIONS[opt] !== true) {
+    if(GeocodingMarker.DISALLOWED_OPTIONS[opt] !== true) {
       target[opt] = source[opt];
     }
   }
@@ -178,7 +179,7 @@ GeolocationMarker.prototype.copyOptions_ = function(target, source) {
  * @const
  * @type {Object.<string, boolean>}
  */
-GeolocationMarker.DISALLOWED_OPTIONS = {
+GeocodingMarker.DISALLOWED_OPTIONS = {
   'map': true,
   'position': true,
   'radius': true

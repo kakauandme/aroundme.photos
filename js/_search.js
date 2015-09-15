@@ -1,13 +1,15 @@
-var search = document.getElementById("search");
-var form = document.getElementById("search_form");
-var s_submit = document.getElementById("s_submit");
-var s_input = document.getElementById("s_input");
-var s_suggestions = document.getElementById("search_suggestions");
-var input_timer = 0;
-var selected_segesstion = -1;
+var search = search || {};
 
-var title = document.getElementById("title");
-var subtitle = document.getElementById("subtitle");
+dom.search = document.getElementById("search");
+dom.form = document.getElementById("search_form");
+dom.s_submit = document.getElementById("s_submit");
+dom.s_input = document.getElementById("s_input");
+dom.s_suggestions = document.getElementById("search_suggestions");
+search.input_timer = 0;
+search.selected_segesstion = -1;
+
+dom.title = document.getElementById("title");
+dom.subtitle = document.getElementById("subtitle");
 
 // var s_reset = document.getElementById("s_reset");
 // s_reset.addEventListener("click", function(event){
@@ -19,34 +21,34 @@ var subtitle = document.getElementById("subtitle");
 	
 // });
 
-
+search.service = null;
 //autocomplete = new google.maps.places.Autocomplete(s_input, {types: ['(cities)']});
 //autocomplete.setTypes(['geocode']);
 
-function preg_quote( str ) {
-        return (str+'').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
-}
+search.preg_quote = function( str ) {
+    return (str+'').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+};
 
-function highlight( data, search ) {
-        return data.replace( new RegExp( "(" + preg_quote( search ) + ")" , 'gi' ), "<strong>$1</strong>" );
-}
+search.highlight =  function ( data, keyword ) {
+    return data.replace( new RegExp( "(" + search.preg_quote( keyword ) + ")" , 'gi' ), "<strong>$1</strong>" );
+};
 
 
-function resetInput(){
-	search.className = "";
-  	selected_segesstion=-1;
-  	search_suggestions.innerHTML="";
-  	s_submit.title = "Search";
-  	s_submit.focus();
+search.resetInput = function(){
+	dom.search.className = "";
+  	search.selected_segesstion=-1;
+  	dom.s_suggestions.innerHTML="";
+  	dom.s_submit.title = "Search";
+  	dom.s_submit.focus();
 
   	setTimeout(function(){
-		s_input.value = "";
+		dom.s_input.value = "";
 	}, 600);
 }
 
 
-function processSugesstions(predictions, status) {
-	s_suggestions.innerHTML = "";
+search.processSugesstions =  function(predictions, status) {
+	dom.s_suggestions.innerHTML = "";
 	if (status !== google.maps.places.PlacesServiceStatus.OK) {
 		//console.log(status);
 		return;
@@ -57,90 +59,93 @@ function processSugesstions(predictions, status) {
 	for (var i = 0, prediction; prediction = predictions[i], ( i<3 && i < predictions.length); i++) {
 		//console.log(prediction);
 		var d = document.createElement('p');
-		d.innerHTML = highlight(prediction.description,s_input.value);
+		d.innerHTML = search.highlight(prediction.description,dom.s_input.value);
 		d.setAttribute("data-id", prediction.place_id);
 		d.setAttribute("data-description", prediction.description);
 		
 		d.addEventListener("click", function(curI){
 			return function(){
-				selected_segesstion = curI;
+				search.selected_segesstion = curI;
 				//selectSugestion();
-				//s_input.focus();
-				displaySuggestion();
+				//dom.s_input.focus();
+				search.displaySuggestion();
 			};
 		}(i));
 
-		s_suggestions.appendChild(d);
+		dom.s_suggestions.appendChild(d);
 
 	}
 }
 
-function getSuggestions(){
+search.getSuggestions =  function(){
 
 	
-	clearTimeout(input_timer); // Clear the timer so we don't end up with dupes.
-	input_timer = setTimeout(function() { // assign timer a new timeout
-		//console.log(s_input.value);
-		if(s_input.value.length === 0){
-			s_suggestions.innerHTML = "";
-			selected_segesstion = -1;
-			search.className = "open empty";
-			s_submit.title = "Close";
+	clearTimeout(search.input_timer); // Clear the timer so we don't end up with dupes.
+	search.input_timer = setTimeout(function() { // assign timer a new timeout
+		//console.log(dom.s_input.value);
+		if(dom.s_input.value.length === 0){
+			dom.s_suggestions.innerHTML = "";
+			search.selected_segesstion = -1;
+			dom.search.className = "open empty";
+			dom.s_submit.title = "Close";
 		}else{
-			search.className = "open";
-			s_submit.title = "Search";
-	   		autocomplete.getPlacePredictions({ input: s_input.value , types: ['(cities)'] }, processSugesstions);
+			dom.search.className = "open";
+			dom.s_submit.title = "Search";
+	   		map.autocomplete.getPlacePredictions({ input: dom.s_input.value , types: ['(cities)'] }, search.processSugesstions);
 	   	}
 	}, 300); // 200ms delay, tweak for faster/slower
 }
 
-function selectSugestion(){
-	for (var i = s_suggestions.childNodes.length - 1; i >= 0; i--) {
-		if(i !== selected_segesstion){
-			s_suggestions.childNodes[i].className="";
+search.selectSugestion = function(){
+	for (var i = dom.s_suggestions.childNodes.length - 1; i >= 0; i--) {
+		if(i !== search.selected_segesstion){
+			dom.s_suggestions.childNodes[i].className="";
 		}
 		else{
-			s_suggestions.childNodes[selected_segesstion].className="selected";
+			dom.s_suggestions.childNodes[search.selected_segesstion].className="selected";
 		}
 
 	}
-	s_input.value = s_suggestions.childNodes[selected_segesstion].getAttribute("data-description");
+	dom.s_input.value = dom.s_suggestions.childNodes[search.selected_segesstion].getAttribute("data-description");
 }
 
 
-function displaySuggestion(){
-	if(search.className.length === 0){//open
+search.displaySuggestion = function(){
+	if(dom.search.className.length === 0){//open
 		ga('send', 'event', 'Interface', 'Search');
-		s_input.focus();
-		selected_segesstion = -1;
-		s_submit.title = "Close";
-		search.className = "open empty";		
+		dom.s_input.focus();
+		search.selected_segesstion = -1;
+		dom.s_submit.title = "Close";
+		dom.search.className = "open empty";		
 
 
-	}else if(s_input.value.length === 0){//close
+	}else if(dom.s_input.value.length === 0){//close
 
-		resetInput();
+		search.resetInput();
 
-	}else if(s_suggestions.childNodes.length !== 0){//results
+	}else if(dom.s_suggestions.childNodes.length !== 0){//results
 
-		if(selected_segesstion < 0){// sugestion not selected
-			selected_segesstion = 0;
+		if(search.selected_segesstion < 0){// sugestion not selected
+			search.selected_segesstion = 0;
 		}
-		selectSugestion();
-		//console.log(s_input.value);// SEARCH!
+		search.selectSugestion();
+		//console.log(dom.s_input.value);// SEARCH!
 
-		var service = new google.maps.places.PlacesService(map);
-		service.getDetails({
-			placeId: s_suggestions.childNodes[selected_segesstion].getAttribute("data-id")
+		if(!search.service){
+
+			search.service = new google.maps.places.PlacesService(map.map);
+		}
+		search.service.getDetails({
+			placeId: dom.s_suggestions.childNodes[search.selected_segesstion].getAttribute("data-id")
 		}, 	function(place, status) {
 			    if (status === google.maps.places.PlacesServiceStatus.OK) {
 			    	//console.log(place);
 
-			    	cityMarker.updatePosition_(place);
+			    	map.cityMarker.updatePosition_(place);
 			      	document.title  = place.name + " | Around me photos";
 
-			      	title.textContent = "Photos of "  + place.name;
-			      	subtitle.textContent =  'Explore social activity in ' + place.name +  " area";
+			      	dom.title.textContent = "Photos of "  + place.name;
+			      	dom.subtitle.textContent =  'Explore social activity in ' + place.name +  " area";
 
 			      	var _url = "";
 			      	for (var i = place.address_components.length - 1; i >= 0; i--) {
@@ -156,12 +161,12 @@ function displaySuggestion(){
 					  'page': _url,
 					  'title': document.title
 					});
-			      	resetInput();
+			      	search.resetInput();
 			      
 			    }else{
-			    	search.className = "open noresults";
+			    	dom.search.className = "open noresults";
 					setTimeout(function(){
-						search.className = "open";
+						dom.search.className = "open";
 					}, 600);
 			    }
 	});
@@ -169,56 +174,56 @@ function displaySuggestion(){
 
 		
 	}else{// no results
-		search.className = "open noresults";
+		dom.search.className = "open noresults";
 		setTimeout(function(){
-			search.className = "open";
+			dom.search.className = "open";
 		}, 600);
 	}
 }
 
-form.addEventListener("submit", function(e){	
+dom.form.addEventListener("submit", function(e){	
 
 	e.preventDefault();
 	
-	displaySuggestion();
+	search.displaySuggestion();
 
 });
 
-s_submit.addEventListener("click", function(){	
+dom.s_submit.addEventListener("click", function(){	
 
 	
-	displaySuggestion();
+	search.displaySuggestion();
 
 });
 
 
 
-s_input.addEventListener("keyup", function (e) {
+dom.s_input.addEventListener("keyup", function (e) {
 	//console.log("keydone" + e.keyCode);
 	if(e.keyCode === 8 || (e.keyCode <= 90 && e.keyCode >= 48)){ // backspace || letters and numbers
-    	getSuggestions();
-    	console.log(e.keyCode);
+    	search.getSuggestions();
+    	//console.log(e.keyCode);
     }else if(e.keyCode === 27){//esc
     	e.preventDefault();
-    	resetInput();
+    	search.resetInput();
 
-    }else if(s_suggestions.childNodes.length !== 0){
- //    		console.log("s_suggestions");
+    }else if(dom.s_suggestions.childNodes.length !== 0){
+ //    		console.log("dom.s_suggestions");
 
      	if(e.keyCode===38 || e.keyCode===40 || e.keyCode === 9){
 
 	    	if(e.keyCode===38){//up
-	    		if(--selected_segesstion < 0){
-	    			selected_segesstion = s_suggestions.childNodes.length-1;
+	    		if(--search.selected_segesstion < 0){
+	    			search.selected_segesstion = dom.s_suggestions.childNodes.length-1;
 	    		}
 
 	    	}else{//down
-	    		if(++selected_segesstion >= s_suggestions.childNodes.length){
-	    			selected_segesstion = 0;
+	    		if(++search.selected_segesstion >= dom.s_suggestions.childNodes.length){
+	    			search.selected_segesstion = 0;
 	    		}
 	  			  			
 	    	}
-	     	selectSugestion();
+	     	search.selectSugestion();
 	     	e.preventDefault();  	
 
      	}

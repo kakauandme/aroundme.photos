@@ -27,20 +27,24 @@
  * @extends {google.maps.MVCObject}
  * @param {google.maps.Map=} opt_map
  */
+
+
+
+
 function GeolocationMarker(opt_map) {
 
-
+  var curIcon = 'M44.3,38.1c-24.2,0-43.8,20-43.8,44.7s19.7,44.8,43.8,44.8s43.8-20.1,43.8-44.8S68.5,38.1,44.3,38.1z M47.9,114.9l-6.5-27.6l-26.8-6.9l53-19.9L47.9,114.9z M74.3,0.5c13.6,0,27.2,5.3,37.6,15.9s15.6,24.5,15.6,38.4h-11.7c0-10.9-4-21.7-12.2-29.9S84.9,12.5,74.2,12.5L74.3,0.5L74.3,0.5z M74.3,35c4.9,0,10,1.9,13.7,5.8c3.8,3.8,5.7,9,5.7,14H106c1.4-11.7-2.6-17.8-9.3-22.9c-6.2-6.3-14.3-9.5-22.5-9.5V35L74.3,35z';
   var markerOpts = {
     'clickable': true,
     'cursor': 'pointer',
     'icon':
     {
           path: curIcon,
-          fillColor: colors.red,
+          fillColor: global.colors.red,
           fillOpacity: 1,
           scale: 0.7,
           strokeWeight: 0,
-          strokeColor:  colors.red,
+          strokeColor:  global.colors.red,
           strokeOpacity: 0,
           anchor: new google.maps.Point(64, 64)
 
@@ -57,10 +61,10 @@ function GeolocationMarker(opt_map) {
   var circleOpts = {
     'clickable': false,
     'radius': 0,
-    'strokeColor': colors.blue,
+    'strokeColor': global.colors.blue,
     'strokeOpacity': 1,
 
-    'fillColor': colors.green,
+    'fillColor': global.colors.green,
     'fillOpacity': .4,
     'strokeWeight': 1,
     'zIndex': 1,
@@ -238,7 +242,7 @@ GeolocationMarker.prototype.updatePosition_ = function(position) {
     google.maps.MVCObject.prototype.set.call(this, 'accuracy', position.coords.accuracy);
 
  
-    this.circle_.setVisible(position.coords.accuracy > radius/3);
+    this.circle_.setVisible(position.coords.accuracy > map.radius/3);
     
     //console.log("Accuracy: " + position.coords.accuracy );
   }

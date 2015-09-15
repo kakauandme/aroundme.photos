@@ -18,7 +18,7 @@ function PhotoOverlay(photo, m ) {
 PhotoOverlay.prototype.onAdd = function() {
 
 
-	increment();
+	global.increment();
 	
 
 	var curItem = this;
@@ -55,7 +55,7 @@ PhotoOverlay.prototype.onAdd = function() {
 				    };		
 				}(curItem));
 			},1500);
-			decrement();
+			global.decrement();
 
 		}
     };
@@ -64,7 +64,7 @@ PhotoOverlay.prototype.onAdd = function() {
     	if(curItem._HQ){ // if hires failes fallback to thumbnail
     		img.src = photo.images.thumbnail.url;
     	}else{
-    		decrement();
+    		global.decrement();
     	}
 
     };
@@ -115,8 +115,8 @@ PhotoOverlay.prototype.updateMap = function (m) {
 };
 
 PhotoOverlay.prototype.onRemove = function() {
-	if(this === curMarker){
-		curMarker = null;
+	if(this === map.curMarker){
+		map.curMarker = null;
 	}
 	google.maps.event.clearInstanceListeners(this._marker);
 	this._marker.parentNode.removeChild(this._marker);
@@ -150,11 +150,11 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 
-	if(curMarker !== null){// marker is zoomed in
+	if(map.curMarker !== null){// marker is zoomed in
 
-		var tmpMarker = curMarker._marker;
+		var tmpMarker = map.curMarker._marker;
 		
-		curMarker._zoomed  = false;
+		map.curMarker._zoomed  = false;
 		
 		tmpMarker.classList.remove("zoomed");
 		tmpMarker.classList.remove("detailed");
@@ -165,13 +165,13 @@ PhotoOverlay.prototype.zoom = function() {
 			tmpMarker.classList.remove("zoom");
 		},300);
 
-		if(curMarker === this){
+		if(map.curMarker === this){
 			body.classList.remove("noui");
 		}
 	}
 
 
-	if(curMarker !== this){// unzoomed marker is clicked
+	if(map.curMarker !== this){// unzoomed marker is clicked
 		var self = this;
 		
 		this._zoomed = true;
@@ -179,7 +179,7 @@ PhotoOverlay.prototype.zoom = function() {
 		var marker = this._marker;
 		
 
-		var noUI = curMarker === null;
+		var noUI = map.curMarker === null;
 		setTimeout(function(){
 				//marker.className += " zoom zoomed";
 			if(noUI){
@@ -266,25 +266,25 @@ PhotoOverlay.prototype.zoom = function() {
 				}
 			};
 
-			this._marker.appendChild(overlay);
+			author.appendChild(user);
 			overlay.appendChild(likes);
 			overlay.appendChild(hr);
 			overlay.appendChild(author);
-
-			author.appendChild(user);
-
+			
 			overlay.appendChild(i);
+
+			this._marker.appendChild(overlay);
 		}
 
-		map.panTo(this.getPosition());
+		map.map.panTo(this.getPosition());
 		
 		
 
-		curMarker = this;
+		map.curMarker = this;
 
 	}
 	else{
-		curMarker = null;
+		map.curMarker = null;
 	}
 	
 };

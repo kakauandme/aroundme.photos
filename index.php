@@ -66,6 +66,7 @@ require_once("config.php");
 <?php /*Google+ Schema.org microdata */ ?>
 <meta itemprop="image" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.png">
 </head>
+<?php flush(); ?>
 <body id="body" class="no-js">
 <div id="container">
 <div id="pusher">
