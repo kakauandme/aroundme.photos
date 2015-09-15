@@ -99,7 +99,7 @@ html{font-size:125%;line-height:1.7em}body{color:#8c8f91;font-family:L,sans-seri
 </span>
 <span>
 <span id="footer">
-<p><a href="https://twitter.com/KaKaUandME" title="Kirill Kliavin on Twitter">@kakauandme</a>
+<p><a href="https://twitter.com/KaKaUandME" title="Kirill Kliavin on Twitter" target="_blank">@kakauandme</a>
 Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
