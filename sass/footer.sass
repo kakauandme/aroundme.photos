@@ -58,15 +58,14 @@
 
 
 	+breakpoint(onlymouse)
-		#hamburger, #search, .cur-position-control
+		#hamburger, #search.hiding, .cur-position-control
 			.complete &
 				transition: 
 					property: transform
-					duration: $transition
-					timing-function: ease
-			.complete.noui &  				         
+					duration: $transition/2
+					timing-function: ease-in				         
+			.complete.noui & 	         
 				transform: translate3d(0, 0, 0)
-
 		.cur-position-control
 			.complete.noui & 
 				transform: translate3d(100%, -1.7em, 0)

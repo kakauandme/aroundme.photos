@@ -38,6 +38,8 @@ global.init = function() {
 		} else{
 			dom.body.classList.add("nav");
 			dom.ham.title="Close";
+			//setTimeout(function(){dom.search.className= ""; search.resetInput(true);}, 600);
+			
 			ga('send', 'event', 'Interface', 'Hamburger');
 
 		}

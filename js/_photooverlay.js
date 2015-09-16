@@ -160,13 +160,19 @@ PhotoOverlay.prototype.zoom = function() {
 		tmpMarker.classList.remove("detailed");
 		tmpMarker.getElementsByTagName("span")[0].className = "info";
 		tmpMarker.getElementsByTagName("span")[0].title="Info";
-
+		var noNoUI = map.curMarker === this;
 		setTimeout(function(){
 			tmpMarker.classList.remove("zoom");
+			if(noNoUI){
+			// 	dom.search.className = "";
+				dom.search.classList.remove("hiding");
+			}
 		},300);
 
-		if(map.curMarker === this){
-			body.classList.remove("noui");
+		if(noNoUI){
+			dom.body.classList.remove("noui");
+			// dom.search.className = "hiding";
+			// search.resetInput(true);
 		}
 	}
 
@@ -180,16 +186,19 @@ PhotoOverlay.prototype.zoom = function() {
 		
 
 		var noUI = map.curMarker === null;
-		setTimeout(function(){
+		//setTimeout(function(){
 				//marker.className += " zoom zoomed";
 			if(noUI){
 				//body.className += " noui";
-				body.classList.add("noui");
+				dom.body.classList.add("noui");
+				dom.search.classList.add("hiding");
+
+
 			}
 			marker.classList.add("zoom");
 			marker.classList.add("zoomed");
 			
-		},100);
+		//},100);
 		
 	
 		

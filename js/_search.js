@@ -34,17 +34,26 @@ search.highlight =  function ( data, keyword ) {
 };
 
 
-search.resetInput = function(){
-	dom.search.className = "";
+search.resetInput = function(notSetFocus){
+
+	var notSetFocus = notSetFocus || false;
+	
   	search.selected_segesstion=-1;
   	dom.s_suggestions.innerHTML="";
-  	dom.s_submit.title = "Search";
-  	dom.s_submit.focus();
-
+  	dom.s_submit.title = "Search"; 	
+  	
   	setTimeout(function(){
 		dom.s_input.value = "";
 	}, 600);
+	if(!notSetFocus){
+		dom.search.className = "";
+  		setTimeout(function(){
+		dom.s_submit.focus();
+		},500);
+  	}
 }
+
+
 
 
 search.processSugesstions =  function(predictions, status) {
@@ -113,7 +122,9 @@ search.selectSugestion = function(){
 search.displaySuggestion = function(){
 	if(dom.search.className.length === 0){//open
 		ga('send', 'event', 'Interface', 'Search');
-		dom.s_input.focus();
+		setTimeout(function(){
+			dom.s_input.focus();
+		},500);		
 		search.selected_segesstion = -1;
 		dom.s_submit.title = "Close";
 		dom.search.className = "open empty";		

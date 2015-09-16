@@ -96,7 +96,7 @@ function GeolocationMarker(opt_map) {
   this.set('minimum_accuracy', null);
   
   this.set('position_options', /** GeolocationPositionOptions */
-      ({enableHighAccuracy: true, maximumAge: 1000*60*5, timeout: 1000*20}));
+      ({enableHighAccuracy: true, maximumAge: (1000*60), timeout: (1000*20)}));
 
   this.circle_.bindTo('map', this.marker_);
 

@@ -7,10 +7,9 @@
 	backface-visibility: hidden
 	transform-style: preserve-3d
 	transform: translate3d($size + 2, 0, 0)
-	transition: transform $transition ease
+	transition: transform $transition ease-out
 	z-index: $z-layout - 1
 	
-	width: $size * 6
 	+breakpoint(mouse)
 		width: $size * 7
 	+breakpoint(kitten)
@@ -37,8 +36,6 @@
 		width: 100%
 		cursor: auto
 		box-sizing: border-box
-		backface-visibility: hidden
-		transform-style: preserve-3d
 		font:
 			size: 1em
 			weight: normal
@@ -70,14 +67,14 @@
 		border-radius: 50%
 		backface-visibility: hidden
 		transform-style: preserve-3d
-		transform: rotate3d(0,0,1,45deg)
+		transform: rotate(45deg)
 		transition: transform $transition ease-out
 		background:
 			color: $purple
 		-webkit-tap-highlight-color: rgba(0,0,0,0)
 		-webkit-tap-highlight-color: transparent
 		&:hover
-			transform: scale(1 + $scale/2) rotate3d(0,0,1,45deg)
+			transform: scale(1 + $scale/2) rotate(45deg)
 		&:focus
 			outline: 0
 
@@ -114,9 +111,9 @@
 			
 	&.empty
 		#s_submit
-			transform: rotate(135deg)
-			&:hover
-				transform: scale(1 - $scale/2) rotate3d(0,0,1,135deg)
+			// transform: rotate(135deg)
+			// &:hover
+			// 	transform: scale(1 - $scale/2) rotate3d(0,0,1,135deg)
 			&:before
 				left: 20%
 			&:after

@@ -41,7 +41,7 @@ map.setGeolocationByIp = function(locationString, accuracy){
 	var loc = locationString.split(",");
 	var position = {};
 	position.coords = {};
-	position.coords.accuracy = accuracy || 50000;
+	position.coords.accuracy = accuracy || map.ipAccuracy;
 	position.coords.latitude = parseFloat(loc[0]);
 	position.coords.longitude = parseFloat(loc[1]);
 	if(position.coords.latitude && position.coords.longitude){
@@ -137,9 +137,11 @@ map.initialize =  function() {
 
     google.maps.event.addListener(map.curPosMarker, 'position_changed', function() {
 
-    	//console.log("Location found");
+    	console.log("Location found");
 
-    	if(!geocoding){
+    	if(!geocoding && (map.accuracy == map.ipAccuracy || map.accuracy == 0)){
+
+    		map.accuracy = this.getAccuracy();
 			map.center = this.getPosition();
 	  		map.map.panTo(map.center);
 	  		//geocoding = true;// don't move map
@@ -156,6 +158,7 @@ map.initialize =  function() {
     google.maps.event.addListenerOnce(map.curPosMarker, 'geolocation_error', function(e) {
     	//console.log("Geolocation error: " + e);
     	if(!map.curPosMarker.getPosition()){
+
       		alert('There was an error obtaining your position. For better experience make sure that geolocation is enabled.');
       		if(global.readCookie("lat") && global.readCookie("lng") && (acc = global.readCookie("accuracy"))){
       			map.setGeolocationByIp(map.curentPosition.lat + ","+map.curentPosition.lng, acc);
@@ -398,3 +401,7 @@ map.bounds = null;
 map.center = null;
 
 map.radius = 0;
+
+map.ipAccuracy = 50000;
+map.accuracy = 0;
+
