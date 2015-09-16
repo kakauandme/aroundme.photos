@@ -186,7 +186,7 @@ PhotoOverlay.prototype.zoom = function() {
 		
 
 		var noUI = map.curMarker === null;
-		//setTimeout(function(){
+		setTimeout(function(){ // otherwise animation is luggy
 				//marker.className += " zoom zoomed";
 			if(noUI){
 				//body.className += " noui";
@@ -198,7 +198,7 @@ PhotoOverlay.prototype.zoom = function() {
 			marker.classList.add("zoom");
 			marker.classList.add("zoomed");
 			
-		//},100);
+		},100);
 		
 	
 		

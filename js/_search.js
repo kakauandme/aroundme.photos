@@ -47,9 +47,9 @@ search.resetInput = function(notSetFocus){
 	}, 600);
 	if(!notSetFocus){
 		dom.search.className = "";
-  		setTimeout(function(){
-			dom.s_submit.focus();
-		},500);
+  		//setTimeout(function(){ // doesn't work in iOS
+		dom.s_submit.focus();
+		//},500);
   	}
 }
 
@@ -122,9 +122,9 @@ search.selectSugestion = function(){
 search.displaySuggestion = function(){
 	if(dom.search.className.length === 0){//open
 		ga('send', 'event', 'Interface', 'Search');
-		setTimeout(function(){
+		//setTimeout(function(){ // doesn't work in iOS
 			dom.s_input.focus();
-		},500);		
+		//},500);		
 		search.selected_segesstion = -1;
 		dom.s_submit.title = "Close";
 		dom.search.className = "open empty";		
