@@ -48,7 +48,7 @@ search.resetInput = function(notSetFocus){
 	if(!notSetFocus){
 		dom.search.className = "";
   		setTimeout(function(){
-		dom.s_submit.focus();
+			dom.s_submit.focus();
 		},500);
   	}
 }

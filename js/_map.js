@@ -137,7 +137,7 @@ map.initialize =  function() {
 
     google.maps.event.addListener(map.curPosMarker, 'position_changed', function() {
 
-    	console.log("Location found");
+    	//console.log("Location found");
 
     	if(!geocoding && (map.accuracy == map.ipAccuracy || map.accuracy == 0)){
 
