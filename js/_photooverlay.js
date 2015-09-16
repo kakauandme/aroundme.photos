@@ -186,9 +186,9 @@ PhotoOverlay.prototype.zoom = function() {
 				dom.body.classList.add("nouiinprogress");
 				//dom.s_submit.focus();
 				
-				 setTimeout(function(){
+				//setTimeout(function(){
 					search.resetInput();
-				 },300);
+				 //},300);
 
 
 			}
