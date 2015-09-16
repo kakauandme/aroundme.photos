@@ -31,17 +31,15 @@ PhotoOverlay.prototype.onAdd = function() {
 	marker.setAttribute('data-id', photo.id);
 	marker.className = "marker";
 
+	var image = document.createElement('div');
+	image.className = "img";
 	var img = new Image();
-
-
-	
-
     img.onload = function(){  
 
-
-
+    	//console.log("image loaded");
+    	image.style.backgroundImage = "url("+img.src+")";
 		if(!curItem._HQ){
-
+			//console.log("image loaded first time");
 			marker.classList.add("loaded");
 			marker.classList.add("flyin");
 			
@@ -68,17 +66,11 @@ PhotoOverlay.prototype.onAdd = function() {
     	}
 
     };
-    img.width = 150;
-    img.height = 150;
+  
 
-    img.src = photo.images.thumbnail.url;
+    img.src = photo.images.thumbnail.url;	
 
- 
-
-
-	
-
-	marker.appendChild(img);	
+	marker.appendChild(image);	
 
 	
 

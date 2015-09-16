@@ -6,7 +6,8 @@ var instagram = instagram || {};
 instagram.instagramAppKey = '4a37870c5f594c2c9c563a80fae04772'; // live
 
 
-//global.APP_KEY = '51533e28dbb84aeca7222a73ac49b70c'; // dev
+
+//instagram.instagramAppKey = '51533e28dbb84aeca7222a73ac49b70c'; // dev
 
 
 instagram.instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processInstagramImages&client_id=' + instagram.instagramAppKey;
