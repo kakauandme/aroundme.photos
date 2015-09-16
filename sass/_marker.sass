@@ -9,11 +9,14 @@
 	perspective: 1000
 	backface-visibility: hidden
 	transform-style: preserve-3d
+	-webkit-tap-highlight-color: rgba(0,0,0,0)
+	-webkit-tap-highlight-color: transparent
 	transform: scale(0.2)
 	outline: 1em solid rgba(255,255,255, 0.75)
 	z-index: $z-marker
 	visibility: hidden
 	user-select: none
+
 	transition: 
 		property: transform	
 		timing-function: ease
@@ -107,6 +110,9 @@
 					color: $green
 				backface-visibility: hidden
 				transform-style: preserve-3d
+				-webkit-tap-highlight-color: rgba(0,0,0,0)
+				-webkit-tap-highlight-color: transparent
+				user-select: none
 				transition: 
 					property: transform, background-color
 					duration: $transition

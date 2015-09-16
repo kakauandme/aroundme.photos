@@ -157,14 +157,14 @@ PhotoOverlay.prototype.zoom = function() {
 			tmpMarker.classList.remove("zoom");
 			if(noNoUI){
 			// 	dom.search.className = "";
-				dom.search.classList.remove("hiding");
+				dom.body.classList.remove("nouiinprogress");
 			}
 		},300);
 
 		if(noNoUI){
 			dom.body.classList.remove("noui");
 			// dom.search.className = "hiding";
-			// search.resetInput(true);
+			
 		}
 	}
 
@@ -183,7 +183,12 @@ PhotoOverlay.prototype.zoom = function() {
 			if(noUI){
 				//body.className += " noui";
 				dom.body.classList.add("noui");
-				dom.search.classList.add("hiding");
+				dom.body.classList.add("nouiinprogress");
+				//dom.s_submit.focus();
+				
+				 setTimeout(function(){
+					search.resetInput();
+				 },300);
 
 
 			}

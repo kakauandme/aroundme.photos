@@ -34,10 +34,10 @@ search.highlight =  function ( data, keyword ) {
 };
 
 
-search.resetInput = function(notSetFocus){
+search.resetInput = function(setFocusTo){
 
-	var notSetFocus = notSetFocus || false;
-	
+	dom.search.className = "";
+	var setFocusTo = setFocusTo || dom.s_submit;
   	search.selected_segesstion=-1;
   	dom.s_suggestions.innerHTML="";
   	dom.s_submit.title = "Search"; 	
@@ -45,12 +45,8 @@ search.resetInput = function(notSetFocus){
   	setTimeout(function(){
 		dom.s_input.value = "";
 	}, 600);
-	if(!notSetFocus){
-		dom.search.className = "";
-  		//setTimeout(function(){ // doesn't work in iOS
-		dom.s_submit.focus();
-		//},500);
-  	}
+	
+	setFocusTo.focus();
 }
 
 
