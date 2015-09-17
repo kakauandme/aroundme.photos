@@ -407,7 +407,7 @@ AddDefaultCharset utf-8
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^([a-z-]+)/?$ /[NC]
+    RewriteRule ^([a-z-]+)/?$ / [NC]
     #RewriteRule ^([a-z-]+)/?$ /?city=$1 [NC]
     
 
