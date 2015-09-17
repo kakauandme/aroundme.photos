@@ -4,19 +4,17 @@ header("Content-Type: text/cache-manifest");
 # <?php echo isset($_SERVER["CURRENT_VERSION_ID"])?$_SERVER["CURRENT_VERSION_ID"]:time(); ?>
 
 CACHE:
-
-#fonts
 /f/l.woff2
 /f/r.woff2
+/f/l.woff
+/f/r.woff
 
-#scripts
-#/js/s.min.js
+/js/s.min.js
 
-
-#css
 /css/footer.css
 
-#images
+/favicon.ico
+/apple-touch-icon.png
 /img/config/favicon.ico
 /img/config/apple-touch-icon-57x57.png
 /img/config/apple-touch-icon-60x60.png
@@ -28,7 +26,6 @@ CACHE:
 /img/config/apple-touch-icon-152x152.png
 /img/config/apple-touch-icon-180x180.png
 
-
 /img/config/android-chrome-36x36.png
 /img/config/android-chrome-48x48.png
 /img/config/android-chrome-72x72.png
@@ -36,6 +33,5 @@ CACHE:
 /img/config/android-chrome-144x144.png
 /img/config/android-chrome-192x192.png
 
-# Resources that require the user to be online.
 NETWORK:
 *
