@@ -1,5 +1,5 @@
 application: aroundme-photos
-version: 4
+version: 1
 runtime: php55
 api_version: 1
 
@@ -18,44 +18,22 @@ handlers:
 
 - url: /css
   static_dir: css
-  application_readable: true
 - url: /js
   static_dir: js
-  application_readable: true
 - url: /img
   static_dir: img
-  application_readable: true
 - url: /f
   static_dir: f
-  application_readable: true
 
-- url: /(.*\.(css|js|xml|json))$
+- url: /(.*\.(css|js))$
   static_files: \1
-  upload: /.*\.(css|js|xml|json)$
+  upload: /.*\.(css|js)$
   expiration: "1d"
-  application_readable: true
 
-- url: /(.*\.(ico|jpg|jpeg|png|gif|woff|svg))$
+- url: /(.*\.(ico|jpg|jpeg|png|gif|woff|woff2|svg))$
   static_files: \1
-  upload: /.*\.(ico|jpg|jpeg|png|gif|woff|svg)$
+  upload: /.*\.(ico|jpg|jpeg|png|gif|woff|woff2|svg)$
   expiration: "30d"
-  application_readable: true
-
-- url: /(.*\.woff2)$
-  mime_type: application/font-woff2
-  static_files: \1
-  upload: /(.*\.woff2)$
-  expiration: "30d"
-  application_readable: true
 
 - url: /.*
   script: 404.php
-
-skip_files:
-- ^(.*/)?#.*#$
-- ^(.*/)?.*~$
-- ^(.*/)?\..*$
-- ^(.*/)?\.codekit$
-- ^(.*/)?\.map$
-- ^(.*/)?\.zip$
-- ^(.*/)?\.md$
