@@ -1,6 +1,9 @@
 <?php
 require_once("config.php");
-?><!doctype html>
+?><!-- 
+<?php echo $_SERVER["X-AppEngine-CityLatLong"]; ?>
+-->
+<!doctype html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" <?php /* echo 'manifest="/appcache.php"'; */?>><!--<![endif]-->
 <head>
