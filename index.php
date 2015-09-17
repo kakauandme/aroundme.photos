@@ -11,7 +11,7 @@ require_once("config.php");
 <meta name="description" content="<?php echo $description; ?>" itemprop="description">
 <link rel="canonical" href="<?php echo $baseURL; ?>" itemprop="url">
 <?php /*CSS */ ?>
-<style><?php require_once("css/header.css"); ?></style>
+<link rel="stylesheet" type="text/css" href="/css/header.css">
 <?php /*browsers */ ?>
 <link rel="shortcut icon" href="/img/config/favicon.ico" type="image/x-icon">
 <?php /* iOS meta */?>
@@ -136,8 +136,35 @@ Copyright &copy; <?php echo date("Y") ?>
 	if($countryExists){
 		echo "var country = '" . $country . "';";
 	}
-	require_once("js/inline.min.js");
-?></script>
+	?>
+	if (window.location.hash == '#_=_'){window.close();}//facebook popup
+	var global = global || {};
+	var dom = dom || {};
+	dom.body = document.getElementById("body"); dom.body.className = ""; //remove no-js	
+
+	//Timer
+	global.mSeconds = 0;
+
+	dom.timerHolder = document.getElementById("timer").firstChild;
+
+	global.timer = setInterval(function(){
+			global.mSeconds+=100;
+			var s = global.mSeconds/1000;
+			dom.timerHolder.textContent = s.toFixed(1) +" sec";
+
+	},100);
+
+
+		// GA
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-40067737-9', 'aroundme.photos');
+	ga('require', 'displayfeatures');
+	ga('send', 'pageview');
+</script>
+
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyA7OxxJkLDCwBo8FX4yY6lNxjn6u4CJeR8&libraries=places"></script>
 <script async type="text/javascript" src="/js/s.min.<?php /*echo $cacheBuster . ".";*/ ?>js"></script>
 <!--<![endif]-->
