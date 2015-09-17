@@ -30,9 +30,14 @@ PhotoOverlay.prototype.onAdd = function() {
 	marker.id = "marker-" + photo.id;
 	marker.setAttribute('data-id', photo.id);
 	marker.className = "marker";
+	
 
-	var image = document.createElement('div');
+	var image = document.createElement('p');
 	image.className = "img";
+	if(photo.caption){
+		marker.title=image.textContent=photo.caption.text;
+	}
+
 	var img = new Image();
     img.onload = function(){  
 
