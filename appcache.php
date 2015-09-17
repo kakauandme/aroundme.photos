@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/cache-manifest");
 ?>CACHE MANIFEST
-# <?php echo isset($_SERVER["CURRENT_VERSION_ID"])?$_SERVER["CURRENT_VERSION_ID"]:"1"; ?>
+# <?php echo isset($_SERVER["CURRENT_VERSION_ID"])?$_SERVER["CURRENT_VERSION_ID"]:time(); ?>
 
 CACHE:
 
