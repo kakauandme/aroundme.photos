@@ -30,22 +30,20 @@ map.stylers = [
   }
 ];
 
-function processGeolocation(response){
-	if(response){
-		//console.log(response);		
-		map.setGeolocationByIp(response.loc);			
-	}
-}
+// function processGeolocation(response){
+// 	if(response){
+// 		//console.log(response);		
+// 		map.setGeolocationByIp(response.loc);			
+// 	}
+// }
 
-map.setGeolocationByIp = function(locationString, accuracy){
-	var loc = locationString.split(",");
+map.setGeolocationByIp = function(_lat, _lng, accuracy){
 	var position = {};
 	position.coords = {};
 	position.coords.accuracy = accuracy || map.ipAccuracy;
-	position.coords.latitude = parseFloat(loc[0]);
-	position.coords.longitude = parseFloat(loc[1]);
+	position.coords.latitude = _lat;
+	position.coords.longitude = _lng;
 	if(position.coords.latitude && position.coords.longitude){
-
 		map.curPosMarker.updatePosition_(position);
 	}
 };
@@ -66,7 +64,7 @@ map.initialize =  function() {
 
 	var mapOptions = {
 	  center: map.center,
-	  zoom: geocoding?14:16,
+	  zoom: city?14:16,
 	  disableDefaultUI: true,
 	 // overviewMapControl: true,
 	  disableDoubleClickZoom: true,
@@ -105,9 +103,9 @@ map.initialize =  function() {
 
 	});
 
-	if(geocoding){
+	if(city){
 		var address = city;
-		if(typeof country !== "undefined" && country.length !== 0){
+		if(country){
 			address+=", " + country;
 		}
 
@@ -139,17 +137,18 @@ map.initialize =  function() {
 
     	//console.log("Location found");
 
-    	if(!geocoding && (map.accuracy == map.ipAccuracy || map.accuracy == 0)){
+    	if(moveToCurPos && (map.accuracy == map.ipAccuracy || map.accuracy == 0)){
 
     		map.accuracy = this.getAccuracy();
 			map.center = this.getPosition();
 	  		map.map.panTo(map.center);
+
 	  		//geocoding = true;// don't move map
 	  	}
 
 	  	global.createCookie("lat", this.getPosition().lat(),7);
 		global.createCookie("lng", this.getPosition().lng(),7);
-		global.createCookie("accuracy",this.getAccuracy(),7);
+		global.createCookie("accuracy", this.getAccuracy(),7);
 
       	//map.setCenter(this.getPosition());
       	//map.fitBounds(this.getBounds());
@@ -160,16 +159,16 @@ map.initialize =  function() {
     	if(!map.curPosMarker.getPosition()){
 
       		alert('There was an error obtaining your position. For better experience make sure that geolocation is enabled.');
-      		if(global.readCookie("lat") && global.readCookie("lng") && (acc = global.readCookie("accuracy"))){
-      			map.setGeolocationByIp(map.curentPosition.lat + ","+map.curentPosition.lng, acc);
-      		}else{
-      			var t = document.getElementsByTagName('script')[0];
-	      		var s = document.createElement('script');
-				s.type = 'text/javascript';  
-				s.async = "async";
-				t.parentNode.insertBefore(s, t);
-				s.src = "http://ipinfo.io/?callback=processGeolocation"; 
-      		}
+      		//if(global.readCookie("lat") && global.readCookie("lng") && (acc = global.readCookie("accuracy"))){
+      		map.setGeolocationByIp(map.curentPosition.lat, map.curentPosition.lng, parseInt(global.readCookie("accuracy")));
+    //   		}else{
+    //   			var t = document.getElementsByTagName('script')[0];
+	   //    		var s = document.createElement('script');
+				// s.type = 'text/javascript';  
+				// s.async = "async";
+				// t.parentNode.insertBefore(s, t);
+				// s.src = "http://ipinfo.io/?callback=processGeolocation"; 
+    //   		}
       		
       	}
     });
@@ -371,11 +370,9 @@ map.calcMapRadius = function(){
 };
 
 //////////Map Variables
-map.curentPosition = {lat: -37.803501, lng: 144.977001};  //Thick
+map.curentPosition = {lat: lat, lng: lng};
 localStorage.removeItem("lat"); //legacy
 localStorage.removeItem("lng"); // legacy
-map.curentPosition.lat = parseFloat(global.readCookie("lat")) || map.curentPosition.lat;
-map.curentPosition.lng = parseFloat(global.readCookie("lng")) || map.curentPosition.lng;
 
 map.map = null;
 
@@ -402,6 +399,6 @@ map.center = null;
 
 map.radius = 0;
 
-map.ipAccuracy = 50000;
+map.ipAccuracy = 5000;
 map.accuracy = 0;
 

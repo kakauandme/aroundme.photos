@@ -128,14 +128,12 @@ Copyright &copy; <?php echo date("Y") ?>
 <script><?php /*if (window.navigator.standalone) { document.getElementById("c").style.paddingTop="10px";} // check for iOS app mode */
 
 	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
-	echo "var geocoding = ". ($cityExists?"true":"false") . ";";
 	echo "var cacheBuster = '". $cacheBuster . "';";
-	if($cityExists){
-		echo "var city = '" . $city . "';";
-	}
-	if($countryExists){
-		echo "var country = '" . $country . "';";
-	}
+	echo "var city = ". ($city?"'".$city."'":"false").";";
+	echo "var country = ". ($country?"'".$country."'":"false").";";
+	echo "var moveToCurPos = (!city);";
+	echo "var lat = " . $lat . ";";
+	echo "var lng = " . $lng . ";";
 	require_once("js/inline.min.js");
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyA7OxxJkLDCwBo8FX4yY6lNxjn6u4CJeR8&libraries=places"></script>
