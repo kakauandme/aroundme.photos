@@ -89,7 +89,7 @@ map.initialize =  function() {
 		var sw = cityBounds.getSouthWest();
 
 		var dist = map.getDistance(ne, sw);
-		if(dist/2 < 5000){
+		if(dist/2 < 5000){//fit city if zoom allows
 	  		map.map.fitBounds(cityBounds);
 	  	}
 

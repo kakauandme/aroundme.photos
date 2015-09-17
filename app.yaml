@@ -1,5 +1,5 @@
 application: aroundme-photos
-version: 3
+version: 4
 runtime: php55
 api_version: 1
 

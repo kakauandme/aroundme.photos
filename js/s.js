@@ -46,7 +46,7 @@ global.init = function() {
 	});
 };
 
-if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) && !modernBrowser) {
+if((typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
     var str = '<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>';
     document.getElementById("browserhappy").innerHTML = str;
     dom.body.className= "ie";
@@ -55,7 +55,5 @@ if((!navigator.geolocation ||  (typeof(Storage) === "undefined") || navigator.us
 	dom.timerHolder.textContent = "";
 
 }else{
-
 	google.maps.event.addDomListenerOnce(window, 'load', global.init);
-
 }

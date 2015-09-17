@@ -28,6 +28,7 @@ require_once("config.php");
 <link rel="apple-touch-icon" sizes="144x144" href="/img/config/apple-touch-icon-144x144.png">
 <link rel="apple-touch-icon" sizes="152x152" href="/img/config/apple-touch-icon-152x152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/img/config/apple-touch-icon-180x180.png">
+<link rel="mask-icon" href="/img/config/logo.svg" color="#f74552">
 <?php /* STARTUP IMAGES */ ?>
 <link href="/img/config/iPadRetinaPortrait.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" rel="apple-touch-startup-image">
 <link href="/img/config/iPadRetinaLandscape.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" rel="apple-touch-startup-image">
@@ -42,10 +43,10 @@ require_once("config.php");
 <?php /*Android */ ?>
 <link rel="manifest" href="/manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="<?php echo $siteName; ?>">
 <link rel="icon" sizes="192x192" href="/img/config/android-chrome-192x192.png">
 <meta name="theme-color" content="#4f007d">
 <?php /*MS Tiles */ ?>
-<meta name="application-name" content="<?php echo $siteName; ?>"/>
 <meta name="msapplication-config" content="/browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#f74552">
 <meta name="msapplication-TileImage" content="/img/config/mstile-144x144.png">
@@ -102,7 +103,7 @@ Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
 </span>
-<div id="timer"><p>v0.<?php echo $cacheBuster; ?></p></div>
+<div id="timer"><p></p></div>
 <div id="browserhappy">
 <!--[if lt IE 10]>
 <p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>
@@ -127,8 +128,8 @@ Copyright &copy; <?php echo date("Y") ?>
 <!--[if gt IE 9]><!-->
 <script><?php /*if (window.navigator.standalone) { document.getElementById("c").style.paddingTop="10px";} // check for iOS app mode */
 
-	echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
-	echo "var cacheBuster = '". $cacheBuster . "';";
+	//echo "var modernBrowser = " . (( preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']))?"true":"false") . ";";
+	//echo "var cacheBuster = '". $cacheBuster . "';";
 	echo "var city = ". ($city?"'".$city."'":"false").";";
 	echo "var country = ". ($country?"'".$country."'":"false").";";
 	echo "var moveToCurPos = (!city);";
