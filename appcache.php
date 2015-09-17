@@ -12,7 +12,7 @@ CACHE:
 /f/r.woff2
 
 #scripts
-#/js/s.min.<?php echo $cacheBuster . "."; ?>js
+#/js/s.min.<?php/* echo $cacheBuster . "."; */?>js
 
 
 #css
