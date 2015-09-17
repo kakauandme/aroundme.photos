@@ -6,23 +6,9 @@
 // @codekit-prepend "_photooverlay.js"
 // @codekit-prepend "_search.js"
 
-
-
-
-
 global.init = function() {
 
 	map.initialize();
-
-	//CSS
-	var stylesheet = document.createElement('link');
-	stylesheet.href = '/css/footer.css';
-	stylesheet.rel = 'stylesheet';
-	stylesheet.type = 'text/css';
-	document.getElementsByTagName('head')[0].appendChild(stylesheet);
-
-
-
 	
 	dom.ham = document.getElementById("hamburger");
 	
@@ -45,15 +31,3 @@ global.init = function() {
 		}
 	});
 };
-
-if((typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
-    var str = '<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>';
-    document.getElementById("browserhappy").innerHTML = str;
-    dom.body.className= "ie";
-    clearInterval(global.timer);
-	global.timer = 0;
-	dom.timerHolder.textContent = "";
-
-}else{
-	google.maps.event.addDomListenerOnce(window, 'load', global.init);
-}

@@ -15,6 +15,46 @@ global.timer = setInterval(function(){
 
 },100);
 
+function domReady(){
+	if((typeof(Storage) === "undefined") || navigator.userAgent.indexOf("Opera") !== -1) {
+	    var str = '<p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>';
+	    document.getElementById("browserhappy").innerHTML = str;
+	    dom.body.className= "ie";
+	    clearInterval(global.timer);
+		global.timer = 0;
+		dom.timerHolder.textContent = "";
+	}else{
+
+	
+
+		var t = document.getElementsByTagName('script')[0];
+		var r = false;
+		var s = document.createElement('script');
+		s.type = 'text/javascript';  
+		s.async = "async";
+		s.onload = s.onreadystatechange = function() {
+			//console.log( this.readyState ); //uncomment this line to see which ready states are called.
+			if ( !r && (!this.readyState || this.readyState == 'complete') )
+			{
+				r = true;
+				google.maps.event.addDomListenerOnce(window, 'load', global.init);			
+			}
+		};	
+		t.parentNode.insertBefore(s, t);
+		s.src = "/js/s.min.js"; 
+
+		
+		//CSS
+		var stylesheet = document.createElement('link');
+		stylesheet.href = '/css/footer.css';
+		stylesheet.rel = 'stylesheet';
+		stylesheet.type = 'text/css';
+		document.getElementsByTagName('head')[0].appendChild(stylesheet);
+
+	}
+}
+
+
 
 // GA
 	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
