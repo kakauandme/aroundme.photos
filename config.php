@@ -1,6 +1,6 @@
 <?php
 
-$cacheBuster="83";
+$cacheBuster="99";
 if($_SERVER['REMOTE_ADDR'] == "127.0.0.1"){
 	$cacheBuster = time();
 }
@@ -17,15 +17,24 @@ $title = $siteName;
 $subtitle = 'Explore social activity next to you';
 $pageTitle = $siteName . " | " . $subtitle;
 
+$path = strtolower(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
+if(preg_match('/^\/([a-z-]+)\/([a-z-]+)\/?$/', $path, $matches)){
+	if(count($matches) == 3){
+		$country = ucfirst(str_replace("-", " ", $matches[1]));
+		$city = ucfirst(str_replace("-", " ", $matches[2]));
 
-if($countryExists = isset($_GET["country"])){
-	$country = ucfirst(str_replace("-", " ", $_GET["country"]));
+	}
+}elseif(preg_match('/^\/([a-z-]+)\/?$/', $path, $matches)){
+	if(count($matches) == 2){
+		
+		$city = ucfirst(str_replace("-", " ", $matches[1]));
+
+	}
 }
 
-if($cityExists = isset($_GET["city"])){
-
-	$city = ucfirst(str_replace("-", " ", $_GET["city"]));
+$countryExists = isset($country);
+if($cityExists = isset($city)){
 
 	$title = "Photos of " . $city;
 

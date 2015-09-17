@@ -1,0 +1,61 @@
+application: aroundme-photos
+version: 3
+runtime: php55
+api_version: 1
+
+
+handlers:
+- url: /
+  script: index.php
+- url: /([a-z-]+)/([a-z-]+)/?$
+  script: index.php
+- url: /([a-z-]+)/?$
+  script: index.php
+
+- url: /appcache.php
+  script: appcache.php
+
+
+- url: /css
+  static_dir: css
+  application_readable: true
+- url: /js
+  static_dir: js
+  application_readable: true
+- url: /img
+  static_dir: img
+  application_readable: true
+- url: /f
+  static_dir: f
+  application_readable: true
+
+- url: /(.*\.(css|js|xml|json))$
+  static_files: \1
+  upload: /.*\.(css|js|xml|json)$
+  expiration: "1d"
+  application_readable: true
+
+- url: /(.*\.(ico|jpg|jpeg|png|gif|woff|svg))$
+  static_files: \1
+  upload: /.*\.(ico|jpg|jpeg|png|gif|woff|svg)$
+  expiration: "30d"
+  application_readable: true
+
+- url: /(.*\.woff2)$
+  mime_type: application/font-woff2
+  static_files: \1
+  upload: /(.*\.woff2)$
+  expiration: "30d"
+  application_readable: true
+
+- url: /.*
+  script: 404.php
+
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?\..*$
+- ^(.*/)?\.codekit$
+- ^(.*/)?\.map$
+- ^(.*/)?\.zip$
+- ^(.*/)?\.md$
