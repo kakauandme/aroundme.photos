@@ -36,6 +36,13 @@ handlers:
   application_readable: true
 
 
+- url: /apple-touch-icon\.png
+  static_files: img/config/apple-touch-icon.png
+  upload: img/config/apple-touch-icon\.png
+  expiration: "30d"
+  application_readable: true
+
+
 - url: /robots\.txt
   static_files: static/robots.txt
   upload: static/robots\.txt
@@ -53,11 +60,7 @@ handlers:
   upload: static/browserconfig\.xml
 
 
-- url: /apple-touch-icon\.png
-  static_files: img/config/apple-touch-icon.png
-  upload: img/config/apple-touch-icon\.png
-  expiration: "30d"
-  application_readable: true
+
 
 
 - url: /(.*\.(css|js))$
