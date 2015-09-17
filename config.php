@@ -14,7 +14,12 @@ $latlng = "0,0";
 if(isset($_COOKIE["lat"]) && isset($_COOKIE["lng"])){
 	$latlng = $_COOKIE["lat"] . ",". $_COOKIE["lng"];
 }elseif(isset($_SERVER["HTTP_X_APPENGINE_CITYLATLONG"])){
-	$latlng = $_SERVER['HTTP_X_APPENGINE_CITYLATLONG'];
+	if($_SERVER["HTTP_X_APPENGINE_CITYLATLONG"] == "0.000000,0.000000"){
+		$latlng = "37.422245,-122.08400840000002"; //Google
+	}else{
+		$latlng = $_SERVER['HTTP_X_APPENGINE_CITYLATLONG'];
+	}
+	
 }else{
 	$latlng = "-37.803501,144.977001"; //Thick
 }
