@@ -1,9 +1,6 @@
 <?php
 require_once("config.php");
-?><!-- 
-<?php echo $_SERVER["X-AppEngine-CityLatLong"]; ?>
--->
-<!doctype html>
+?><!doctype html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
 <!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" <?php /* echo 'manifest="/appcache.php"'; */?>><!--<![endif]-->
 <head>
@@ -106,7 +103,7 @@ Copyright &copy; <?php echo date("Y") ?>
 </p>
 </span>
 </span>
-<div id="timer"><p></p></div>
+<div id="timer"><p>v0.<?php echo $_SERVER["CURRENT_VERSION_ID"]; ?></p></div>
 <div id="browserhappy">
 <!--[if lt IE 10]>
 <p>Yоu аrе usіng аn <strong>оutdаtеd</strong> brоwsеr. <br>Рlеаsе <a href="http://www.google.com/chrome/browser/" target="_blank">uрgrаdе yоur brоwsеr</a> tо usе thіs wеbsіtе.</p>

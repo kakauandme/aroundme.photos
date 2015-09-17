@@ -2,7 +2,7 @@
 header("Content-Type: text/cache-manifest");
 include_once("config.php");
 ?>CACHE MANIFEST
-# <?php echo $cacheBuster; ?>
+# <?php /*echo $cacheBuster;*/ ?>
 
 # Explicitly cached 'master entries'.
 CACHE:

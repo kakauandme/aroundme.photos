@@ -14,13 +14,15 @@ $URL =  $baseURL . $_SERVER["REQUEST_URI"];
 
 
 
-$latlng = "-37.803501,144.977001"; //Thick
-if(isset($_SERVER["X-AppEngine-CityLatLong"])){
-	$latlng = $_SERVER['X-AppEngine-CityLatLong'];
-}elseif(isset($_COOKIE["lat"]) && isset($_COOKIE["lng"])){
+$latlng = "0,0";
+if(isset($_COOKIE["lat"]) && isset($_COOKIE["lng"])){
 	$latlng = $_COOKIE["lat"] . ",". $_COOKIE["lng"];
+}elseif(isset($_SERVER["HTTP_X_APPENGINE_CITYLATLONG"])){
+	$latlng = $_SERVER['HTTP_X_APPENGINE_CITYLATLONG'];
+}else{
+	$latlng = "-37.803501,144.977001"; //Thick
 }
-$arrlatlng = explode(",", $latlng);
+$arrlatlng = explode(",", $latlng); 
 $lat = $arrlatlng[0];
 $lng = $arrlatlng[1];
 
