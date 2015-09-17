@@ -2,7 +2,7 @@
 require_once("config.php");
 ?><!doctype html>
 <!--[if lt IE 10]><html class="ie" lang="en" itemscope itemtype="http://schema.org/Website"> <![endif]-->
-<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" manifest="/appcache.php"><!--<![endif]-->
+<!--[if gt IE 9]><!--><html lang="en" itemscope itemtype="http://schema.org/Website" <?php /* manifest="/appcache.php" */?>><!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
@@ -139,7 +139,7 @@ Copyright &copy; <?php echo date("Y") ?>
 	require_once("js/inline.min.js");
 ?></script>
 <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.17&key=AIzaSyA7OxxJkLDCwBo8FX4yY6lNxjn6u4CJeR8&libraries=places"></script>
-<script async type="text/javascript" src="/js/s.min.<?php echo $cacheBuster; ?>.js"></script>
+<script async type="text/javascript" src="/js/s.min.<?php /*echo $cacheBuster . ".";*/ ?>js"></script>
 <!--<![endif]-->
 </body>
 </html>

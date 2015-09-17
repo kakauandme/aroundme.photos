@@ -3,6 +3,37 @@ version: 1
 runtime: php55
 api_version: 1
 
+
 handlers:
-- url: /.*
+- url: /
   script: index.php
+- url: /([a-z-]+)/([a-z-]+)/?$
+  script: index.php
+- url: /([a-z-]+)/?$
+  script: index.php
+
+- url: /appcache.php
+  script: appcache.php
+
+
+- url: /css
+  static_dir: css
+- url: /js
+  static_dir: js
+- url: /img
+  static_dir: img
+- url: /f
+  static_dir: f
+
+- url: /(.*\.(css|js))$
+  static_files: \1
+  upload: /.*\.(css|js)$
+  expiration: "1d"
+
+- url: /(.*\.(ico|jpg|jpeg|png|gif|woff|woff2|svg))$
+  static_files: \1
+  upload: /.*\.(ico|jpg|jpeg|png|gif|woff|woff2|svg)$
+  expiration: "30d"
+
+- url: /.*
+  script: 404.php

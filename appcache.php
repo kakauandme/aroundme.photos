@@ -1,8 +1,7 @@
 <?php
 header("Content-Type: text/cache-manifest");
-include_once("config.php")
-?>
-CACHE MANIFEST
+include_once("config.php");
+?>CACHE MANIFEST
 # <?php echo $cacheBuster ?>
 
 # Explicitly cached 'master entries'.
@@ -13,11 +12,11 @@ CACHE:
 /f/r.woff2
 
 #scripts
-/js/s.min.<?php echo $cacheBuster; ?>.js
+#/js/s.min.<?php echo $cacheBuster . "."; ?>js
 
 
 #css
-/css/footer.<?php echo $cacheBuster; ?>.css
+/css/footer.<?php/* echo $cacheBuster . "."; */?>css
 
 #images
 /img/config/favicon.ico
