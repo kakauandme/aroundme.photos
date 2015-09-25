@@ -1,9 +1,9 @@
 # aroundme.photos
-Checkout real-time updates in your area and discover what is happening.
+Check out real-time Instagram updates on a map and discover what is happening in your area.
+
+The tool is built on client side JavaScript engine and various APIs. Runs on Google App Engine.
 
 [http://aroundme.photos/](http://aroundme.photos/)
-
-*More features coming...*
 
 
 ## FAQ
@@ -20,7 +20,7 @@ Checkout real-time updates in your area and discover what is happening.
 * [Navicon Transformicons](http://sarasoueidan.com/blog/navicon-transformicons/)
 * [Transitions for Off-Canvas Navigations](http://tympanus.net/codrops/2013/08/28/transitions-for-off-canvas-navigations/)
 * [Points Of Interest](http://codyhouse.co/gem/points-of-interest/)
-* [iOS 7 Web App](https://gist.github.com/tfausak/2222823)
+* [iOS Web App](https://gist.github.com/tfausak/2222823)
 * [Geolocation Marker](http://google-maps-utility-library-v3.googlecode.com/svn/trunk/geolocationmarker/docs/reference.html)
 * [Circle Hover Effects with CSS Transitions](http://tympanus.net/codrops/2012/08/08/circle-hover-effects-with-css-transitions/)
 * [Bounce.js](http://bouncejs.com/)
