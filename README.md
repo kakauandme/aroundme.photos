@@ -1,7 +1,5 @@
 # aroundme.photos
-Check out real-time Instagram updates on a map and discover what is happening in your area.
-
-The tool is built on client side JavaScript engine and various APIs. Runs on Google App Engine.
+Social exploration tool is built on client side JavaScript engine and various APIs. Runs on Google App Engine.
 
 [http://aroundme.photos/](http://aroundme.photos/)
 
