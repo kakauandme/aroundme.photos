@@ -1,5 +1,5 @@
 # aroundme.photos
-Social exploration tool is built on client side JavaScript engine and various APIs. Runs on Google App Engine.
+Social exploration tool is built on client side JavaScript engine, various APIs and runs on Google App Engine.
 
 [http://aroundme.photos/](http://aroundme.photos/)
 
