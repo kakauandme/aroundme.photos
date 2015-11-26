@@ -1,4 +1,4 @@
-if (window.location.hash == '#_=_'){window.close();}//facebook popup
+//if (window.location.hash == '#_=_'){window.close();}//facebook popup
 var global = global || {};
 var dom = dom || {};
 dom.body = document.getElementById("body"); dom.body.className = ""; //remove no-js	
