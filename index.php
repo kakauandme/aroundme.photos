@@ -15,15 +15,19 @@ require_once("includes/config.php");
 <span>
 <span id="social">
 <p>&nbsp;
-<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Checkout real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
+<?php /*<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Check out real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
 <?php require_once("img/twitter.svg"); ?>
-</a><?php /*
+</a>
 <a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
 <?php require_once("img/google-plus.svg"); ?>
 </a>
-*/ ?><a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=##URL##&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href.replace('##URL##', document.URL), 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
+<a href="https://www.facebook.com/dialog/share?app_id=587080064742659&display=popup&href=##URL##&redirect_uri=http://aroundme.photos/#_=_" onclick="window.open(this.href.replace('##URL##', document.URL), 'mywin', 'left=20,top=20,width=500,height=500,toolbar=0,resizable=0'); return false;" title="Share on Facebook">
 <?php require_once("img/facebook.svg"); ?>
-</a><a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
+</a>
+<a href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl" target="_blank" title="Available in the Chrome web store">
+<?php require_once("img/chrome.svg"); ?>
+</a>*/?>
+<a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
 <?php require_once("img/github.svg"); ?>
 </a>
 </p>

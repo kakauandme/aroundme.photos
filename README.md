@@ -3,6 +3,7 @@ Social exploration tool is built on client side JavaScript engine, various APIs 
 
 [http://aroundme.photos/](http://aroundme.photos/)
 
+<a target="_blank" href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl">![Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png"Available in the Chrome Web Store")</a>
 
 ## FAQ
 * [Instgram Privacy Policy](https://help.instagram.com/155833707900388/)
