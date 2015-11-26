@@ -23,18 +23,38 @@ function processInstagramImages(respond){
 				////console.log("video");
 				continue;
 			}
-			if(!localStorage.getItem(respond.data[i].id)){
+
+			if(!localStorage.getItem(respond.data[i].id)){// not in storage
+
+				respond.data[i].location = instagram.addJitterToCoordinates(respond.data[i].location);
+
+				//console.log("add from instagram");
 		    	map.markers.push(new PhotoOverlay(respond.data[i], map.map));
+		    	
+		    	try{
+					localStorage.setItem(respond.data[i].id, JSON.stringify(respond.data[i]));
+				}catch(e){
+					console.error("Localstorage error: " + e);
+				}
 			}
-			try{
-				localStorage.setItem(respond.data[i].id, JSON.stringify(respond.data[i]));
-			}catch(e){
-				console.error("Localstorage error: " + e);
-			}
+			
 		}
 
 	}
 }
+
+
+instagram.addJitterToCoordinates = function(location){
+	//console.log(location);
+
+	//add 10 random meters
+	var lc = map.jitter(location.latitude, location.longitude, 10);
+	location.latitude = lc.latitude;
+	location.longitude = lc.longitude;
+	//console.log(location);
+	return location;
+}	
+
 
 instagram.getImagesFromInstagram =  function(){
 
@@ -61,7 +81,7 @@ instagram.getImagesFromInstagram =  function(){
 
 
 instagram.getImagesFromLocalStorage = function(){
-	//console.log("Adding images from LocalStorage (" + (localStorage.length - 2) + ")");
+	//console.log("Adding images from LocalStorage (" + (localStorage.length) + ")");
 
 	var now = new Date();
 	var photoTime;
@@ -78,11 +98,11 @@ instagram.getImagesFromLocalStorage = function(){
 		 	}
 		 	photoTime =  new Date(parseInt(photo.created_time) * 1000);
 
-		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 1){
+		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 7){ //remove pictures created more than 1 week ago
 		 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
 		 		localStorage.removeItem(key);
 		 	}else{
-
+		 		//console.log("add from storage");
 			    map.markers.push(new PhotoOverlay(photo));
 			    if(++cnt > 999){
 			    	break;

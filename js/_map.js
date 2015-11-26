@@ -323,18 +323,42 @@ map.initialize =  function() {
 map.rad = function(x) {
 	return x * Math.PI / 180;
 };
+
+map.R =  6378137; // Earth’s mean radius in m
+map.one_m    = 1 / ((Math.PI * map.R) / 180);
+
+
+map.randomInRange = function(from, to) {
+  return (Math.random() * (to - from) + from).toFixed(10) * 1;
+};
+
+map.jitter = function(lat, lng, m) {
+  return {
+    latitude : map.randomInRange(
+      lat - (m * map.one_m),
+      lat + (m * map.one_m)
+    ),
+    longitude : map.randomInRange(
+      lng - (m * map.one_m),
+      lng + (m * map.one_m)
+    )
+  };
+}
+
+
+
 map.getDistance = function(p1, p2) {
 
 	
-	var R = 6378137; // Earth’s mean radius in meter
+	
 	var dLat = map.rad(p2.lat() - p1.lat());
 	var dLong = map.rad(p2.lng() - p1.lng());
 	var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
 	Math.cos(map.rad(p1.lat())) * Math.cos(map.rad(p2.lat())) *
 	Math.sin(dLong / 2) * Math.sin(dLong / 2);
 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-	var d = R * c;
-	return d; // returns the distance in meter
+	var d = map.R * c;
+	return d; // returns the distance in m
 };
 
 map.calcMapRadius = function(){
@@ -360,7 +384,7 @@ map.calcMapRadius = function(){
 	map.curPosMarker.circle_.setVisible(map.curPosMarker.circle_.getRadius() > map.radius/3);
 
 
-	if(map.radius >= 5000){
+	if(map.radius >= 5000){// instagram API limitation
 		map.map.setOptions({ minZoom: map.map.getZoom()});
 		//console.log("Zoom loocked(" + map.getZoom() + ")");
 	}else{
