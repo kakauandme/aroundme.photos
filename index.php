@@ -11,11 +11,11 @@ require_once("includes/config.php");
 <body id="body" class="no-js">
 <div id="container">
 <div id="pusher">
-<div id="c">
+<div id="c"><?php /*
 <span>
 <span id="social">
 <p>&nbsp;
-<?php /*<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Check out real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
+<a href="https://twitter.com/share?hashtags=aroundmephotos&text=Check out real-time updates on a map and discover what is happening." target="_blank" title="Tweet">
 <?php require_once("img/twitter.svg"); ?>
 </a>
 <a href="https://plus.google.com/share?url=<?php echo $URL; ?>" target="_blank" title="Share on Google+">
@@ -26,14 +26,14 @@ require_once("includes/config.php");
 </a>
 <a href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl" target="_blank" title="Available in the Chrome web store">
 <?php require_once("img/chrome.svg"); ?>
-</a>*/?>
+</a>
 <a href="https://github.com/kakauandme/aroundme.photos#aroundmephotos" target="_blank" title="View on Github">
 <?php require_once("img/github.svg"); ?>
 </a>
 </p>
 </span>
 </span>
-<span>
+*/?><span>
 <span id="header">
 <h1 itemprop="name" id="title"><?php echo $title; ?></h1>
 <h2 id="subtitle"><?php echo $subtitle; ?>.</h2>
