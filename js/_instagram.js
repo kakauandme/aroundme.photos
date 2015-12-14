@@ -92,21 +92,27 @@ instagram.getImagesFromLocalStorage = function(){
 	for(var key in localStorage) {
 		 if(key !== "length" && key !== "key" && key !== "getItem" && key !== "setItem" && key !== "removeItem" && key !== "clear"){
 		 	//console.log(key);
-		 	photo = JSON.parse(localStorage.getItem(key));
-		 	if(!photo){
-		 		continue;
-		 	}
-		 	photoTime =  new Date(parseInt(photo.created_time) * 1000);
+		 	try{
 
-		 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 7){ //remove pictures created more than 1 week ago
-		 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
-		 		localStorage.removeItem(key);
-		 	}else{
-		 		//console.log("add from storage");
-			    map.markers.push(new PhotoOverlay(photo));
-			    if(++cnt > 999){
-			    	break;
-			    }
+
+			 	photo = JSON.parse(localStorage.getItem(key));
+			 	if(!photo){
+			 		continue;
+			 	}
+			 	photoTime =  new Date(parseInt(photo.created_time) * 1000);
+
+			 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 7){ //remove pictures created more than 1 week ago
+			 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
+			 		localStorage.removeItem(key);
+			 	}else{
+			 		//console.log("add from storage");
+				    map.markers.push(new PhotoOverlay(photo));
+				    if(++cnt > 999){
+				    	break;
+				    }
+				}
+			}catch(e){
+				console.error(e);
 			}
 		}
 	}
