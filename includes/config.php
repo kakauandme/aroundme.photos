@@ -4,7 +4,7 @@ $siteName = "Around me photos";
 
 $shortName = "Around me";
 
-$baseURL = "http://" . $_SERVER["HTTP_HOST"];
+$baseURL = "https://" . $_SERVER["HTTP_HOST"];
 
 $URL =  $baseURL . $_SERVER["REQUEST_URI"];
 

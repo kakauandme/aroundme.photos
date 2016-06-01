@@ -7,10 +7,13 @@ api_version: 1
 handlers:
 - url: /
   script: index.php
+  secure: always
 - url: /([a-z-]+)/([a-z-]+)/?$
   script: index.php
+  secure: always
 - url: /([a-z-]+)/?$
   script: index.php
+  secure: always
 
 - url: /appcache.php
   script: appcache.php
