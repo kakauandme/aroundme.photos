@@ -17,6 +17,7 @@ handlers:
 
 - url: /appcache.php
   script: appcache.php
+  secure: always
 
 - url: /css
   static_dir: css
@@ -81,6 +82,7 @@ handlers:
 
 - url: /.*
   script: 404.php
+  secure: always
 
 skip_files:
 - ^(.*/)?#.*#$
