@@ -1,19 +1,15 @@
 # aroundme.photos
-Social exploration tool is built on client side JavaScript engine, various APIs and runs on Google App Engine.
+Photo exploration tool is built on client side JavaScript engine, various APIs and runs on Google App Engine.
 
 [http://aroundme.photos/](http://aroundme.photos/)
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl">![Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png"Available in the Chrome Web Store")</a>
 
-## FAQ
-* [Instgram Privacy Policy](https://help.instagram.com/155833707900388/)
-* [Controlling Instagram Visibility](https://help.instagram.com/116024195217477/)
-
 
 ##Recources
 
 * [Thick recources](http://www.studiothick.com.au/)
-* [Instagram API](http://instagram.com/developer/)
+* [500px API](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md)
 * [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/)
 * [Google Places API](https://developers.google.com/places/documentation/)
 * [Navicon Transformicons](http://sarasoueidan.com/blog/navicon-transformicons/)

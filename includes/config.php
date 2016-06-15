@@ -30,7 +30,7 @@ $lng = $arrlatlng[1];
 
 
 $title = $siteName;
-$subtitle = 'Explore social activity next to you';
+$subtitle = 'Explore photo activity next to you';
 $pageTitle = $siteName . " | " . $subtitle;
 
 $path = strtolower(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
@@ -56,7 +56,7 @@ if($city){
 
 	$title = "Photos of " . $city;
 
-	$subtitle = 'Explore social activity in ' . $city . " area";
+	$subtitle = 'Explore photo activity in ' . $city . " area";
 
 	$pageTitle = $city . " | " . $siteName;
 }
@@ -68,4 +68,4 @@ $twitterTitle = ($city?$title:$siteName . " - " . $subtitle);
 $socialTitle = ($city?$title:$subtitle);
 
 
-$SEO = "Check out real-time Instagram updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's next you with Around me photos.";
+$SEO = "Check out real-time photo updates in your area and discover what is happening around you through pictures and images taken by people in your nearby location. Map out what's next to you with Around me photos.";

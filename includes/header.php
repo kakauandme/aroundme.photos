@@ -38,7 +38,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="application-name" content="<?php echo $siteName; ?>">
 <link rel="icon" sizes="192x192" href="/img/config/android-chrome-192x192.png">
-<meta name="theme-color" content="#4f007d">
+<meta name="theme-color" content="#24292e">
 <?php /*MS Tiles */ ?>
 <meta name="msapplication-config" content="/browserconfig.xml" />
 <meta name="msapplication-TileColor" content="#f74552">

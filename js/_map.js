@@ -199,7 +199,7 @@ map.initialize =  function() {
 
 
 	//////////////////////////////////////////////////////////////////////////
-	instagram.getImagesFromLocalStorage();
+	photo.getLocalImages();
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -272,9 +272,9 @@ map.initialize =  function() {
 
 
 
-		instagram.getImagesFromInstagram();
+		photo.getRemoteImages();
 
-		instagram.processLocalImages();
+		photo.processLocalImages();
 
 
 		setTimeout(global.decrement, 1000);
@@ -384,7 +384,7 @@ map.calcMapRadius = function(){
 	map.curPosMarker.circle_.setVisible(map.curPosMarker.circle_.getRadius() > map.radius/3);
 
 
-	if(map.radius >= 5000){// instagram API limitation
+	if(map.radius >= 10000){// zoom out limitation
 		map.map.setOptions({ minZoom: map.map.getZoom()});
 		//console.log("Zoom loocked(" + map.getZoom() + ")");
 	}else{
