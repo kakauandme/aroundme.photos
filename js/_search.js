@@ -152,7 +152,7 @@ search.displaySuggestion = function(){
 			      	document.title  = place.name + " | Around me photos";
 
 			      	dom.title.textContent = "Photos of "  + place.name;
-			      	dom.subtitle.textContent =  'Explore social activity in ' + place.name +  " area";
+			      	dom.subtitle.textContent =  'Explore photo activity in ' + place.name +  " area";
 
 			      	var _url = "";
 			      	for (var i = place.address_components.length - 1; i >= 0; i--) {

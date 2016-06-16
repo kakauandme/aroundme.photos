@@ -4,7 +4,7 @@ PhotoOverlay.prototype = new google.maps.OverlayView();
 
 function PhotoOverlay(photo, m ) {
 	this._map      = m || null;
-	this._position = new google.maps.LatLng(photo.location.latitude, photo.location.longitude);
+	this._position = new google.maps.LatLng(photo.latitude, photo.longitude);
 	this._photo = photo;
 	this._marker  = null; //div
 	this._img  = null;
@@ -34,8 +34,8 @@ PhotoOverlay.prototype.onAdd = function() {
 
 	var image = document.createElement('p');
 	image.className = "img";
-	if(photo.caption){
-		marker.title=image.textContent=photo.caption.text;
+	if(photo.name){
+		marker.title=image.textContent=photo.name;
 	}
 
 	var img = new Image();
@@ -65,7 +65,7 @@ PhotoOverlay.prototype.onAdd = function() {
     img.onerror = function(){ 
     	localStorage.removeItem(photo.id);
     	if(curItem._HQ){ // if hires failes fallback to thumbnail
-    		img.src = photo.images.thumbnail.url;
+    		img.src = photo.images[0].https_url;
     	}else{
     		global.decrement();
     	}
@@ -73,7 +73,7 @@ PhotoOverlay.prototype.onAdd = function() {
     };
   
 
-    img.src = photo.images.thumbnail.url;	
+    img.src = photo.images[0].https_url;	
 
 	marker.appendChild(image);	
 
@@ -99,7 +99,7 @@ PhotoOverlay.prototype.getPosition = function() {
 };
 
 PhotoOverlay.prototype.getLikes = function() {
-	return parseInt(this._photo.likes.count);
+	return parseInt(this._photo.votes_count);
 };
 
 PhotoOverlay.prototype.getMap = function () {
@@ -210,7 +210,7 @@ PhotoOverlay.prototype.zoom = function() {
 		if(!this._HQ){
 			this._HQ = true;
 			//console.log("Updated to hi-res");
-		    this._img.src = this._photo.images.standard_resolution.url;
+		    this._img.src = this._photo.images[1].https_url;
 
 
 
@@ -221,7 +221,7 @@ PhotoOverlay.prototype.zoom = function() {
 
 
 			var likes = document.createElement('p');
-			likes.textContent = this._photo.likes.count; 
+			likes.textContent = this._photo.votes_count; 
 			likes.className = "likes";
 
 			var hr = document.createElement('hr');
@@ -232,26 +232,9 @@ PhotoOverlay.prototype.zoom = function() {
 			author.textContent = "by ";
 
 			var user = document.createElement('a');
-			//user.href = this._photo.link;
-			//if(iOS){
-			// 	user.href = "instagram://user?username=" + self._photo.user.username;
-			// 	// user.onclick = function(event){
-			// 	// 	//clickedAt = +new Date;			
-			// 	// 	event.stopPropagation();
-			// 	// 	//event.preventDefault();
-			// 	// 	setTimeout(function() {
-	  //  //      			//if (+new Date - clickedAt < 2000) {
-			// 	// 		   	document.location = "http://instagram.com/" + this._photo.user.username;
-			// 	// 		   //	event.preventDefault();
-			// 	// 	    //}
-			// 	// 	},100);
-			// 	// };
-			// }else{
-			// 	user.href = "http://instagram.com/" + this._photo.user.username;
-			// 	//user.onclick = function(event) { event.stopPropagation(); };
-			// }
-			user.href = "http://instagram.com/" + this._photo.user.username;
-			user.title =  (this._photo.user.full_name.length === 0)?this._photo.user.username:this._photo.user.full_name;
+			
+			user.href = "https://500px.com" + this._photo.url;
+			user.title =  (this._photo.user.fullname.length === 0)?this._photo.user.username:this._photo.user.fullname;
 			user.target = "_blank";
 			user.textContent =  this._photo.user.username;
 			user.onclick = function(event) { event.stopPropagation(); };

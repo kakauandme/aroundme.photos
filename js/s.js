@@ -1,6 +1,6 @@
 // @codekit-prepend "_global.js"
 // @codekit-prepend "_map.js"
-// @codekit-prepend "_instagram.js"
+// @codekit-prepend "_photo.js"
 // @codekit-prepend "_geocodingmarker.js"
 // @codekit-prepend "_geolocationmarker.js"
 // @codekit-prepend "_photooverlay.js"

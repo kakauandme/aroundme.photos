@@ -1,38 +1,42 @@
-var instagram = instagram || {};
+var photo = photo || {};
+
+//https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md
+
+var params = {
+        image_size: '200,600',
+        callback: 'processImages',
+        rpp: 25,
+        sort: 'created_at'
+    },
+    uriParams = '';
+
+for (paramName in params) {
+    uriParams += '&' + paramName + '=' + params[paramName];
+}
+
+photo.apiURL= 'https://api.500px.com/v1/photos/search.jsonp?consumer_key=jYmLQ1Ocnhs7xNhR2udoJPAKXGROI1GCiNPxO4Gf' + uriParams;
 
 
-////////Instagramm variables
 
-instagram.instagramAppKey = '4a37870c5f594c2c9c563a80fae04772'; // live
-
-
-
-//instagram.instagramAppKey = '51533e28dbb84aeca7222a73ac49b70c'; // dev
-
-
-instagram.instagramUrl = 'https://api.instagram.com/v1/media/search?callback=processInstagramImages&client_id=' + instagram.instagramAppKey;
-
-function processInstagramImages(respond){
-
-	if(respond.meta.code === 200 && respond.data.length > 0){
+function processImages(respond){
+	if(respond.photos && respond.photos.length > 0){
 		//console.log("Processing images (" + respond.data.length + ")");
 		//console.log(respond.data);
-		for(var i = 0; i < respond.data.length; i++){
+		for(var i = 0; i < respond.photos.length; i++){
 
-			if(respond.data[i].type !== "image") {
-				////console.log("video");
+			
+			if(!respond.photos[i].latitude || !respond.photos[i].longitude){
 				continue;
 			}
+			if(!localStorage.getItem(respond.photos[i].id)){// not in storage
 
-			if(!localStorage.getItem(respond.data[i].id)){// not in storage
+				respond.photos[i] = photo.addJitterToCoordinates(respond.photos[i]);
 
-				respond.data[i].location = instagram.addJitterToCoordinates(respond.data[i].location);
-
-				//console.log("add from instagram");
-		    	map.markers.push(new PhotoOverlay(respond.data[i], map.map));
+				//console.log("add from photo");
+		    	map.markers.push(new PhotoOverlay(respond.photos[i], map.map));
 		    	
 		    	try{
-					localStorage.setItem(respond.data[i].id, JSON.stringify(respond.data[i]));
+					localStorage.setItem(respond.photos[i].id, JSON.stringify(respond.photos[i]));
 				}catch(e){
 					console.error("Localstorage error: " + e);
 				}
@@ -44,30 +48,29 @@ function processInstagramImages(respond){
 }
 
 
-instagram.addJitterToCoordinates = function(location){
+photo.addJitterToCoordinates = function(photo){
 	//console.log(location);
 
 	//add 10 random meters
-	var lc = map.jitter(location.latitude, location.longitude, 10);
-	location.latitude = lc.latitude;
-	location.longitude = lc.longitude;
+	var lc = map.jitter(photo.latitude, photo.longitude, 10);
+	photo.latitude = lc.latitude;
+	photo.longitude = lc.longitude;
 	//console.log(location);
-	return location;
+	return photo;
 }	
 
 
-instagram.getImagesFromInstagram =  function(){
+photo.getRemoteImages =  function(){
 
 	//console.log("Requesting images");
 
 
 
-	var curUrl = instagram.instagramUrl;
+	var curUrl = photo.apiURL;
 
 
-	curUrl += "&lat=" + map.center.lat();
-	curUrl += "&lng=" + map.center.lng();
-	curUrl += "&distance=" + map.radius;
+	curUrl += "&geo=" + map.center.lat()+","+map.center.lng()+","+Math.ceil(map.radius/1000)+"km";
+	
 
 
 	//console.log(curUrl);
@@ -80,7 +83,7 @@ instagram.getImagesFromInstagram =  function(){
 
 
 
-instagram.getImagesFromLocalStorage = function(){
+photo.getLocalImages = function(){
 	//console.log("Adding images from LocalStorage (" + (localStorage.length) + ")");
 
 	var now = new Date();
@@ -99,8 +102,8 @@ instagram.getImagesFromLocalStorage = function(){
 			 	if(!photo){
 			 		continue;
 			 	}
-			 	photoTime =  new Date(parseInt(photo.created_time) * 1000);
-
+			 	photoTime =  new Date(photo.created_at);
+			 	//console.log(now - photoTime);
 			 	if(Math.ceil((now - photoTime)/ (1000 * 3600 * 24)) > 7){ //remove pictures created more than 1 week ago
 			 		//console.log("Old photo deleted (" +photoTime.toDateString() +")");
 			 		localStorage.removeItem(key);
@@ -113,12 +116,13 @@ instagram.getImagesFromLocalStorage = function(){
 				}
 			}catch(e){
 				console.error(e);
+				localStorage.removeItem(key);
 			}
 		}
 	}
 };
 
-instagram.processLocalImages=  function(){
+photo.processLocalImages=  function(){
 	var inbounds = false;
 	var inside = 0;
 	for (var i = 0; i < map.markers.length; i++) {
