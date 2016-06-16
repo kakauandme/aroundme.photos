@@ -5,7 +5,7 @@ var photo = photo || {};
 var params = {
         image_size: '200,600',
         callback: 'processImages',
-        rpp: 50,
+        rpp: 25,
         sort: 'created_at'
     },
     uriParams = '';

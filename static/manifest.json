@@ -1,5 +1,5 @@
 {
-	"name": "Around me photos",
+	"name": "Around me",
 	"icons": [
 		{
 			"src": "/img/config/android-chrome-36x36.png",
@@ -47,8 +47,8 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "http://aroundme.photos",
-	"theme_color": "#4f007d",
+	"start_url": "https://aroundme.photos",
+	"theme_color": "#24292e",
 	"background_color": "#24292e",
 	"display": "standalone",
 	"orientation": "portrait",
