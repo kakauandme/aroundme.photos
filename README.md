@@ -1,7 +1,7 @@
 # aroundme.photos
 Photo exploration tool is built on client side JavaScript engine, various APIs and runs on Google App Engine.
 
-[http://aroundme.photos/](http://aroundme.photos/)
+[https://aroundme.photos/](https://aroundme.photos/)
 
 <a target="_blank" href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl">![Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png"Available in the Chrome Web Store")</a>
 
