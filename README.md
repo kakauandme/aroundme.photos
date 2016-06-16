@@ -1,5 +1,5 @@
 # aroundme.photos
-Photo exploration tool is built on client side JavaScript engine, various APIs and runs on Google App Engine.
+Photo exploration tool is built on a client side JavaScript engine, various APIs and runs on Google App Engine.
 
 [https://aroundme.photos/](https://aroundme.photos/)
 
