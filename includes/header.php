@@ -48,7 +48,7 @@
 <meta name="twitter:creator" content="@kakauandme">
 <meta name="twitter:title" content="<?php echo $twitterTitle; ?>">
 <meta name="twitter:description" content="<?php echo $description; ?>">
-<meta name="twitter:image:src" content="<?php echo $baseURL; ?>/img/config/screenshot_sml.png">
+<meta name="twitter:image:src" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.jpg">
 <?php /*Facebook OG */ ?>
 <meta property="og:title" content="<?php echo $socialTitle; ?>" />
 <meta property="og:site_name" content="<?php echo $siteName; ?>"/>
@@ -56,6 +56,6 @@
 <meta property="og:description" content="<?php echo $description; ?>" />
 <meta property="fb:app_id" content="587080064742659" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.png" />
+<meta property="og:image" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.jpg" />
 <?php /*Google+ Schema.org microdata */ ?>
-<meta itemprop="image" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.png">
+<meta itemprop="image" content="<?php echo $baseURL; ?>/img/config/screenshot_lrg.jpg">
