@@ -2,7 +2,7 @@
   "name": "Around me photos",
   "short_name": "Around me",
   "description": "Check out real-time photo updates on a map and discover what is happening at your location through pictures and images taken nearby.",
-  "version": "1.3",
+  "version": "1.4",
   "manifest_version": 2,
   "icons": {
     "128": "icon_128.png",
@@ -10,10 +10,10 @@
   },
   "app": {
     "urls": [
-      "http://aroundme.photos/"
+      "https://aroundme.photos/"
     ],
     "launch": {
-      "web_url": "http://aroundme.photos/"
+      "web_url": "https://aroundme.photos/"
     }
   }
 }
