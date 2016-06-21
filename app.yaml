@@ -9,20 +9,16 @@ handlers:
 - url: /
   script: index.php
   secure: always
-  expiration: "1h"
 - url: /([a-z-]+)/([a-z-]+)/?$
   script: index.php
   secure: always
-  expiration: "1h"
 - url: /([a-z-]+)/?$
   script: index.php
   secure: always
-  expiration: "1h"
 
 - url: /appcache.php
   script: appcache.php
   secure: always
-  expiration: "1h"
 
 - url: /css
   static_dir: css
