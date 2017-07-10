@@ -3,10 +3,10 @@ Photo exploration tool is built on a client side JavaScript engine, various APIs
 
 [https://aroundme.photos/](https://aroundme.photos/)
 
-<a target="_blank" href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl">![Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png"Available in the Chrome Web Store")</a>
+<a target="_blank" href="https://chrome.google.com/webstore/detail/around-me-photos/ocegikblkfamikbdhblhlbfpmlcpbbkl">[Available in the Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png"Available in the Chrome Web Store")</a>
 
 
-##Recources
+## Recources
 
 * [Thick recources](http://www.studiothick.com.au/)
 * [500px API](https://github.com/500px/api-documentation/blob/master/endpoints/photo/GET_photos_search.md)
