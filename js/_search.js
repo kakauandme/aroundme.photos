@@ -205,7 +205,7 @@ dom.s_submit.addEventListener("click", function(){
 
 
 
-dom.s_input.addEventListener("keyup", function (e) {
+dom.s_input.addEventListener("keydown", function (e) {
 	//console.log("keydone" + e.keyCode);
 	if(e.keyCode === 8 || (e.keyCode <= 90 && e.keyCode >= 48)){ // backspace || letters and numbers
     	search.getSuggestions();

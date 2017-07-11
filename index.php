@@ -76,7 +76,7 @@ require_once("includes/config.php");
 	echo "var lng = " . $lng . ";";
 	require_once("js/inline.min.js");
 ?></script>
-<script async defer type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.25&key=AIzaSyA7OxxJkLDCwBo8FX4yY6lNxjn6u4CJeR8&libraries=places&callback=domReady"></script>
+<script async defer type="text/javascript" src="//maps.googleapis.com/maps/api/js?v=3.29&key=AIzaSyA7OxxJkLDCwBo8FX4yY6lNxjn6u4CJeR8&libraries=places&callback=domReady"></script>
 <!--<![endif]-->
 </body>
 </html>
