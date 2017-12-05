@@ -20,10 +20,9 @@ CACHE:
 /img/config/android-chrome-512x512.png
 
 
-/img/config/mstile-70x70.png
+
 /img/config/mstile-150x150.png
-/img/config/mstile-310x310.png
-/img/config/mstile-310x150.png
+
 
 NETWORK:
 *

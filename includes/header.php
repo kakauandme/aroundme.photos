@@ -23,8 +23,6 @@
 <meta name="theme-color" content="#24292e">
 <?php /*MS Tiles */ ?>
 <meta name="msapplication-config" content="/browserconfig.xml" />
-<meta name="msapplication-TileColor" content="#f74552">
-<meta name="msapplication-TileImage" content="/img/config/mstile-144x144.png">
 <?php /*Twitter cards */ ?>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@kakauandme">
